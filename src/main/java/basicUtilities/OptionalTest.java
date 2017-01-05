@@ -1,4 +1,4 @@
-package usingAvoidingNull;
+package basicUtilities;
 
 import com.google.common.base.Strings;
 
