@@ -1,8 +1,8 @@
 package basicUtilities;
 
+import com.google.common.base.Optional;
 import com.google.common.base.Strings;
 
-import java.util.Optional;
 
 /**
  * Created by shangzhidong on 2017/1/3.
@@ -12,7 +12,7 @@ public class OptionalTest {
         Object a  =1;
 //        Optional<Object> possible = Optional.of(a);
 //        System.out.println(possible.isPresent());
-        Optional<Integer> p2 = Optional.ofNullable(null);
+        Optional<Integer> p2 = Optional.fromNullable(null);
         System.out.println(p2.isPresent());
         System.out.println();
 
