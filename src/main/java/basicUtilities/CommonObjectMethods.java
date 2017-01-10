@@ -43,11 +43,18 @@ public class CommonObjectMethods {
                     .add("b",b).toString();
         }
 
+        @Override
+        public int hashCode() {
+            /**根据类里面的具体字段进行hash*/
+            return Objects.hash(a,b);
+        }
+
         public int compareTo(Bean o) {
             return ComparisonChain.start()
                     .compare(this.a,o.a)
                     .compare(this.b,o.b)
                     .result();
         }
+
     }
 }
