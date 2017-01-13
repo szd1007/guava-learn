@@ -1,5 +1,6 @@
 package collections;
 
+import com.google.common.base.Function;
 import com.google.common.collect.*;
 
 import java.util.Collection;
@@ -22,12 +23,15 @@ public class NewCollectionTypesExplainedTest {
         multiset.add("a");
         System.out.println(multiset.count("a"));
         System.out.println(multiset.elementSet());
+        System.out.println(multiset.entrySet());
         for(String s:multiset){
             System.out.println(s);
         }
         System.out.println(multiset.count("a"));
         multiset.remove(null);
-
+        for(String s:Multisets.copyHighestCountFirst(multiset)){
+            System.out.println("按元素出现次数降序输出 "+ s);
+        }
 
         /**multiMap
          * better than:  Map<K,List<V>> (ArrayListMultimap)   Map<K,Set<V>>(HashMultimap)
@@ -69,6 +73,17 @@ public class NewCollectionTypesExplainedTest {
         bimap.put("id3","c");
         System.out.println(bimap.inverse().keySet());//inverse方法
         System.out.println("**********BiMap********************");
+
+
+        ImmutableSet<String> digits = ImmutableSet.of("zero", "one", "two", "three", "four",
+                "five", "six", "seven", "eight", "nine");
+        Function<String, Integer> lengthFunction = new Function<String, Integer>() {
+            public Integer apply(String string) {
+                return string.length();
+            }
+        };
+        ImmutableListMultimap<Integer, String> digitsByLength = Multimaps.index(digits, lengthFunction);
+
 
     }
 }

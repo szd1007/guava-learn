@@ -1,11 +1,10 @@
 package collections;
 
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
+import com.google.common.collect.*;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -72,8 +71,19 @@ public class CollectionUtilitiesExplainedTest {
             System.out.println("set  "+str);
         }
         Sets.SetView<String>  setView =Sets.union(aset, bset);
+        /**Maps*/
+        Map<String, Integer> left = ImmutableMap.of("a", 1, "b", 2, "c", 3);
+        Map<String, Integer> right = ImmutableMap.of("b", 2, "c", 4, "d", 5);
+        MapDifference<String, Integer> diff = Maps.difference(left, right);
+
+        diff.entriesInCommon(); // {"b" => 2}
+        diff.entriesDiffering(); // {"c" => (3, 4)}
+        diff.entriesOnlyOnLeft(); // {"a" => 1}
+        diff.entriesOnlyOnRight(); // {"d" => 5}
 
         /**MultiSets*/
+
+
 
 
     }
