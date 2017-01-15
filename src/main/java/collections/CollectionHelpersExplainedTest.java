@@ -4,7 +4,6 @@ import com.google.common.collect.ForwardingList;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
 import com.google.common.collect.PeekingIterator;
-import jdk.nashorn.internal.ir.WhileNode;
 
 import java.util.List;
 
