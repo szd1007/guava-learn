@@ -1,12 +1,13 @@
 import com.google.common.base.CharMatcher;
+import com.google.common.base.Charsets;
 import com.google.common.base.Joiner;
 import com.google.common.base.Splitter;
 import com.google.common.collect.Lists;
 
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Spliterator;
 
 /**
  * Created by zm on 17/1/15.
@@ -45,6 +46,25 @@ public class StringTest {
 
         //简直完美啊  splitter trim结果 并且能够删除空结果
         List<String> readFromStr = Lists.newArrayList(splitter.split(toBeSplit));
+
+
+        System.out.println("$$$$$$$$$$$$$");
+        String nocontrol = CharMatcher.javaIsoControl().removeFrom("");
+        String digits = CharMatcher.digit().retainFrom("ab2dsfsd3");
+        String spaced = CharMatcher.whitespace().trimFrom("");
+        String nodigits = CharMatcher.digit().replaceFrom("abs2dd3", "*");
+
+        System.out.println(digits);
+        System.out.println(nodigits);
+        String lowerAndDigits = CharMatcher.digit().or(CharMatcher.javaLowerCase()).retainFrom("AabDsdf@32sdfDDd");
+        System.out.println(lowerAndDigits);
+
+        String tt = CharMatcher.anyOf("ab").collapseFrom("absdfsdbasdfsbaaabb",' ');
+        System.out.println(tt);
+
+
+        byte[]bytes = "".getBytes(Charsets.UTF_8);
+        byte[]bytes2 = "".getBytes(StandardCharsets.UTF_8);
 
     }
 }
