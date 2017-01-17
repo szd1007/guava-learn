@@ -8,6 +8,7 @@ import java.util.Collections;
 
 /**
  * Created by zm on 17/1/16.
+ *https://github.com/google/guava/wiki/PrimitivesExplained
  */
 public class PrimitivesExplainedTest {
     public static void main(String[] args) {
