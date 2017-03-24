@@ -286,7 +286,8 @@ public class Server {
         private void doResponse(Call call) throws IOException {
             //if data not fully send,then register the channel for asyn writer
             if (!processResponse(call)) {
-                registerForWrite(call);
+                registerForWrite(call);/**超过一次写的限制后就要分开几次写，这时候程序向写程序注册写事件，
+                 同时程序就返回了。这个时候就开始慢慢的写了，然后handler开始处理别的请求*/
             }
         }
         private boolean processResponse(Call call)throws IOException {
