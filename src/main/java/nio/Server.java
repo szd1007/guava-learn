@@ -96,8 +96,8 @@ public class Server {
     }
     /**一个监听类,处理所有的连接请求*/
     class Listener extends Thread {
-        Selector selector;
-        Reader[] readers; //10个reader 处理读输入数据的请求
+        Selector selector;//1个selector用来处理accept请求
+        Reader[] readers; //10个reader 处理读输入数据的请求 多个handler处理reader到的请求，包含具体的业务。最终一个writer进行数据回写
         int robin;
         int readNum;
         Listener(int port)throws  IOException{
@@ -179,7 +179,7 @@ public class Server {
 
         public int readAndProcess() throws IOException {
             int count;
-            if (!skipHeader) {
+            if (!skipHeader) { /**第一次读的时候读取的是这一帧的数据size*/
                 count = channelRead(channel, dataBufferLength);
                 if (count < 0 || dataBufferLength.remaining() > 0) {
                     return count;
