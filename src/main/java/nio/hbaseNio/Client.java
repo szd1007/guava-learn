@@ -1,4 +1,4 @@
-package nio;
+package nio.hbaseNio;
 
 
 
@@ -6,8 +6,7 @@ import javax.net.SocketFactory;
 import java.io.*;
 import java.net.InetSocketAddress;
 import java.net.Socket;
-import java.nio.ByteBuffer;
-import java.nio.channels.SocketChannel;
+
 /**
  * Created by shangzhidong on 2017/3/24.
  */

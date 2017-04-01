@@ -1,4 +1,4 @@
-package nio;
+package nio.hbaseNio;
 
 
 
@@ -11,10 +11,11 @@ import java.util.concurrent.*;
 
 /**
  * Created by shangzhidong on 2017/3/24.
+ * 一个线程接收accept  多个reader线程接收read请求  多个woker接收
  */
 public class Server {
     private BlockingQueue<Call> queue = new LinkedBlockingDeque<Call>();
-    private Queue<Call> responseCalls = new ConcurrentLinkedQueue<>();
+    private Queue<Call> responseCalls = new ConcurrentLinkedQueue<Call>();
 
 
     volatile boolean running = true;
