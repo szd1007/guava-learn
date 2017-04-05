@@ -19,35 +19,40 @@
 
 package nio.thriftNio.server;
 
-import org.apache.thrift.TAsyncProcessor;
-import org.apache.thrift.TByteArrayOutputStream;
-import org.apache.thrift.TException;
-import org.apache.thrift.protocol.TProtocol;
-import org.apache.thrift.transport.*;
+import nio.thriftNio.Const;
+import nio.thriftNio.SerializeUtil;
+import nio.thriftNio.process.RemoteReq;
+import nio.thriftNio.process.RemoteReqeust;
+import nio.thriftNio.process.RemoteResult;
+import nio.thriftNio.transport.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.nio.ByteBuffer;
 import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
 import java.nio.channels.spi.SelectorProvider;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicLong;
 
 /**
  * Provides common methods and classes used by nonblocking TServer
  * implementations.非阻塞服务端实现 nio介绍 http://www.molotang.com/articles/906.html  http://www.cnblogs.com/yueweimian/p/6262211.html
  */
-public abstract class AbstractNonblockingServer  {
+public abstract class AbstractNonblockingServer  extends TServer {
   protected final Logger LOGGER = LoggerFactory.getLogger(getClass().getName());
 
-  public static abstract class AbstractNonblockingServerArgs<T extends AbstractNonblockingServerArgs<T>>  {
+  public static abstract class AbstractNonblockingServerArgs<T extends AbstractNonblockingServerArgs<T>> extends AbstractServerArgs {
     public long maxReadBufferBytes = Long.MAX_VALUE;
 
     public AbstractNonblockingServerArgs(TNonblockingServerTransport transport) {
-      transportFactory(new TFramedTransport.Factory());
+      super(transport);
+
     }
   }
 
@@ -275,24 +280,12 @@ public abstract class AbstractNonblockingServer  {
     // the ByteBuffer we'll be using to write and read, depending on the state
     protected ByteBuffer buffer_;
 
-    protected final TByteArrayOutputStream response_;
+
+
     
-    // the frame that the TTransport should wrap.
-    protected final TMemoryInputTransport frameTrans_;
+
     
-    // the transport that should be used to connect to clients
-    protected final TTransport inTrans_;
-    
-    protected final TTransport outTrans_;
-    
-    // the input protocol to use on frames
-    protected final TProtocol inProt_;
-    
-    // the output protocol to use on frames
-    protected final TProtocol outProt_;
-    
-    // context associated with this connection
-    protected final ServerContext context_;
+
 
     public FrameBuffer(final TNonblockingTransport trans,
         final SelectionKey selectionKey,
@@ -302,18 +295,9 @@ public abstract class AbstractNonblockingServer  {
       selectThread_ = selectThread;
       buffer_ = ByteBuffer.allocate(4);/**开始大小为4byte 这个是size的int值*/
 
-      frameTrans_ = new TMemoryInputTransport();
-      response_ = new TByteArrayOutputStream();
-      inTrans_ = inputTransportFactory_.getTransport(frameTrans_);
-      outTrans_ = outputTransportFactory_.getTransport(new TIOStreamTransport(response_));
-      inProt_ = inputProtocolFactory_.getProtocol(inTrans_);
-      outProt_ = outputProtocolFactory_.getProtocol(outTrans_);
 
-      if (eventHandler_ != null) {
-        context_ = eventHandler_.createContext(inProt_, outProt_);
-      } else {
-        context_  = null;
-      }
+
+
     }
 
     /**
@@ -452,9 +436,7 @@ public abstract class AbstractNonblockingServer  {
         readBufferBytesAllocated.addAndGet(-buffer_.array().length);
       }
       trans_.close();
-      if (eventHandler_ != null) {
-        eventHandler_.deleteContext(context_, inProt_, outProt_);
-      }
+
     }
 
     /**
@@ -471,19 +453,18 @@ public abstract class AbstractNonblockingServer  {
      * there actually isn't any data in the response buffer, we'll skip trying
      * to write and instead go back to reading.
      */
-    public void responseReady() {
+    public void responseReady(RemoteResult result) {
       // the read buffer is definitely no longer in use, so we will decrement
       // our read buffer count. we do this here as well as in close because
       // we'd like to free this read memory up as quickly as possible for other
       // clients.
       readBufferBytesAllocated.addAndGet(-buffer_.array().length);
 
-      if (response_.len() == 0) {
-        // go straight to reading again. this was probably an oneway method ，方法没有返回值
-        state_ = FrameBufferState.AWAITING_REGISTER_READ;
-        buffer_ = null;
-      } else {
-        buffer_ = ByteBuffer.wrap(response_.get(), 0, response_.len());
+        try {
+            buffer_ = SerializeUtil.getFrameByteBuffer(SerializeUtil.serialize(result));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         // set state that we're waiting to be switched to write. we do this
         // asynchronously through requestSelectInterestChange() because there is
@@ -491,7 +472,6 @@ public abstract class AbstractNonblockingServer  {
         // blocked in select(). (this functionality is in place for the sake of
         // the HsHa server.)
         state_ = FrameBufferState.AWAITING_REGISTER_WRITE;
-      }
       requestSelectInterestChange();
     }
 
@@ -499,17 +479,18 @@ public abstract class AbstractNonblockingServer  {
      * Actually invoke the method signified by this FrameBuffer.
      */
     public void invoke() {
-      frameTrans_.reset(buffer_.array());
-      response_.reset();
+
       
       try {
-        if (eventHandler_ != null) {
-          eventHandler_.processContext(context_, inTrans_, outTrans_);
-        }
-        processorFactory_.getProcessor(inTrans_).process(inProt_, outProt_);
-        responseReady();
+          /**获取对象数据，反序列化*/
+
+          RemoteReq remoteReq = (RemoteReq) SerializeUtil.unserialize(SerializeUtil.getFrameObjBuffer(buffer_));
+
+          /**反射调用具体的实现方法*/
+          responseReady(invokeRPC(remoteReq));
+
         return;
-      } catch (TException te) {
+      } catch (Exception te) {
         LOGGER.warn("Exception while invoking!", te);
       } catch (Throwable t) {
         LOGGER.error("Unexpected throwable while invoking!", t);
@@ -518,7 +499,107 @@ public abstract class AbstractNonblockingServer  {
       state_ = FrameBufferState.AWAITING_CLOSE;
       requestSelectInterestChange();
     }
+    private RemoteResult invokeRPC(RemoteReq reqeust){
+        String interfaceName = reqeust.getClassName();
+        String methodName = reqeust.getMethodName();
+        String packageName= Const.SERVICE_PACKAGE_PATH+interfaceName+"Impl";
+        System.out.println("packageName:"+packageName+"\t"+"method:"+methodName);
 
+        boolean invokeSuccs= false;
+        Object value = null;
+        try {
+            Class ifClass = Class.forName(packageName);
+            Method methodCall=null;
+            for(Method method :ifClass.getDeclaredMethods()){
+                if(method.getName().equals(methodName)){
+                    /**这里假定方法名不会重复*/
+                    methodCall = method;
+                    break;
+                }
+            }
+            Object ifObject = ifClass.newInstance();/**可以做成静态的或者多个对象循环使用的*/
+            System.out.println("get obj done");
+            if(methodCall!=null){
+                System.out.println("invoke method:"+methodCall.getName());
+                value = methodCall.invoke(ifObject,reqeust.getParas());
+                invokeSuccs =true;
+
+            }
+
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }catch (InvocationTargetException e) {
+            e.printStackTrace();
+        }finally {
+            /**返回调用的对象*/
+            return new RemoteResult(invokeSuccs,value);
+
+        }
+
+
+    }
+//      private RemoteResult invokeRPC(RemoteReqeust reqeust){
+//          String interfaceName = reqeust.getClassName();
+//          String methodName = reqeust.getMethodName();
+//          String packageName= Const.SERVICE_PACKAGE_PATH+interfaceName+"Impl";
+//          System.out.println("packageName:"+packageName+"\t"+"method:"+methodName);
+//          List<RemoteReqeust.Para> paraList = reqeust.getParaList();
+//          Collections.sort(paraList);
+//          Class[]paraTypes = new Class[paraList.size()];/**方法参数的类型*/
+//          Object[]paraOjbs = new Object[paraList.size()];
+//          int i=0;
+//          for(RemoteReqeust.Para para:paraList){
+//              switch (para.getType()){
+//                  case INT:{
+//                      paraOjbs[i]= para.getIntValue();
+//                      paraTypes[i++]=Integer.class;
+//                      break;
+//                  }case STRING:{
+//                      paraOjbs[i]=para.getStringValue();
+//                      paraTypes[i++]=String.class;
+//                      break;
+//                  }case LONG:{
+//                      paraOjbs[i]=para.getLongValue();
+//                      paraTypes[i++]=Long.class;
+//                      break;
+//                  }
+//                  default:{
+//                      System.err.println("parse para error : only int and string supported");
+//                  }
+//              }
+//          }
+//          boolean invokeSuccs= false;
+//          Object value = null;
+//          try {
+//              Class ifClass = Class.forName(packageName);
+//              Object ifObject = ifClass.newInstance();
+//              System.out.println("get obj done");
+//              Method method = ifClass.getMethod(methodName,paraTypes);/**获取method对象*/
+//              value = method.invoke(ifObject, paraOjbs);
+//
+//              invokeSuccs =true;
+//          } catch (ClassNotFoundException e) {
+//              e.printStackTrace();
+//          } catch (InstantiationException e) {
+//              e.printStackTrace();
+//          } catch (IllegalAccessException e) {
+//              e.printStackTrace();
+//          } catch (NoSuchMethodException e) {
+//              e.printStackTrace();
+//          } catch (InvocationTargetException e) {
+//              e.printStackTrace();
+//          }finally {
+//              /**返回调用的对象*/
+//              return new RemoteResult(invokeSuccs,value);
+//
+//          }
+//
+//
+//      }
     /**
      * Perform a read into buffer.
      * 
@@ -566,38 +647,5 @@ public abstract class AbstractNonblockingServer  {
     }
   } // FrameBuffer
 
-  public class AsyncFrameBuffer extends FrameBuffer {
-    public AsyncFrameBuffer(TNonblockingTransport trans, SelectionKey selectionKey, AbstractSelectThread selectThread) {
-      super(trans, selectionKey, selectThread);
-    }
 
-    public TProtocol getInputProtocol() {
-      return  inProt_;
-    }
-
-    public TProtocol getOutputProtocol() {
-      return outProt_;
-    }
-
-
-    public void invoke() {
-      frameTrans_.reset(buffer_.array());
-      response_.reset();
-
-      try {
-        if (eventHandler_ != null) {
-          eventHandler_.processContext(context_, inTrans_, outTrans_);
-        }
-        ((TAsyncProcessor)processorFactory_.getProcessor(inTrans_)).process(this);
-        return;
-      } catch (TException te) {
-        LOGGER.warn("Exception while invoking!", te);
-      } catch (Throwable t) {
-        LOGGER.error("Unexpected throwable while invoking!", t);
-      }
-      // This will only be reached when there is a throwable.
-      state_ = FrameBufferState.AWAITING_CLOSE;
-      requestSelectInterestChange();
-    }
-  }
 }
