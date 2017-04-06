@@ -207,4 +207,12 @@ public class TNonblockingSocket extends TNonblockingTransport {
     return socketChannel_.finishConnect();
   }
 
+  @Override
+  public String toString() {
+    final StringBuilder sb = new StringBuilder("TNonblockingSocket{");
+    sb.append("socketAddress_=").append(socketAddress_);
+    sb.append(", socketChannel_=").append(socketChannel_);
+    sb.append('}');
+    return sb.toString();
+  }
 }

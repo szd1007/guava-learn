@@ -196,6 +196,7 @@ public abstract class AbstractNonblockingServer  extends TServer {
      */
     protected void handleRead(SelectionKey key) {
       FrameBuffer buffer = (FrameBuffer) key.attachment();
+      System.out.println("start reading...");
       if (!buffer.read()) {/**异步read*/
         cleanupSelectionKey(key);
         return;
@@ -347,6 +348,7 @@ public abstract class AbstractNonblockingServer  extends TServer {
           buffer_.putInt(frameSize);/**transport中已经读完size了，再读便是数据，buffer中要重新放进size数据*/
 
           state_ = FrameBufferState.READING_FRAME;//更改状态机到 reading_frame
+          System.out.println("reading frame size finish: size"+(frameSize+4));
         } else {
           // this skips the check of READING_FRAME state below, since we can't
           // possibly go on to that state if there's data left to be read at
@@ -370,6 +372,7 @@ public abstract class AbstractNonblockingServer  extends TServer {
           // get rid of the read select interests 从读事件中移除
           selectionKey_.interestOps(0);
           state_ = FrameBufferState.READ_FRAME_COMPLETE;/**状态切换*/
+          System.out.println("reading finish...");
         }
 
         return true;
@@ -396,6 +399,7 @@ public abstract class AbstractNonblockingServer  extends TServer {
 
         // we're done writing. now we need to switch back to reading. 写操作完成
         if (buffer_.remaining() == 0) {
+          System.out.println("writing finish>>>>>>  write size:"+buffer_.limit());
           prepareRead();
         }
         return true;

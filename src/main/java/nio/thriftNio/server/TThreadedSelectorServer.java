@@ -19,11 +19,13 @@
 
 package nio.thriftNio.server;
 
+import nio.thriftNio.transport.TNonblockingServerSocket;
 import nio.thriftNio.transport.TNonblockingServerTransport;
 import nio.thriftNio.transport.TNonblockingTransport;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.sound.midi.Soundbank;
 import java.io.IOException;
 import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
@@ -426,6 +428,7 @@ public class TThreadedSelectorServer extends AbstractNonblockingServer {
 
         if (args.acceptPolicy == Args.AcceptPolicy.FAST_ACCEPT || invoker == null) {
           doAddAccept(targetThread, client);
+
         } else {
           // FAIR_ACCEPT
           try {
@@ -454,6 +457,7 @@ public class TThreadedSelectorServer extends AbstractNonblockingServer {
     }
 
     private void doAddAccept(SelectorThread thread, TNonblockingTransport client) {
+      System.out.println("get accept from :"+client);
       if (!thread.addAcceptedConnection(client)) {
         client.close();
       }
@@ -652,5 +656,13 @@ public class TThreadedSelectorServer extends AbstractNonblockingServer {
       }
       return nextThreadIterator.next();
     }
+  }
+
+  public static void main(String[] args) throws Exception {
+
+    TNonblockingServerTransport serverTransport = new TNonblockingServerSocket(8888);
+    TServer server = new TThreadedSelectorServer(new TThreadedSelectorServer.Args(serverTransport));
+    System.out.println("Starting server....");
+    server.serve();
   }
 }
