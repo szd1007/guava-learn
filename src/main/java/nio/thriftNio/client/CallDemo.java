@@ -1,7 +1,6 @@
 package nio.thriftNio.client;
 
 import nio.thriftNio.service.RPCTest;
-import nio.thriftNio.service.clientStub.RpcTestStub;
 
 import java.io.IOException;
 import java.lang.reflect.Proxy;
@@ -13,10 +12,9 @@ import java.lang.reflect.Proxy;
 public class CallDemo {
     public static void main(String[] args) throws IOException {
         Client client = new Client();
-        RPCTest rpcTestInterface = new RpcTestStub();
         ProxyInstance proxyInstanceHandler = new ProxyInstance(client,"RPCTest");
-        RPCTest test = (RPCTest) Proxy.newProxyInstance(rpcTestInterface.getClass().getClassLoader(),
-                rpcTestInterface.getClass().getInterfaces(),proxyInstanceHandler);
+        RPCTest test = (RPCTest) Proxy.newProxyInstance(Thread.currentThread().getContextClassLoader(),
+                new Class[]{RPCTest.class},proxyInstanceHandler);
         System.out.println("call add method");
         int result = test.add(345 ,3);
         System.out.println(result);
