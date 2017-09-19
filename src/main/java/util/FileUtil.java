@@ -83,6 +83,32 @@ public class FileUtil {
         }
         return  content;
     }
+
+    /**
+     * 写文件内容
+     *
+     * @param fileName
+     * @return
+     */
+    public static String writeContent(String fileName, String data) {
+        BufferedWriter br = null;
+        String content = "";
+        try {
+            br = new BufferedWriter(new FileWriter(fileName, false));
+            br.write(data);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (br != null) {
+                    br.close();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return content;
+    }
     /**
      * 读取文件内容
      * @param in
