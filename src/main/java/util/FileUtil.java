@@ -1,6 +1,10 @@
 package util;
 
+import sun.nio.cs.ext.GBK;
+
 import java.io.*;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,7 +38,9 @@ public class FileUtil {
         List<String> content = new ArrayList<String>();
         BufferedReader br =null;
         try {
-            br = new BufferedReader(new FileReader(filePath));
+            // br = new BufferedReader(new FileReader(filePath)); 中文有乱码问题，需要InputStreamReader
+            br = new BufferedReader(new InputStreamReader(new FileInputStream(filePath),
+                StandardCharsets.UTF_8));
             String data;
 
 
