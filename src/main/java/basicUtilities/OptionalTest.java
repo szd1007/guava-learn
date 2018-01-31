@@ -12,7 +12,8 @@ public class OptionalTest {
         Object a  =1;
 //        Optional<Object> possible = Optional.of(a);
 //        System.out.println(possible.isPresent());
-        Optional<Integer> p2 = Optional.fromNullable(null);
+        Integer aaa = null;
+        Optional<Integer> p2 = Optional.fromNullable(aaa);
         System.out.println(p2.isPresent());
         System.out.println();
 

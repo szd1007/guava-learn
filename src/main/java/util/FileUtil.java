@@ -1,5 +1,6 @@
 package util;
 
+import com.google.common.base.Charsets;
 import sun.nio.cs.ext.GBK;
 
 import java.io.*;
@@ -13,7 +14,7 @@ import java.util.List;
  */
 public class FileUtil {
     /**
-     * »ñÈ¡µ±Ç°ÎÄ¼ş¼ĞÖĞµÄËùÓĞÎÄ¼şµÄÂ·¾¶
+     * è·å–å½“å‰æ–‡ä»¶å¤¹ä¸­çš„æ‰€æœ‰æ–‡ä»¶çš„è·¯å¾„
      * @param folder
      * @return
      */
@@ -30,17 +31,17 @@ public class FileUtil {
     }
 
     /**
-     * ¶ÁÈ¡ÎÄ¼şÄÚµÄÄÚÈİ £¬°´ĞĞ¶ÁÈ¡
-     * @param filePath ÎÄ¼şÂ·¾¶
+     * è¯»å–æ–‡ä»¶å†…çš„å†…å®¹ ï¼ŒæŒ‰è¡Œè¯»å–
+     * @param filePath æ–‡ä»¶è·¯å¾„
      * @return
      */
     public static List<String> readFileByLine(String filePath){
         List<String> content = new ArrayList<String>();
         BufferedReader br =null;
         try {
-            // br = new BufferedReader(new FileReader(filePath)); ÖĞÎÄÓĞÂÒÂëÎÊÌâ£¬ĞèÒªInputStreamReader
+            // br = new BufferedReader(new FileReader(filePath)); ä¸­æ–‡æœ‰ä¹±ç é—®é¢˜ï¼Œéœ€è¦InputStreamReader
             br = new BufferedReader(new InputStreamReader(new FileInputStream(filePath),
-                StandardCharsets.UTF_8));
+                                                          Charsets.UTF_8));
             String data;
 
 
@@ -63,7 +64,7 @@ public class FileUtil {
     }
 
     /**
-     * ¶ÁÈ¡ÎÄ¼şÄÚÈİ
+     * è¯»å–æ–‡ä»¶å†…å®¹
      * @param filePath
      * @return
      */
@@ -91,7 +92,7 @@ public class FileUtil {
     }
 
     /**
-     * Ğ´ÎÄ¼şÄÚÈİ
+     * å†™æ–‡ä»¶å†…å®¹
      *
      * @param fileName
      * @return
@@ -116,7 +117,7 @@ public class FileUtil {
         return content;
     }
     /**
-     * ¶ÁÈ¡ÎÄ¼şÄÚÈİ
+     * è¯»å–æ–‡ä»¶å†…å®¹
      * @param in
      * @return
      */
