@@ -25,7 +25,7 @@ public class TimeUtil {
         try {
             timestamp = sdf.get().parse(time.trim()).getTime();
         } catch (Exception e) {
-            logger.error("parsetimeError:"+time);
+            logger.error("parseTimeError:"+time);
             e.printStackTrace();
 
         }
@@ -36,7 +36,7 @@ public class TimeUtil {
         try {
             times = sdf.get().format(new Date());
         } catch (Exception e) {
-            logger.error("parsetimeError:"+times);
+            logger.error("parseTimeError:"+times);
             e.printStackTrace();
 
         }
@@ -47,7 +47,7 @@ public class TimeUtil {
         try {
             times = sdf.get().format(new Date(timestamps));
         } catch (Exception e) {
-            logger.error("parsetimeError:"+times);
+            logger.error("parseTimeError:"+times);
             e.printStackTrace();
 
         }
