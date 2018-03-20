@@ -8,7 +8,6 @@ import com.google.common.collect.Multisets;
 import com.google.common.hash.HashCode;
 import com.google.common.io.Files;
 import com.google.common.io.Resources;
-import sun.misc.Hashing;
 
 import java.io.File;
 import java.net.MalformedURLException;
