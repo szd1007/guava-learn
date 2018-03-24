@@ -67,11 +67,11 @@ public class Test {
         //对列表的每个元素应用函数
         // 将字符串换成大写并用逗号链接起来
         List<String> G7 = Arrays.asList("USA", "Japan", "France", "Germany", "Italy", "U.K.","Canada");
-        List<String> G1 = Arrays.asList("USA");
+        List<String> G1 = Arrays.asList();
         List<String> G2 = Arrays.asList("USA", "Japan");
 
         String gRes = G1.stream().map(String::toUpperCase).collect(Collectors.joining(","));
-        System.out.println(gRes);
+        System.out.println("G0 " + gRes);
 
         //复制不同的值，创建一个子列表
         // 用所有不同的数字创建一个正方形列表
