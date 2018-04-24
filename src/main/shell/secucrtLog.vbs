@@ -36,7 +36,7 @@ Sub Main
 	   objTab1.Screen.Send "cd shangzhidong" & chr(9) & chr(13)
 	   objTab1.Screen.Send "ssh " & params(0) & chr(9) & chr(13)
        objTab1.Screen.Send "cd " & params(1) & chr(9) & chr(13)
-
+       objTab1.Caption = params(0)
        loop
 
 
