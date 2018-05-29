@@ -34,6 +34,8 @@ public class Test {
 
 
         List<String> langs = Lists.newArrayList("Java", "Scala", "C", "Lisp", "JJ");
+        List<String>lanNew = Lists.newArrayList().stream().map(x->x+"^^").collect(Collectors.toList());
+        System.out.println("lalalla " + lanNew);
 //        langs.forEach(System.out::println);
         langs.forEach(Test::printTest);//双冒号 直接传递参数。 尽量将代码搞到一行
         System.out.println(" start with J");

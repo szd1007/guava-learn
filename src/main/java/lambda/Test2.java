@@ -19,6 +19,7 @@ public class Test2 {
         System.out.println(stuff.isGood(22));
     }
     public static void main(String[] args) {
+        System.out.println(new Test2().getClass().getName());
         doSomthing(new DoStuff() {
 
             @Override public boolean isGood(int value) {
@@ -29,5 +30,6 @@ public class Test2 {
 
 
     }
+
 
 }
