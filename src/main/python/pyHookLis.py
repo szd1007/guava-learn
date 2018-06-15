@@ -8,6 +8,10 @@ import pythoncom
 import pyHook
 from globalValue import *
 import webbrowser as web
+import time
+
+# 连续按键间隔时间
+INTERVAL_TIME = 1
 
 
 def run_to_use_default_browser_open_url(url):
@@ -58,14 +62,18 @@ def onKeyboardEvent(event):
     # print "---"
     msg = get_value("msg", "null")
     if "F2" == str(event.Key):
-        print "google search ", msg
-        url = "https://www.google.com.hk/search?newwindow=1&safe=strict&source=hp&ei=fY0gW_SJDMif0gLIw5bwAg&q=" + msg
+        url = msg
+        if str(msg).startswith("http"):
+            print "direct open ", msg
+        else:
+            print "google search ", msg
+            url = "https://www.google.com.hk/search?newwindow=1&safe=strict&source=hp&ei=fY0gW_SJDMif0gLIw5bwAg&q=" + msg
+        # print "url: ", url
         run_to_use_default_browser_open_url(url)
     if "F3" == str(event.Key):
         print "youDao search ", msg
         url = "http://youdao.com/w/eng/" + msg + "/#keyfrom=dict2.index"
         run_to_use_default_browser_open_url(url)
-
     # 同鼠标事件监听函数的返回值
     return True
 
