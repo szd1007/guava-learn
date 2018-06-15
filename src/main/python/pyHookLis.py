@@ -57,11 +57,11 @@ def onKeyboardEvent(event):
     # print "Transition", event.Transition
     # print "---"
     msg = get_value("msg", "null")
-    if "F1" == str(event.Key):
+    if "F2" == str(event.Key):
         print "google search ", msg
         url = "https://www.google.com.hk/search?newwindow=1&safe=strict&source=hp&ei=fY0gW_SJDMif0gLIw5bwAg&q=" + msg
         run_to_use_default_browser_open_url(url)
-    if "F2" == str(event.Key):
+    if "F3" == str(event.Key):
         print "youDao search ", msg
         url = "http://youdao.com/w/eng/" + msg + "/#keyfrom=dict2.index"
         run_to_use_default_browser_open_url(url)
