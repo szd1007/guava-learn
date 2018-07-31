@@ -18,8 +18,9 @@ def on_clipboard_change():
     if data.hasText():
         print "\n\n>>>>>>>\n"
         set_value("msg", data.text())
-        print get_value("msg")
+        print "[" + get_value("msg") + "]"
         print_time(get_value("msg"))
+
 
 clipboard.dataChanged.connect(on_clipboard_change)
 # app.exec_()
