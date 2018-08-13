@@ -19,16 +19,13 @@ public class Test2 {
         System.out.println(stuff.isGood(22));
     }
     public static void main(String[] args) {
-        System.out.println(new Test2().getClass().getName());
-        doSomthing(new DoStuff() {
-
-            @Override public boolean isGood(int value) {
-                return value == 41;
-            }
-        });
-        doSomthing(answer -> answer == 41);
-
-
+        String sql = "update a = a";
+        int a = 1;
+        int b = -2;
+        String x1 = sql + a;
+        String x2 = sql + b;
+        System.out.println(x1);
+        System.out.println(x2);
     }
 
 
