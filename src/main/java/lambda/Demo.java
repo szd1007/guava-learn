@@ -21,5 +21,7 @@ public class Demo {
         System.out.println(getInConditionNums(longList));
         List<Long> xx = longList.stream().map(x->x+2L).collect(Collectors.toList());
         System.out.println(xx);
+        List<Integer> list = Lists.newArrayList(1,2,3);
+        System.out.println(list.stream().filter(x->x>5).collect(Collectors.toList()).size());
     }
 }

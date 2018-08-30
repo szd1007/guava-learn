@@ -21,6 +21,16 @@
     </build>
 
     <dependencies>
+        <!--
+        Attention: Be sure nothing pulls in an old dependency with groupId
+        "freemarker" (without the "org."), because then you will end up with
+        two freemarker.jar-s and unpredictable behavior!
+        -->
+        <dependency>
+            <groupId>org.freemarker</groupId>
+            <artifactId>freemarker</artifactId>
+            <version>2.3.28</version>
+        </dependency>
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
