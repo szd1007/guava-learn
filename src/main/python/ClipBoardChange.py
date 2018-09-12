@@ -20,7 +20,9 @@ def on_clipboard_change():
         set_value("msg", data.text())
         print "[" + get_value("msg") + "]"
         print_time(get_value("msg"))
-
+        out = open("d:\sec.conf",'w')
+        out.write("8848#"+data.text())
+        out.close()
 
 clipboard.dataChanged.connect(on_clipboard_change)
 # app.exec_()
