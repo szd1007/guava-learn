@@ -1,5 +1,8 @@
 package thecompletereferenc;
 
+/**
+ * in practice , you should only overload closely related operations
+ */
 public class OverloadDemo {
     void test() {
         System.out.println("no parameters");
