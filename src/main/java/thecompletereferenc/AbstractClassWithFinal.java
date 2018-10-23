@@ -3,12 +3,13 @@ package thecompletereferenc;
 public class AbstractClassWithFinal {
 
     public static void main(String[] args) {
-        A a ;
-        a = new B();
-        a.hello();
-        a = new C();
-        a.hello();
-
+//        A a ;
+//        a = new B();
+//        a.hello();
+//        a = new C();
+//        a.hello();
+        Abb abb = new Abb();
+        abb.getTest();
     }
 }
 
@@ -52,3 +53,48 @@ class D extends C{
 //class E extends B{
 //
 //}
+
+
+interface Ia{
+    void a();
+}
+class IaImpl implements Ia{
+    @Override
+    public void a() {
+
+    }
+}
+
+class Aa {
+    //private  default public protected
+     interface IAa{
+        void test();
+    }
+    class Aaa{
+         public Aaa(){
+             System.out.println("Aaa initialized");
+         }
+    }
+    Aaa get(){return new Aaa();}
+}
+
+//Aaa 非static  只能在类内部使用
+//也就是说不能脱离定义的类独立使用，但是生成后可以根据限定符返回给调用方
+//class Ab extends Aa.Aaa{
+//
+//}
+
+//嵌套接口是可以在外部类使用的，只要限定符没问题
+class Abb implements Aa.IAa{
+
+    @Override
+    public void test() {
+
+    }
+    Aa.Aaa getTest(){
+
+//        return new Aa.Aaa();
+        return  new Aa().get();
+    }
+        ;
+}
