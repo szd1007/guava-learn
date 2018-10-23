@@ -1,6 +1,7 @@
 package thecompletereferenc;
 
 public class CharUtil {
+    protected  int CharUtilVal;
     public static void main(String[] args) {
         char x = 'X';
         System.out.println(x);
