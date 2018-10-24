@@ -1,5 +1,7 @@
 package thecompletereferenc;
 
+import java.util.List;
+
 public class AbstractClassWithFinal {
 
     public static void main(String[] args) {
@@ -56,6 +58,7 @@ class D extends C{
 
 
 interface Ia{
+    int a=1;
     void a();
 }
 class IaImpl implements Ia{
@@ -97,4 +100,30 @@ class Abb implements Aa.IAa{
         return  new Aa().get();
     }
         ;
+}
+
+interface Xa{
+    void a();
+    void b();
+}
+interface Xb extends Xa{
+    void c();
+}
+abstract class Xc implements Xb{
+    @Override
+    public void a() {
+
+    }
+
+    @Override
+    public void c() {
+
+    }
+}
+
+class Xd extends Xc{
+    @Override
+    public void b() {
+
+    }
 }
