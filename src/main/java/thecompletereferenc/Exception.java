@@ -19,7 +19,19 @@ package thecompletereferenc;
 public class Exception {
 
     public static void main(String[] args) {
-        int d = 0;
-        int a = 42/d;
+        divideByZero();
+    }
+
+    public static void divideByZero(){
+
+        try {
+            int d = 0;
+            d = d/0;
+        } catch (ArithmeticException e){
+            System.out.println("arithmetic ex");
+        } catch (java.lang.Exception e) {
+            System.out.println("ex");
+            e.printStackTrace();
+        }
     }
 }
