@@ -35,6 +35,14 @@ public class Exception {
         }
     }
 
+    //multiget exception
+    public static void multicatchException(){
+        try {
+            System.out.println("do something");
+        } catch (ArithmeticException | ArrayIndexOutOfBoundsException e) {
+            System.out.println("get");
+        }
+    }
     public static void divideByZero(){
 
         try {
