@@ -1,6 +1,8 @@
 package org.adamx.quartz.quartzTest;
 
+import org.adamx.quartz.quartzTest.service.HelloWorldService;
 import org.quartz.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -10,6 +12,9 @@ import java.util.concurrent.TimeUnit;
 
 @SpringBootApplication
 public class QuartzTestApplication implements CommandLineRunner{
+
+	@Autowired
+    private HelloWorldService helloWorldService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(QuartzTestApplication.class, args);
@@ -33,7 +38,9 @@ public class QuartzTestApplication implements CommandLineRunner{
     @Override
     public void run(String... args) throws Exception {
         System.out.println(">>>>>>>>>>>>>>>>>> input args...." + (args.length > 0 ? args[0] : "null"));
+        System.out.println(helloWorldService.getHelloMessage());
         TimeUnit.SECONDS.sleep(6);
+
         System.out.println(">>>>>>>>>>>>>>>>>>> run success");
 
     }
