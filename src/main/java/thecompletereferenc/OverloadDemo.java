@@ -12,6 +12,9 @@ public class OverloadDemo {
     void test(int a){
         System.out.println("a"+a);
     }
+    void test(Integer a){
+        System.out.println("Integer"+a);
+    }
     //overload test for double parameter
     void test(double a){
         System.out.println("double "+a);
@@ -27,4 +30,12 @@ public class OverloadDemo {
 //
 //    }
 
+    public static void main(String[] args) {
+        OverloadDemo overloadDemo = new OverloadDemo();
+        int a = 1;
+        Integer aa = 1;
+
+        overloadDemo.test(a);
+        overloadDemo.test(aa);
+    }
 }
