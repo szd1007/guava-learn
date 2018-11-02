@@ -37,11 +37,16 @@ public class AnnotationTest {
     //有一个成员是value字段，其他字段有默认值。  value字段使用可以不用指定名称
     @SingleAn("sdfsd")
     public static void main(String[] args) {
+        new AnnotationTest().thisTest();
         myMeth();
 
         //本地变量
         @MyAnno
         int a;
+    }
+
+    private void thisTest(AnnotationTest this) {
+        System.out.println("xxx");
     }
 }
 
