@@ -37,28 +37,19 @@ public class FileUtil {
      */
     public static List<String> readFileByLine(String filePath){
         List<String> content = new ArrayList<String>();
-        BufferedReader br =null;
-        try {
-            // br = new BufferedReader(new FileReader(filePath)); 中文有乱码问题，需要InputStreamReader
-            br = new BufferedReader(new InputStreamReader(new FileInputStream(filePath),
-                                                          Charsets.UTF_8));
-            String data;
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(filePath), Charsets.UTF_8))) {
 
+            // br = new BufferedReader(new FileReader(filePath)); 中文有乱码问题，需要InputStreamReader
+            String data;
 
             while ((data = br.readLine()) != null) {
                 String row = data.trim();
-                if(!"".equals(row)){
+                if (!"".equals(row)) {
                     content.add(row);
                 }
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
-        }finally {
-            try {
-                br.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
         }
         return  content;
     }
