@@ -77,7 +77,44 @@ class Stats<T extends Number>{
     }
 }
 
+class Gga{
+    int a;
+    int b;
 
+    public Gga(int a, int b) {
+        this.a = a;
+        this.b = b;
+    }
+}
+
+class Ggb extends  Gga{
+    int c;
+
+    public Ggb(int a, int b, int c) {
+        super(a, b);
+        this.c = c;
+    }
+}
+
+class GCoordi <T extends Gga>{
+    T[] ob;
+
+    public GCoordi(T[] ob) {
+        this.ob = ob;
+    }
+
+    public void printA(T obj) {
+        System.out.println(obj.a + " : " + obj.b);
+    }
+
+    public void pp(GCoordi<?> gg) {
+        System.out.println(gg.ob[0].a);
+    }
+    //T 限制类型， 通配符向上匹配，限制子类
+    public void printB(GCoordi<? extends Ggb> obj) {
+        System.out.println(obj.ob[0].c);
+    }
+}
 
 
 
