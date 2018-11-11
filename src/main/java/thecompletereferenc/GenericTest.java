@@ -190,7 +190,31 @@ class GCoordi <T extends Gga>{
 
 }
 
+class MyGenClass<T, V> {
+    T t;
+    V v;
 
+    public MyGenClass(T t, V v) {
+        this.t  = t;
+        this.v = v;
+    }
+
+    boolean isSame(MyGenClass<T, V> o) {
+        if (t == o.t && v == o.v) {
+            return true;
+        }
+        return false;
+    }
+
+    public static void main(String[] args) {
+        //类型推断用在类声明上
+        MyGenClass<Integer, String> my1 = new MyGenClass<>(1, "11");
+        MyGenClass<Integer, String> my2 = new MyGenClass<>(2, "22");
+
+        //类型推断用在方法参数上
+        my2.isSame(new MyGenClass<>(3, "33"));
+    }
+}
 
 
 
