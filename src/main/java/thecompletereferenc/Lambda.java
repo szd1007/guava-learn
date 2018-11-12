@@ -6,11 +6,48 @@ public class Lambda {
 //        () -> Math.random() * 100;
 //        (n) -> (n % 2) == 0;
         //functional interface 的一个接口实现；一句话搞定一个类
+        //赋值的时候，会创建类实例对象
         MyNumber myNumber = () -> 122.3;
+
+        System.out.println(myNumber.getValue());
+
+        myNumber = () -> Math.random() * 100;
+
+        System.out.println(myNumber.getValue());
+
+        //error
+//        myNumber = () -> "122";
 
     }
 }
 
-interface MyNumber {
+@FunctionalInterface
+ interface MyNumber {
     double getValue();
+}
+@FunctionalInterface
+interface NumericTest {
+    boolean test(int n);
+}
+
+class LambdaDemo2 {
+
+    public static void main(String[] args) {
+        // A lambda expression that tests if a number is even.
+        NumericTest isEven = (n) -> (n % 2) == 0;
+
+        if(isEven.test(10))
+            System.out.println("10 is even");
+        if (!isEven.test(9)) {
+            System.out.println("9 is not even");
+        }
+
+        //Now, use a lambda expression that tests if a number is non-negative.
+        NumericTest isNonNeg = n -> n >= 0;
+        if(isNonNeg.test(1))
+            System.out.println("1 is non-negative");
+        if (!isNonNeg.test(-1)) {
+            System.out.println("-1 is negative");
+        }
+    }
 }
