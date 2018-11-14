@@ -233,3 +233,58 @@ class VarCapture {
     }
 }
 
+//Method reference
+class MyStringOps{
+    //static method
+    static String strReverse(String str) {
+        String res = "";
+        int i;
+        for (int j = str.length() - 1; j >= 0; j--) {
+            res += str.charAt(j);
+        }
+        return res;
+    }
+
+    String strReverseInstance(String str) {
+        String res = "";
+        int i;
+        for (int j = str.length() - 1; j >= 0; j--) {
+            res += str.charAt(j);
+        }
+        return res;
+    }
+}
+
+
+class MethodRefDemo {
+
+
+    static String stringOp(StringFunc sf, String s) {
+        return sf.func(s);
+    }
+
+
+    public static void main(String[] args) {
+        String inStr = "Lambda add power to Java";
+        String outStr;
+
+        //传递的并不是接口的实现。而是一个普普通通的静态方法
+        //但是 有着和interface相同的出入参。
+        outStr = stringOp(MyStringOps::strReverse, inStr);
+
+        // 方法引用， 执行时生成对应functionalInterface实例
+        StringFunc test = MyStringOps::strReverse;
+
+        System.out.println("reversed " + outStr);
+
+        MyStringOps stringOps = new MyStringOps();
+
+        outStr = stringOp(stringOps::strReverseInstance, inStr);
+
+        //这样使用报错，
+//        outStr = stringOp(MyStringOps::strReverseInstance, inStr);
+
+        System.out.println("reversed " + outStr);
+
+    }
+}
