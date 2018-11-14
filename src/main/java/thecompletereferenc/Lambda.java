@@ -1,5 +1,10 @@
 package thecompletereferenc;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
 public class Lambda {
     public static void main(String[] args) {
 //        () -> 122.3;
@@ -362,5 +367,37 @@ class InstanceMethWithObjectRefDemo {
         //error 泛型匹配出错
         //myMatch(InstanceMethWithObjectRefDemo::match, "Strin", 1);
 
+    }
+}
+
+
+class MyIntClass {
+    private int val;
+
+    MyIntClass(int val) {
+        this.val = val;
+    }
+    int getVal(){
+        return val;
+    }
+}
+class CompareMethodRed {
+
+    //定义一个兼容comparator<T> 接口的方法
+    static int compareMC(MyIntClass a, MyIntClass b) {
+        return a.getVal() - b.getVal();
+    }
+
+    public static void main(String[] args) {
+        List<MyIntClass> a1 = new ArrayList<>();
+
+        a1.add(new MyIntClass(1));
+        a1.add(new MyIntClass(-4));
+        a1.add(new MyIntClass(5));
+
+        MyIntClass max = Collections.max(a1, CompareMethodRed::compareMC);
+        MyIntClass max2 = Collections.max(a1, (c1, c2) -> c1.getVal() - c2.getVal());
+        MyIntClass max3 = Collections.max(a1, Comparator.comparingInt(MyIntClass::getVal));
+        System.out.println(max.getVal());
     }
 }
