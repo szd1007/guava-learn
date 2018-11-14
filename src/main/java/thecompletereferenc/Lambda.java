@@ -255,11 +255,16 @@ class MyStringOps{
     }
 }
 
+/**
+ * lambda  传递方法引用， 只要能匹配对应functionalInterface的context（入参出参数）就行
+ * 不用非要是接口实现
+ */
 
 class MethodRefDemo {
 
 
     static String stringOp(StringFunc sf, String s) {
+        System.out.println("sf:" + sf);
         return sf.func(s);
     }
 
@@ -270,21 +275,92 @@ class MethodRefDemo {
 
         //传递的并不是接口的实现。而是一个普普通通的静态方法
         //但是 有着和interface相同的出入参。
+        //每次调用生成一个新的实例对象
         outStr = stringOp(MyStringOps::strReverse, inStr);
-
+        outStr = stringOp(MyStringOps::strReverse, inStr);
+        System.out.println("===============");
         // 方法引用， 执行时生成对应functionalInterface实例
-        StringFunc test = MyStringOps::strReverse;
 
         System.out.println("reversed " + outStr);
 
         MyStringOps stringOps = new MyStringOps();
 
+        //每次调用生成一个新的实例对象
         outStr = stringOp(stringOps::strReverseInstance, inStr);
+        outStr = stringOp(stringOps::strReverseInstance, inStr);
+
+        System.out.println("=============");
+        StringFunc test = MyStringOps::strReverse;
+        //test 是一个相同实例对象
+        outStr = stringOp(test, inStr);
+        outStr = stringOp(test, inStr);
 
         //这样使用报错，
 //        outStr = stringOp(MyStringOps::strReverseInstance, inStr);
 
         System.out.println("reversed " + outStr);
+
+    }
+}
+
+interface MyFuncMethodRef<T> {
+
+    boolean func(T v1, T v2);
+}
+
+class HighTemp {
+    private int hTemp;
+
+    HighTemp(int hTemp) {
+        this.hTemp = hTemp;
+    }
+
+    boolean sameTemp(HighTemp ht2) {
+        return hTemp == ht2.hTemp;
+    }
+
+    boolean lessThanTem(HighTemp ht2) {
+        return hTemp < ht2.hTemp;
+    }
+}
+
+class InstanceMethWithObjectRefDemo {
+    //
+
+    static <T> int counter(T[] vals, MyFuncMethodRef<T> f, T v) {
+        int count = 0;
+        for (int i = 0; i < vals.length; i++) {
+            if (f.func(vals[i], v)) {
+                count ++;
+            }
+        }
+        return count;
+    }
+
+    static <T> boolean match(T t1, T t2) {
+        return t1 == t2;
+    }
+
+    static <T extends Number> void myMatch(MyFuncMethodRef<T> f, T t1, T t2) {
+        f.func(t1, t2);
+    }
+    public static void main(String[] args) {
+        int count ;
+        HighTemp[] weekDayHighs = {new HighTemp(89), new HighTemp(82),
+                                    new HighTemp(90), new HighTemp(89),
+                                    new HighTemp(84), new HighTemp(83)};
+
+        //boolean func(T v1, T v2);
+        // v1 v2 类型相同， 将v1映射成了lessThanTem方法的调用者，v2映射成了具体参数
+        count = counter(weekDayHighs, HighTemp::lessThanTem, new HighTemp(89));
+
+        //传递参数，带泛型
+        myMatch(InstanceMethWithObjectRefDemo::<Integer>match, 1, 1);
+        //自动关联类型为Integer
+        myMatch(InstanceMethWithObjectRefDemo::match, 1, 1);
+
+        //error 泛型匹配出错
+        //myMatch(InstanceMethWithObjectRefDemo::match, "Strin", 1);
 
     }
 }
