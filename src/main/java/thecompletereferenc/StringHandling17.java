@@ -1,11 +1,14 @@
 package thecompletereferenc;
 
+import com.google.common.annotations.VisibleForTesting;
 import com.google.common.base.Charsets;
 import com.google.common.collect.Lists;
+import org.junit.Test;
 
 import java.nio.charset.Charset;
 import java.util.Collections;
 import java.util.List;
+import java.util.Locale;
 
 public class StringHandling17 {
 
@@ -64,6 +67,13 @@ public class StringHandling17 {
         //正则匹配
 //        re01.replaceAll()
 
+        //String.valueOf. char数组有专门的重载函数
+        System.out.println(String.valueOf(s.toCharArray()));
+        System.out.println(s.toCharArray());
+        //普通int数组当作object来处理。toString方法
+        int aa[] = { 1, 2, 3 };
+        System.out.println("int array: " + String.valueOf(aa));
+        System.out.println(aa);
     }
 
     static void getChars() {
@@ -75,6 +85,16 @@ public class StringHandling17 {
         s.getChars(start, end, buf, 0);
         System.out.println(buf);
 
+
+    }
+
+    @Test
+    public void toUpperLowerCase() {
+        String a = "sdfFFF222I";
+        System.out.println(a.toUpperCase());
+        System.out.println(a.toLowerCase());
+        //turkish i会没有点
+        System.out.println(a.toLowerCase(Locale.TAIWAN));
 
     }
 }
