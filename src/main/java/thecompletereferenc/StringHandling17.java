@@ -1,8 +1,11 @@
 package thecompletereferenc;
 
 import com.google.common.base.Charsets;
+import com.google.common.collect.Lists;
 
 import java.nio.charset.Charset;
+import java.util.Collections;
+import java.util.List;
 
 public class StringHandling17 {
 
@@ -34,8 +37,32 @@ public class StringHandling17 {
         //getBytes
         System.out.println(s.getBytes(Charsets.UTF_8));
 
+        String ss3 = "Ac";
+        System.out.println(s + " equalIgnoreCase " + ss3 + " -> " + s.equalsIgnoreCase(ss3));
+
         //toCharArray
         char[] s_Array = s.toCharArray();
+
+        //regionMatches
+        String re01 = "abcdefaa";
+        String re02 = "bcd";
+        Boolean flag = re01.regionMatches(1, re02, 0, re02.length());
+        System.out.println("region match " + flag);
+        flag = re01.regionMatches(0, re02, 0, re02.length());
+        System.out.println("region match " + flag);
+
+        //compareTo' compareToIgnoreCase, string自身实现了基于字典排序的算法（ascii码值）
+        System.out.println("ab compareTo ac -> +" + "ab".compareTo("ac"));
+        List<String> stringList = Lists.newArrayList("ab", "AA", "222", "1");
+//        stringList.sort(String::compareTo);
+        Collections.sort(stringList);
+        System.out.println(stringList);
+
+        //todo
+        //replace 这个就可以替换所有的字符串
+        System.out.println(re01.replace("a","xx"));
+        //正则匹配
+//        re01.replaceAll()
 
     }
 
