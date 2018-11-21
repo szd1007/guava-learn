@@ -97,4 +97,25 @@ public class StringHandling17 {
         System.out.println(a.toLowerCase(Locale.TAIWAN));
 
     }
+
+    // 字符串连接，
+    @Test
+    public void stringJoinTest() {
+        String r = String.join(", ", "aa", "bb", "dd");
+        System.out.println(r);
+        List<String> stringList = Lists.newArrayList("aa", "dd");
+        System.out.println(String.join(",", stringList));
+    }
+
+    @Test
+    public void commaFunStr(){
+        //emoj占两个字符（4字节）
+        String mb4 = "\u8001将\uD83D\uDE4B出马";
+        System.out.println(mb4);
+        System.out.println(mb4.length());
+        //输出char的unicode编码
+        System.out.println(mb4.codePointAt(2));
+        System.out.println(mb4.codePointAt(3)); //de4b
+        System.out.println(mb4.codePointAt(0));
+    }
 }
