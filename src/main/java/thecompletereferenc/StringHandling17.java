@@ -13,7 +13,7 @@ import java.util.Locale;
 public class StringHandling17 {
 
     public static void main(String[] args) {
-        char[] c = {'a', 'c'};
+        char[] c = { 'a', 'c' };
 
         String s = new String(c);
         String s1 = new String(c, 1, 1);
@@ -57,15 +57,15 @@ public class StringHandling17 {
         //compareTo' compareToIgnoreCase, string自身实现了基于字典排序的算法（ascii码值）
         System.out.println("ab compareTo ac -> +" + "ab".compareTo("ac"));
         List<String> stringList = Lists.newArrayList("ab", "AA", "222", "1");
-//        stringList.sort(String::compareTo);
+        //        stringList.sort(String::compareTo);
         Collections.sort(stringList);
         System.out.println(stringList);
 
         //todo
         //replace 这个就可以替换所有的字符串
-        System.out.println(re01.replace("a","xx"));
+        System.out.println(re01.replace("a", "xx"));
         //正则匹配
-//        re01.replaceAll()
+        //        re01.replaceAll()
 
         //String.valueOf. char数组有专门的重载函数
         System.out.println(String.valueOf(s.toCharArray()));
@@ -79,12 +79,11 @@ public class StringHandling17 {
     static void getChars() {
         String s = "This is a demo of the getChars method.";
         int start = 10;
-        int end   = 14;
+        int end = 14;
         char buf[] = new char[end - start];
 
         s.getChars(start, end, buf, 0);
         System.out.println(buf);
-
 
     }
 
@@ -108,9 +107,11 @@ public class StringHandling17 {
     }
 
     @Test
-    public void commaFunStr(){
+    public void commaFunStr() {
         //emoj占两个字符（4字节）
         String mb4 = "\u8001将\uD83D\uDE4B出马";
+        System.out.println(mb4.charAt(0));
+        System.out.println(mb4.charAt(2));
         System.out.println(mb4);
         System.out.println(mb4.length());
         //输出char的unicode编码
@@ -118,4 +119,51 @@ public class StringHandling17 {
         System.out.println(mb4.codePointAt(3)); //de4b
         System.out.println(mb4.codePointAt(0));
     }
+
+    @Test
+    public void testStringBuffer() {
+        //此构造函数默认分配 传递字符串长度 + 16 char空间 (无参构造函数 直接分配16空间)
+        StringBuffer stringBuffer = new StringBuffer("Hello");
+
+        System.out.println(stringBuffer);
+        System.out.println("length= " + stringBuffer.length());
+        System.out.println("capacity= " + stringBuffer.capacity());
+
+        //初始化之后手动设置capacity的值（实际分配值可能比设置的值大)
+        stringBuffer.ensureCapacity(1024);
+        System.out.println("capacity= " + stringBuffer.capacity());
+
+        //setLength 使用来截断字符串长度 或者增加长度（多余的会添加null)
+        stringBuffer.setLength(10);
+        System.out.println("length= " + stringBuffer.length());
+        System.out.println(stringBuffer.toString() + ":");
+        stringBuffer.setLength(3);
+        System.out.println("length= " + stringBuffer.length());
+        System.out.println(stringBuffer + ":");
+
+        //        stringBuffer.setCharAt(1, (char)340000000);
+        //
+
+        //append  (int) (obj) append是其String形式， 本质是调用String.valueOf
+        //        String.valueOf(33);
+        stringBuffer.append(31);
+        stringBuffer.append("xx");
+
+        //insert reverse
+
+    }
+
+    @Test
+    public void testSbInsertReverse() {
+        StringBuffer sb = new StringBuffer("I  java");
+        sb.insert(2, "like");
+        System.out.println(sb);
+
+        System.out.println(sb.reverse());
+        //other
+//        sb.replace()
+//        sb.delete();
+    }
+
 }
+
