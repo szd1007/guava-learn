@@ -110,10 +110,11 @@ public class StringHandling17 {
     public void commaFunStr() {
         //emoj占两个字符（4字节）
         String mb4 = "\u8001将\uD83D\uDE4B出马";
-        System.out.println(mb4.charAt(0));
-        System.out.println(mb4.charAt(2));
         System.out.println(mb4);
         System.out.println(mb4.length());
+        System.out.println("字符统计" + mb4.codePointCount(0, mb4.length()));
+        System.out.println(mb4.charAt(0));
+        System.out.println(mb4.charAt(2));
         //输出char的unicode编码
         System.out.println(mb4.codePointAt(2));
         System.out.println(mb4.codePointAt(3)); //de4b
@@ -132,6 +133,13 @@ public class StringHandling17 {
         //初始化之后手动设置capacity的值（实际分配值可能比设置的值大)
         stringBuffer.ensureCapacity(1024);
         System.out.println("capacity= " + stringBuffer.capacity());
+
+        //trimToSize 是内部数据接口更加适合字符串大小
+        System.out.println("trimToSize:");
+        stringBuffer.trimToSize();
+        System.out.println("length= " + stringBuffer.length());
+        System.out.println("capacity= " + stringBuffer.capacity());
+
 
         //setLength 使用来截断字符串长度 或者增加长度（多余的会添加null)
         stringBuffer.setLength(10);
@@ -165,5 +173,10 @@ public class StringHandling17 {
 //        sb.delete();
     }
 
+    //not thread safe
+    @Test
+    public void testStringBuilder() {
+
+    }
 }
 
