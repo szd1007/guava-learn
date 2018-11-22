@@ -109,6 +109,7 @@ public class StringHandling17 {
     @Test
     public void commaFunStr() {
         //emoj占两个字符（4字节）
+        //unicode jdk5之后开始支持32为unicode编码, 范围 0-0x10FFFF
         String mb4 = "\u8001将\uD83D\uDE4B出马";
         System.out.println(mb4);
         System.out.println(mb4.length());
@@ -116,8 +117,22 @@ public class StringHandling17 {
         System.out.println(mb4.charAt(0));
         System.out.println(mb4.charAt(2));
         //输出char的unicode编码
-        System.out.println(mb4.codePointAt(2));
+        System.out.println("c1 => " + Character.forDigit(3,10));
+        System.out.println("c2 => " + Character.getName(mb4.codePointAt(2)));
+        System.out.println("c2 => " + Character.getType(mb4.codePointAt(0)));
+        //输出的是完成的字符  unicode码值 char2 char3
+        System.out.println("c3-- => " + mb4.codePointAt(2));
+        System.out.println("c3-- => " + Character.toCodePoint(mb4.charAt(2), mb4.charAt(3)));
+        //两个字节的unicode编码
+        System.out.println("c3--2 isHighSurrogate => " + Character.isHighSurrogate(mb4.charAt(2)));
+        System.out.println("c3--3 isLowSurrogate => " + Character.isLowSurrogate(mb4.charAt(3)));
+        System.out.println("c3--2 isLowSurrogate => " + Character.isLowSurrogate(mb4.charAt(2)));
+
+        System.out.println("c3-- => " + mb4.codePointAt(2));
+
+        System.out.println("c3 => " + mb4.codePointAt(3));
         System.out.println(mb4.codePointAt(3)); //de4b
+        System.out.println(mb4.codePointAt(5)); //de4b
         System.out.println(mb4.codePointAt(0));
     }
 

@@ -22,6 +22,10 @@ public class javaLangTypeWrappers {
 
     }
 
+    /**
+     * char类型  特殊字符（大于16位的）处理
+     * @see StringHandling17#commaFunStr
+     */
     @Test
     public void testStringConversion() {
         int num = 1024;
