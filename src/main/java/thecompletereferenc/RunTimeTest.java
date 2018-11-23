@@ -1,6 +1,13 @@
 package thecompletereferenc;
 
+import com.google.common.base.Charsets;
+import com.google.common.io.Files;
 import org.junit.Test;
+
+import java.io.IOException;
+import java.util.concurrent.TimeUnit;
+
+import static com.sun.tools.classfile.Attribute.Exceptions;
 
 /**
  * @author shangzhidong@zhuanzhuan.com
@@ -8,13 +15,21 @@ import org.junit.Test;
  */
 public class RunTimeTest {
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) throws InterruptedException, IOException {
         Runtime.getRuntime().addShutdownHook(new Thread(() -> System.out.println("this is a hook fun execute before exit/terminate")));
 
         Thread.sleep(2000);
 
         System.out.println("system exit");
-        Runtime.getRuntime().removeShutdownHook(null);
+//        Runtime.getRuntime().removeShutdownHook(null);
+
+        Process p = Runtime.getRuntime().exec("gvim");
+        int subExitCode = p.waitFor();
+        System.out.println("subProcess exit:" + subExitCode);
+
+        //非阻塞方法
+        p.exitValue();
+
     }
 
     @Test
@@ -49,6 +64,19 @@ public class RunTimeTest {
 
         mem2 = r.freeMemory();
         System.out.println("Free memory after collecting" + "discard Integers: " + mem2);
+
+    }
+
+    @Test
+    public void processBuilderTest() throws InterruptedException, IOException {
+        ProcessBuilder proc = new ProcessBuilder("gvim", "test.txt");
+        ProcessBuilder.Redirect redirect =proc.redirectInput();
+        Process process = proc.start();
+
+        process.getOutputStream().write(33);
+        TimeUnit.SECONDS.sleep(3);
+        process.getOutputStream().write(33);
+//        Files.append("test input", redirect.file(), Charsets.UTF_8);
 
     }
 }
