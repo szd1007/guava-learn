@@ -1,13 +1,9 @@
 package thecompletereferenc;
 
-import com.google.common.base.Charsets;
-import com.google.common.io.Files;
 import org.junit.Test;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
-
-import static com.sun.tools.classfile.Attribute.Exceptions;
 
 /**
  * @author shangzhidong@zhuanzhuan.com
@@ -21,7 +17,7 @@ public class RunTimeTest {
         Thread.sleep(2000);
 
         System.out.println("system exit");
-//        Runtime.getRuntime().removeShutdownHook(null);
+        //        Runtime.getRuntime().removeShutdownHook(null);
 
         Process p = Runtime.getRuntime().exec("gvim");
         int subExitCode = p.waitFor();
@@ -37,7 +33,7 @@ public class RunTimeTest {
         Runtime r = Runtime.getRuntime();
         long mem1, mem2;
         Integer someints[] = new Integer[1000];
-//        int someints[] = new int[1000];
+        //        int someints[] = new int[1000];
         System.out.println("Total memory is: " + r.totalMemory());
 
         mem1 = r.freeMemory();
@@ -50,7 +46,7 @@ public class RunTimeTest {
 
         for (int i = 0; i < 1000; i++) {
             someints[i] = Integer.valueOf(i);// allocate integers
-//            someints[i] = i;// allocate integers
+            //            someints[i] = i;// allocate integers
         }
         mem2 = r.freeMemory();
         System.out.println("Free memory after allocation: " + mem2);
@@ -70,13 +66,13 @@ public class RunTimeTest {
     @Test
     public void processBuilderTest() throws InterruptedException, IOException {
         ProcessBuilder proc = new ProcessBuilder("gvim", "test.txt");
-        ProcessBuilder.Redirect redirect =proc.redirectInput();
+        ProcessBuilder.Redirect redirect = proc.redirectInput();
         Process process = proc.start();
 
         process.getOutputStream().write(33);
         TimeUnit.SECONDS.sleep(3);
         process.getOutputStream().write(33);
-//        Files.append("test input", redirect.file(), Charsets.UTF_8);
-
+        //        Files.append("test input", redirect.file(), Charsets.UTF_8);
+        System.nanoTime();
     }
 }
