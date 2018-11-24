@@ -75,4 +75,14 @@ public class RunTimeTest {
         //        Files.append("test input", redirect.file(), Charsets.UTF_8);
         System.nanoTime();
     }
+
+    @Test
+    public void environmentGetTest() {
+        System.out.println(System.getProperty("user.dir"));
+        System.out.println(System.getProperty("java.home"));
+        System.out.println(System.getProperty("java.library.path"));
+        System.out.println(System.getProperty("java.version"));
+        System.out.println(System.getProperty("file.separator"));
+        System.out.println(System.getProperty("os.name"));
+    }
 }
