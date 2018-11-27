@@ -8,7 +8,7 @@ package thecompletereferenc;
  *    |       \
  *   |         \
  *  |           \
- * Exception    Error
+ * ExceptionTest    Error
  * |
  * |
  * RuntimeException
@@ -16,7 +16,7 @@ package thecompletereferenc;
  * {@code RuntimeException} and its subclasses are <em>unchecked
  * exceptions</em>.
  */
-public class Exception {
+public class ExceptionTest {
 
     public static void main(String[] args) {
         divideByZero();
