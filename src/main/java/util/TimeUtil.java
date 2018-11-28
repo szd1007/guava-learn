@@ -13,12 +13,7 @@ public class TimeUtil {
     /**
      * 为每个线程创建一个局部变量副本，解决多线程调用问题
      */
-    private static ThreadLocal<SimpleDateFormat> sdf =new ThreadLocal<SimpleDateFormat>(){
-        @Override
-        protected SimpleDateFormat initialValue(){
-            return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        }
-    };
+    private static ThreadLocal<SimpleDateFormat> sdf = ThreadLocal.withInitial(() -> new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"));
 
     public static Long getTime(String time){
         Long timestamp = -1L;

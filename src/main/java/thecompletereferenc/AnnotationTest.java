@@ -18,7 +18,7 @@ public class AnnotationTest {
         //and display the value of the memebers.
         try {
             //First, get a class object that represents this class
-            Class<?> c = AnnotationTest.class;
+            Class<?> c = test.getClass();
 //            Class<?> c = test.getClass();
             //Now, get a Method object that represents this method
             Method m = c.getMethod("myMeth");
@@ -30,6 +30,15 @@ public class AnnotationTest {
             //Finally, display the values.
             System.out.println(anno.str() + " " + anno.val());
 
+            System.out.println("+++++++++++++++++++++");
+            //int.class 和 Integer.class 不是一个
+//            m = c.getMethod("prameterTest",  new Class[]{int.class});
+            m = c.getMethod("prameterTest",  int.class);
+//            m = c.getMethod("prameterTest",  new Class[]{Integer.class});
+            for (Annotation[] annotation : m.getParameterAnnotations()) {
+                System.out.println("获取数组");
+                System.out.println("--"+annotation[0]);
+            }
         } catch (NoSuchMethodException e) {
             System.out.println("Method not Found.");
         }
@@ -45,7 +54,10 @@ public class AnnotationTest {
         int a;
     }
 
-    private void thisTest(AnnotationTest this) {
+    public void prameterTest(@MyAnno int a) {
+        System.out.println(a);
+    }
+    private void thisTest( AnnotationTest this) {
         System.out.println("xxx");
     }
 }
@@ -53,7 +65,7 @@ public class AnnotationTest {
 //A simple annotation type.
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-@Target({ElementType.METHOD,ElementType.TYPE,ElementType.LOCAL_VARIABLE}) //数组
+@Target({ElementType.METHOD,ElementType.TYPE,ElementType.LOCAL_VARIABLE,ElementType.PARAMETER}) //数组
 @interface MyAnno {
 
     String str() default "";
