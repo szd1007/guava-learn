@@ -26,5 +26,6 @@ class  EnumDemoTest{
     public static void main(String[] args) {
         //display price of b
         System.out.println(EnumDemo.B + ": "+EnumDemo.B.getPrice());
+        System.out.println(Enum.valueOf(EnumDemo.class, "A"));
     }
 }
