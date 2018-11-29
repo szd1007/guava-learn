@@ -158,14 +158,14 @@ class GCoordi <T extends Gga>{
     public void pp(GCoordi<?> gg) {
         System.out.println(gg.ob[0].a);
     }
-    //T 限制类型， 通配符向上匹配，限制子类
+    //T 限制类型， 通配符向上匹配，限制子类 上界通配符
     //通配符只能在引用参数中使用，不能直接<?>使用
     //代表的意思是 Ggb 或者 其子类
     public void printB(GCoordi<? extends Ggb> obj) {
         System.out.println(obj.ob[0].c);
     }
 
-    //代表意思    Gga或者他的父类
+    //代表意思    Gga或者他的父类 下界通配符
     public void printSu(GCoordi<? super Gga> a) {
 
     }
