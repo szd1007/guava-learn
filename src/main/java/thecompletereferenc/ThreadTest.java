@@ -4,7 +4,7 @@ import org.junit.Test;
 
 import java.util.concurrent.TimeUnit;
 
-public class TheadTest {
+public class ThreadTest {
 
     public static void main(String[] args) throws InterruptedException {
         Thread.setDefaultUncaughtExceptionHandler((t, e) -> {
