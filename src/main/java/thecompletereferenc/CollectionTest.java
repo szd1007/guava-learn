@@ -1,12 +1,10 @@
 package thecompletereferenc;
 
+import com.google.common.base.Strings;
 import com.google.common.collect.Lists;
 import org.junit.Test;
 
-import java.util.LinkedHashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /**
  * @author shangzhidong@zhuanzhuan.com
@@ -58,5 +56,44 @@ public class CollectionTest {
         stringSet.add("c");
 
         System.out.println(stringSet);
+    }
+
+    @Test
+    public void testTreeSet() {
+        //默认字典有序
+        TreeSet<String> treeSet = new TreeSet<>();
+        treeSet.add("C");
+        treeSet.add("A");
+        treeSet.add("B");
+        System.out.println(treeSet);
+
+        //Navigable interface  method
+        System.out.println(treeSet.subSet("B", "D"));
+    }
+
+    @Test
+    public void testArrayDeque() {
+        ArrayDeque<String> adq = new ArrayDeque<>();
+        adq.add("A");
+        adq.add("B");
+        adq.add("C");
+        adq.push("D");
+        adq.push("E");
+
+        while (!Strings.isNullOrEmpty(adq.peek())) {
+            System.out.println(adq.pop());
+        }
+    }
+
+    @Test
+    public void testEnumSet() {
+        EnumSet<EAlpha> pa = EnumSet.of(EAlpha.A, EAlpha.B);
+        System.out.println(pa);
+        EnumSet<EAlpha> pc = EnumSet.complementOf(pa);
+        System.out.println(pc);
+    }
+
+    enum EAlpha{
+        A,B,C,D,E;
     }
 }
