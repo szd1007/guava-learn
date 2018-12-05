@@ -17,16 +17,20 @@
 package org.adamx.quartz.quartzTest.service;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 
 @Component
+@PropertySource("classpath:custom.properties")
 public class HelloWorldService {
 
 	@Value("${name:World}")
 	private String name;
 
+	@Value("${age:-1}")
+	private Integer age;
 	public String getHelloMessage() {
-		return "Hello " + this.name;
+		return "Hello " + this.name + " age:" + age;
 	}
 
 }
