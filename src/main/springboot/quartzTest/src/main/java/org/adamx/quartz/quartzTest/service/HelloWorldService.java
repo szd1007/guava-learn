@@ -17,6 +17,7 @@
 package org.adamx.quartz.quartzTest.service;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 
@@ -29,8 +30,12 @@ public class HelloWorldService {
 
 	@Value("${age:-1}")
 	private Integer age;
+
+	@Value("${my.uuid:-1}")
+	private String uuid;
+
 	public String getHelloMessage() {
-		return "Hello " + this.name + " age:" + age;
+		return "Hello " + this.name + " age:" + age + " uuid:"+uuid;
 	}
 
 }

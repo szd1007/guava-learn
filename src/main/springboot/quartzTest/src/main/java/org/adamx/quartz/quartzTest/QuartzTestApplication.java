@@ -21,7 +21,6 @@ public class QuartzTestApplication implements CommandLineRunner{
 	@Autowired
 	private ExitCodeGenerator codeGenerator;
 	public static void main(String[] args) {
-
 		SpringApplication.run(QuartzTestApplication.class, args);
 //        System.exit(SpringApplication.exit(SpringApplication.run(QuartzTestApplication.class, args)));
     }
