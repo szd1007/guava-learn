@@ -14,6 +14,7 @@ package thecompletereferenc;
 public class CloneTest implements Cloneable {
     int a;
     double b;
+    Long ccc;
 
     /**
      * clone 方式1  ，protect方法 类或内部类使用
@@ -60,12 +61,15 @@ class CloneDemo {
         CloneTest x2 ;
         x1.a = 10;
         x1.b = 20.98;
+        x1.ccc = 111L;
         x2 = x1.cTest();    //clone x1
 
         System.out.println(x1);
         System.out.println(x2);
-
-
+        System.out.println(x1.ccc);
+        x2.ccc=999L;
+        System.out.println(x1.ccc);
+        System.out.println(x2.ccc);
         CloneChild c1 = new CloneChild();
         c1.a = 1;
         c1.b = 2;
