@@ -159,4 +159,44 @@ public class CollectionTest {
         spr = names.spliterator();
         spr.forEachRemaining(x -> System.out.println("(" + x + ")"));
     }
+
+    @Test
+    public void testObjEqual() {
+        People p1 = new People("adam");
+        People p2 = new People("adam");
+        System.out.println(p1.equals(p2));
+
+        ArrayList<People> plist = new ArrayList<>();
+        plist.add(p1);
+        plist.remove(p2);
+
+        System.out.println(plist.size());
+
+    }
+    static class People {
+        private String name;
+
+        public People(String name) {
+            this.name = name;
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(name);
+        }
+
+        @Override
+        public boolean equals(Object obj) {
+            if (this == obj) {
+                return true;
+            }
+            if (obj instanceof People) {
+                return Objects.equals(name, ((People) obj).name);
+            }
+            return false;
+        }
+    }
+
+
+
 }
