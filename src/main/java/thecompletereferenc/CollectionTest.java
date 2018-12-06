@@ -5,6 +5,7 @@ import com.google.common.collect.Lists;
 import org.junit.Test;
 
 import java.util.*;
+import java.util.function.Consumer;
 
 /**
  * @author shangzhidong@zhuanzhuan.com
@@ -91,9 +92,71 @@ public class CollectionTest {
         System.out.println(pa);
         EnumSet<EAlpha> pc = EnumSet.complementOf(pa);
         System.out.println(pc);
+        EnumSet<EAlpha> pd = EnumSet.allOf(EAlpha.class);
+        System.out.println(pd);
+
+    }
+
+    @Test
+    public void testEachRemaining() {
+        names.iterator().forEachRemaining(System.out::println);
+        System.out.println("-----");
+        //and then 用法
+        names.forEach(((Consumer<String>) s -> System.out.println(s + ":"))
+                              .andThen(System.out::println));
     }
 
     enum EAlpha{
         A,B,C,D,E;
+    }
+
+    /**
+     * 提供给你遍历过程中修改数据的功能
+     */
+    @Test
+    public void testIterator() {
+
+        Iterator<String> itr = names.iterator();
+
+        while (itr.hasNext()) {
+            String element = itr.next();
+            System.out.println("element" + element);
+        }
+        System.out.println(">>>>>>");
+
+        //modify obj being iterated
+        ListIterator<String> litr = names.listIterator();
+        System.out.println("print previous start");
+        while (litr.hasPrevious()) {
+            System.out.println(litr.previous());
+        }
+        System.out.println("print previous end");
+
+        while (litr.hasNext()) {
+            String element = litr.next();
+            litr.set(element + "+");
+            if (element.startsWith("1001")) {
+                litr.remove();
+            }
+        }
+        System.out.println("modified contents " + names);
+
+        //Now, display the list backwards.
+        System.out.println("Modified list backwards");
+        while (litr.hasPrevious()) {
+            String element = litr.previous();
+            System.out.println(element);
+        }
+    }
+
+    @Test
+    public void testSpliterators() {
+        Spliterator<String> spr = names.spliterator();
+        while (spr.tryAdvance(System.out::println)) {
+            System.out.println("consume one");
+        }
+        //create new list that contains square roots.
+        spr = names.spliterator();
+        spr.forEachRemaining(x -> System.out.println("(" + x + ")"));
     }
 }

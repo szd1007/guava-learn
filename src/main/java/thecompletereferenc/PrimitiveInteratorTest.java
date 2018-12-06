@@ -15,12 +15,21 @@ public class PrimitiveInteratorTest {
         //原始类型枚举，去除无用的boxing  unboxing
         PrimitiveIterator.OfInt primitiveIterator = Arrays.stream(a).iterator();
 
-        PrimitiveIterator.OfInt pp = IntStream.of(a).iterator();
 
 
         if (primitiveIterator.hasNext()) {
-            System.out.println(primitiveIterator.next());
-
+            int p = primitiveIterator.next();
+            System.out.println(p);
+            //不能删除对象， 但是也没有报错??????
+            if (p == 2) {
+                primitiveIterator.remove();
+            }
         }
+        System.out.println("after modified");
+        System.out.println("len" + a.length);
+        for (int i = 0; i < 3; i++) {
+            System.out.println(a[i]);
+        }
+
     }
 }
