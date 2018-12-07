@@ -8,6 +8,8 @@ public class MathTest {
         int a =1, b=2;
         //抛出异常 when overflow
         System.out.println(Math.addExact(a, b));
+        long al = 111L;
+        int ai = Math.toIntExact(al);
     }
 
     @Test
