@@ -2,6 +2,7 @@ package thecompletereferenc;
 
 import org.junit.Test;
 
+import java.util.Comparator;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.TreeMap;
@@ -14,14 +15,37 @@ public class MapTest {
 
     @Test
     public void testTreeMap() {
-        TreeMap<String, Double> tm = new TreeMap<>();
+        //使用natureOrder的逆序
+        Comparator<String> comparator = Comparator.<String>naturalOrder().reversed();
 
+        //允许null值，并排序中放在前面
+        comparator = Comparator.nullsFirst(comparator);
+//        comparator = Comparator.nullsLast(comparator)
 
-        tm.put("ATom Smith", 123.22);
-        tm.put("Cohn Doe", 3434.34);
+        TreeMap<String, Double> tm = new TreeMap<>(comparator);
+        tm.put("Abom", 123.22);
+        tm.put("Cchn", 3434.34);
+        tm.put("Cahn", 3434.34);
         tm.put("Bod Hall", 99.22);
-
+        tm.put(null, 22.2);
         for (Map.Entry<String, Double> me : tm.entrySet()) {
+            System.out.println(me.getKey());
+        }
+
+        System.out.println("compare then>>>>>>>>>>>>>>>>");
+        //先比较字符串长度， 再比较字符顺序
+//        Comparator<String> cmp = Comparator.comparingInt(String::length).thenComparing(String.CASE_INSENSITIVE_ORDER);
+        //key取第二个字符，字典排序
+//        Comparator<String> cmp = Comparator.comparingInt(String::length)
+//                                           .thenComparing(x -> x.substring(1,2));
+
+        //key取第二个字符，字典排序倒序
+        Comparator<String> cmp = Comparator.comparingInt(String::length)
+                                           .thenComparing(x -> x.substring(1,2)
+                                                   ,String.CASE_INSENSITIVE_ORDER.reversed());
+        TreeMap<String, Double> tcm = new TreeMap<>(Comparator.nullsFirst(cmp));
+        tcm.putAll(tm);
+        for (Map.Entry<String, Double> me : tcm.entrySet()) {
             System.out.println(me.getKey());
         }
     }
