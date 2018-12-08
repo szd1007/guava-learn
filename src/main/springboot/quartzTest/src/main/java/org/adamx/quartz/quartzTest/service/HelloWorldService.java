@@ -16,6 +16,8 @@
 
 package org.adamx.quartz.quartzTest.service;
 
+import org.adamx.quartz.quartzTest.conf.MyTypSafeConfig;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.PropertySource;
@@ -24,6 +26,9 @@ import org.springframework.stereotype.Component;
 @Component
 @PropertySource("classpath:custom.properties")
 public class HelloWorldService {
+
+	@Autowired
+	private MyTypSafeConfig typSafeConfig;
 
 	@Value("${name:World}")
 	private String name;
@@ -35,7 +40,8 @@ public class HelloWorldService {
 	private String uuid;
 
 	public String getHelloMessage() {
-		return "Hello " + this.name + " age:" + age + " uuid:"+uuid;
+        System.out.println("typeSafeConfig " + typSafeConfig);
+        return "Hello " + this.name + " age:" + age + " uuid:"+uuid;
 	}
 
 }

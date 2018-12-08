@@ -16,7 +16,7 @@ import java.util.List;
 public class AccessingApplicationArgs {
 
     @Autowired
-    @SuppressWarnings("unchecked")
+    @SuppressWarnings("all")
     public AccessingApplicationArgs(ApplicationArguments args) {
         boolean debug = args.containsOption("debug");
         List<String> files = args.getNonOptionArgs();
