@@ -1,7 +1,8 @@
 package org.adamx.quartz.quartzTest.conf;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.stereotype.Repository;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 
 import java.net.InetAddress;
 
@@ -10,8 +11,9 @@ import java.net.InetAddress;
  * @date 2018-12-08 18:17
  */
 
-@ConfigurationProperties("my")
-@Repository
+@ConfigurationProperties("my.conf")
+@Configuration
+@PropertySource("classpath:custom.properties")
 public class MyTypSafeConfig {
 
     private Long bigNumber;
