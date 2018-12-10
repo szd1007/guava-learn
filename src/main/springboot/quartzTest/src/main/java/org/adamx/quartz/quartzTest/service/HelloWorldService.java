@@ -17,6 +17,7 @@
 package org.adamx.quartz.quartzTest.service;
 
 import org.adamx.quartz.quartzTest.conf.MyTypSafeConfig;
+import org.adamx.quartz.quartzTest.conf.YmlConf;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -30,6 +31,8 @@ public class HelloWorldService {
 	@Autowired
 	private MyTypSafeConfig typSafeConfig;
 
+	@Autowired
+    private YmlConf ymlConf;
 	@Value("${name:World}")
 	private String name;
 
@@ -41,6 +44,7 @@ public class HelloWorldService {
 
 	public String getHelloMessage() {
         System.out.println("typeSafeConfig " + typSafeConfig);
+        System.out.println("ymlConf" + ymlConf);
         return "Hello " + this.name + " age:" + age + " uuid:"+uuid;
 	}
 

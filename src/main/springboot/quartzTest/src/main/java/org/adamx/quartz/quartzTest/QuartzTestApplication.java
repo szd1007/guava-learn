@@ -56,11 +56,10 @@ public class QuartzTestApplication implements CommandLineRunner{
     public void run(String... args) throws Exception {
         System.out.println(">>>>>>>>>>>>>>>>>> input args...." + (args.length > 0 ? args[0] : "null"));
         System.out.println(helloWorldService.getHelloMessage());
-        TimeUnit.SECONDS.sleep(6);
+        TimeUnit.SECONDS.sleep(1);
 
         System.out.println(">>>>>>>>>>>>>>>>>>> run success");
 
-        Thread.sleep(60000);
         //执行退出
         System.exit(codeGenerator.getExitCode());
     }
