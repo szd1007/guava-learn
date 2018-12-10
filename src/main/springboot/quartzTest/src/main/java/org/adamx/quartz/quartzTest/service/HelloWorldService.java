@@ -18,6 +18,7 @@ package org.adamx.quartz.quartzTest.service;
 
 import org.adamx.quartz.quartzTest.conf.MyTypSafeConfig;
 import org.adamx.quartz.quartzTest.conf.YmlConf;
+import org.adamx.quartz.quartzTest.mapper.SfMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -33,6 +34,11 @@ public class HelloWorldService {
 
 	@Autowired
     private YmlConf ymlConf;
+
+	//使用数据库
+//	@Autowired
+//    private SfMapper sfMapper;
+
 	@Value("${name:World}")
 	private String name;
 
