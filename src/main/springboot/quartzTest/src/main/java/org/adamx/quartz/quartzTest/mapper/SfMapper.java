@@ -10,7 +10,7 @@ import org.apache.ibatis.annotations.Select;
  * @author shangzhidong@zhuanzhuan.com
  * @date 2018-12-10 15:24
  */
-@Mapper
+//@Mapper
 public interface SfMapper {
     @Select("select * from sf_express where order_id=#{orderId}")
     @Results({ @Result(property = "id", column = "id"), @Result(property = "businessType", column = "business_type"),
