@@ -61,6 +61,6 @@ public class QuartzTestApplication implements CommandLineRunner{
         System.out.println(">>>>>>>>>>>>>>>>>>> run success");
 
         //执行退出
-        System.exit(codeGenerator.getExitCode());
+//        System.exit(codeGenerator.getExitCode());
     }
 }
