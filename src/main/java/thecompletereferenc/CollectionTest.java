@@ -197,6 +197,31 @@ public class CollectionTest {
         }
     }
 
+    @Test
+    public void testShuffleMin() {
+        LinkedList<Integer> ll = new LinkedList<>();
+        ll.add(-8);
+        ll.add(20);
+        ll.add(-20);
+        ll.add(8);
+
+        Comparator<Integer> r = Collections.reverseOrder();
+//        r = Comparator.comparingInt(x ->x);
+        Collections.sort(ll, r);
+
+        System.out.println("reverse list");
+        for (Integer integer : ll) {
+            System.out.println(integer);
+        }
+        System.out.println("shuffle ");
+        Collections.shuffle(ll);
+        for (Integer integer : ll) {
+            System.out.println(integer);
+        }
+        System.out.println();
+        System.out.println("min" + Collections.min(ll));
+        System.out.println("max" + Collections.max(ll));
+    }
 
 
 }
