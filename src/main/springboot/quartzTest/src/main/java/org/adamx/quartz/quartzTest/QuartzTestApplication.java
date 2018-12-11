@@ -1,5 +1,6 @@
 package org.adamx.quartz.quartzTest;
 
+import org.adamx.quartz.quartzTest.conf.ThirdPartConf;
 import org.adamx.quartz.quartzTest.service.HelloWorldService;
 import org.quartz.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.ExitCodeGenerator;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 
 import javax.annotation.PreDestroy;
@@ -20,6 +22,10 @@ public class QuartzTestApplication implements CommandLineRunner{
 
 	@Autowired
 	private ExitCodeGenerator codeGenerator;
+
+	@Autowired
+    private ThirdPartConf thirdPartConf;
+
 	public static void main(String[] args) {
 		SpringApplication.run(QuartzTestApplication.class, args);
 //        System.exit(SpringApplication.exit(SpringApplication.run(QuartzTestApplication.class, args)));
@@ -45,6 +51,12 @@ public class QuartzTestApplication implements CommandLineRunner{
         return () -> 101;
     }
 
+    @ConfigurationProperties(prefix = "another")
+    @Bean
+    public ThirdPartConf getThirdPartConf(){
+	    return new ThirdPartConf();
+    }
+
 
     //shutdown hook函数。 相同功能  DisposableBean
     @PreDestroy
@@ -59,6 +71,8 @@ public class QuartzTestApplication implements CommandLineRunner{
         TimeUnit.SECONDS.sleep(1);
 
         System.out.println(">>>>>>>>>>>>>>>>>>> run success");
+
+        System.out.println("third conf" + thirdPartConf);
 
         //执行退出
 //        System.exit(codeGenerator.getExitCode());
