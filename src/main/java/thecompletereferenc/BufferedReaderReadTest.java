@@ -1,6 +1,7 @@
 package thecompletereferenc;
 
 import java.io.BufferedReader;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
@@ -8,7 +9,7 @@ import java.io.InputStreamReader;
  * @author shangzhidong@zhuanzhuan.com
  * @date 2018-11-05 13:24
  */
-public class BufferedReaderRead {
+public class BufferedReaderReadTest {
 
     public static void main(String[] args) throws IOException {
         char c;
