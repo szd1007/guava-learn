@@ -6,19 +6,21 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 
 import java.net.InetAddress;
+import java.util.List;
 
 /**
  * @author shangzhidong@zhuanzhuan.com
  * @date 2018-12-08 18:17
  */
 
-@ConfigurationProperties("my.conf")
+@ConfigurationProperties("my.personal-conf")
 @Configuration
 //@PropertySource("classpath:custom.properties")
 public class MyTypSafeConfig {
 
     private Long bigNumber;
-    private String uuid;
+    private List<String> uuid;
+    private List<String> id;
     private InetAddress remoteAddress;
 
     public Long getBigNumber() {
@@ -29,12 +31,20 @@ public class MyTypSafeConfig {
         this.bigNumber = bigNumber;
     }
 
-    public String getUuid() {
+    public List<String> getUuid() {
         return uuid;
     }
 
-    public void setUuid(String uuid) {
+    public void setUuid(List<String> uuid) {
         this.uuid = uuid;
+    }
+
+    public List<String> getId() {
+        return id;
+    }
+
+    public void setId(List<String> id) {
+        this.id = id;
     }
 
     public InetAddress getRemoteAddress() {
@@ -47,6 +57,6 @@ public class MyTypSafeConfig {
 
     @Override
     public String toString() {
-        return "MyTypSafeConfig{" + "bigNumber=" + bigNumber + ", uuid='" + uuid + '\'' + ", remoteAddress=" + remoteAddress + '}';
+        return "MyTypSafeConfig{" + "bigNumber=" + bigNumber + ", uuid=" + uuid + ", id=" + id + ", remoteAddress=" + remoteAddress + '}';
     }
 }

@@ -75,6 +75,6 @@ public class QuartzTestApplication implements CommandLineRunner{
         System.out.println("third conf" + thirdPartConf);
 
         //执行退出
-//        System.exit(codeGenerator.getExitCode());
+        System.exit(codeGenerator.getExitCode());
     }
 }
