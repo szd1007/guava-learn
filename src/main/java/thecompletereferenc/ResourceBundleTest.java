@@ -1,6 +1,5 @@
 package thecompletereferenc;
 
-import com.google.common.base.Charsets;
 import org.junit.Test;
 
 import java.io.UnsupportedEncodingException;
@@ -20,22 +19,33 @@ public class ResourceBundleTest {
          *
          */
         //        ResourceBundle bundle = ResourceBundle.getBundle("sun.security.util.AuthResources");
-//        ResourceBundle bundle = ResourceBundle.getBundle("sun.security.util.AuthResources", Locale.CHINA);
+        //        ResourceBundle bundle = ResourceBundle.getBundle("sun.security.util.AuthResources", Locale.CHINA);
         ResourceBundle bundle = ResourceBundle.getBundle("sun.security.util.AuthResources", Locale.GERMAN);
 
         System.out.println(bundle.getString("invalid.null.input.value"));
+
+        ResourceBundle rd = ResourceBundle.getBundle("thecompletereferenc.SampleRB", Locale.ENGLISH);
+        System.out.println("English version");
+        System.out.println("title " + rd.getString("title"));
+        System.out.println("Stop " + rd.getString("StopText"));
+        System.out.println("Start " +rd.getString("StartText"));
+
+        System.out.println(">>>>>>>>>>>>>>>>>>>>>>\n");
+        rd = ResourceBundle.getBundle("thecompletereferenc.SampleRB", Locale.CHINA);
+        System.out.println("中文版本 ");
+        System.out.println("title " + rd.getString("title"));
+        System.out.println("Stop " + rd.getString("StopText"));
+        System.out.println("Start " +rd.getString("StartText"));
 
     }
 
     /**
      * 方式2 通过配置文件的方式， 实现国际化。 spring国际化配置
-     *
      */
     @Test
     public void testByProperties() throws UnsupportedEncodingException {
 //        ResourceBundle bundle = ResourceBundle.getBundle("i18ntest", Locale.ENGLISH);
         ResourceBundle bundle = ResourceBundle.getBundle("i18ntest", Locale.CHINA);
-
         //中文乱码解决， 使用unicode替代中文
         String name = bundle.getString("name");
         System.out.println(name);
