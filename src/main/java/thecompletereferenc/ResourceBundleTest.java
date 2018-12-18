@@ -3,6 +3,7 @@ package thecompletereferenc;
 import org.junit.Test;
 
 import java.io.UnsupportedEncodingException;
+import java.util.DoubleSummaryStatistics;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
