@@ -23,6 +23,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
+import org.springframework.validation.annotation.Validated;
+
+import javax.validation.Valid;
 
 @Component
 @PropertySource("classpath:custom.properties")
@@ -47,6 +50,10 @@ public class HelloWorldService {
 	@Value("${my.uuid:-1}")
 	private String uuid;
 
+	@Value("${jdbc-url}")
+    private String jdbcUrl;
+
+
     @Autowired
     public HelloWorldService(YmlConf ymlConf, MyTypSafeConfig typSafeConfig, DurationDataSizeConf durationConf) {
         this.ymlConf = ymlConf;
@@ -58,7 +65,7 @@ public class HelloWorldService {
         System.out.println("typeSafeConfig " + typSafeConfig);
         System.out.println("ymlConf" + ymlConf);
         System.out.println("durationConf" + durationConf);
-        return "Hello " + this.name + " age:" + age + " uuid:"+uuid;
-	}
+        return "Hello " + this.name + " age:" + age + " uuid:" + uuid + " jbcUrl: " + jdbcUrl;
+    }
 
 }
