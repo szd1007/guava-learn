@@ -16,15 +16,14 @@ public class ByteArrayInputStreamTest {
     }
 
     @Test
-    public void testOut() {
+    public void testOut() throws IOException {
         String t ="sdfssdf";
         byte[] b = t.getBytes();
         ByteArrayOutputStream bou1 = new ByteArrayOutputStream();
         bou1.write(b);
 
         try (FileOutputStream fOut2 =new FileOutputStream("out.txt")) {
-
-
+            bou1.writeTo(fOut2);
         }  catch (IOException e) {
             e.printStackTrace();
         }
