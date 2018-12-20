@@ -1,5 +1,6 @@
 package org.adamx.quartz.quartzTest.conf;
 
+import javax.validation.constraints.NotNull;
 import java.net.InetAddress;
 
 /**
@@ -9,7 +10,9 @@ import java.net.InetAddress;
  */
 public class ThirdPartConf {
     private Long bigNumber;
+    @NotNull
     private String uuid;
+//    @NotNull
     private InetAddress remoteAddress;
 
     public Long getBigNumber() {

@@ -3,7 +3,9 @@ package org.adamx.quartz.quartzTest.conf;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.convert.DurationUnit;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.validation.annotation.Validated;
 
+import javax.validation.constraints.NotNull;
 import java.time.Duration;
 import java.time.temporal.ChronoUnit;
 
@@ -13,11 +15,13 @@ import java.time.temporal.ChronoUnit;
  */
 @ConfigurationProperties("system")
 @Configuration
+@Validated
 public class DurationDataSizeConf {
 
     @DurationUnit(ChronoUnit.SECONDS)
     private Duration sessionTimeout;
 
+    @NotNull
     private Duration readTimeout;
 
 //    private DataSize bufferSize;
