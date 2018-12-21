@@ -3,6 +3,7 @@ from PyQt4.QtGui import *
 from util import *
 from pyHookLis import *
 from globalValue import *
+from folderWatch import *
 import threading
 
 app = QApplication([])
@@ -23,6 +24,9 @@ def on_clipboard_change():
         out = open("d:\sec.conf",'w')
         out.write("8848#"+data.text())
         out.close()
+
+# 监听文件夹变化
+#watch("D:\share")
 
 clipboard.dataChanged.connect(on_clipboard_change)
 # app.exec_()
