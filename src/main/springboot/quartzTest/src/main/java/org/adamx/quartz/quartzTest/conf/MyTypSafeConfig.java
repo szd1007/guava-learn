@@ -4,7 +4,9 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
+import org.springframework.validation.annotation.Validated;
 
+import javax.validation.constraints.NotNull;
 import java.net.InetAddress;
 import java.util.List;
 
@@ -15,12 +17,15 @@ import java.util.List;
 
 @ConfigurationProperties("my.personal-conf")
 @Configuration
+@Validated
 //@PropertySource("classpath:custom.properties")
 public class MyTypSafeConfig {
 
     private Long bigNumber;
     private List<String> uuid;
     private List<String> id;
+
+    @NotNull
     private InetAddress remoteAddress;
 
     public Long getBigNumber() {

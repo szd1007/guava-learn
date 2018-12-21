@@ -1,5 +1,6 @@
 package org.adamx.quartz.quartzTest.controller;
 
+import org.adamx.quartz.quartzTest.entity.User;
 import org.adamx.quartz.quartzTest.service.HelloWorldService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,4 +20,14 @@ public class ControllerDemo {
     public String test(String name) {
         return "hello " + name + "||" + helloWorldService.getHelloMessage();
     }
+
+    /**
+     * 直接返回对象就ok 不需要手动转gson
+     * @return
+     */
+    @RequestMapping("/info")
+    public User getInfo() {
+        return new User("adam", 22);
+    }
 }
+

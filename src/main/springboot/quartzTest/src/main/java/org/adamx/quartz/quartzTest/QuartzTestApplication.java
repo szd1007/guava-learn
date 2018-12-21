@@ -10,6 +10,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
+import org.springframework.validation.annotation.Validated;
 
 import javax.annotation.PreDestroy;
 import java.util.concurrent.TimeUnit;
@@ -53,6 +54,7 @@ public class QuartzTestApplication implements CommandLineRunner{
 
     @ConfigurationProperties(prefix = "another")
     @Bean
+    @Validated
     public ThirdPartConf getThirdPartConf(){
 	    return new ThirdPartConf();
     }
@@ -75,6 +77,6 @@ public class QuartzTestApplication implements CommandLineRunner{
         System.out.println("third conf" + thirdPartConf);
 
         //执行退出
-        System.exit(codeGenerator.getExitCode());
+//        System.exit(codeGenerator.getExitCode());
     }
 }

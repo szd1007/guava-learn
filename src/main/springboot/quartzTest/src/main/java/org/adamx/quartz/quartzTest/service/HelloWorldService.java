@@ -16,24 +16,26 @@
 
 package org.adamx.quartz.quartzTest.service;
 
+import org.adamx.quartz.quartzTest.conf.DurationDataSizeConf;
 import org.adamx.quartz.quartzTest.conf.MyTypSafeConfig;
 import org.adamx.quartz.quartzTest.conf.YmlConf;
-import org.adamx.quartz.quartzTest.mapper.SfMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
+import org.springframework.validation.annotation.Validated;
+
+import javax.validation.Valid;
 
 @Component
 @PropertySource("classpath:custom.properties")
 public class HelloWorldService {
 
-	@Autowired
-	private MyTypSafeConfig typSafeConfig;
+	private final MyTypSafeConfig typSafeConfig;
 
-	@Autowired
-    private YmlConf ymlConf;
+	private final YmlConf ymlConf;
+
+	private final DurationDataSizeConf durationConf;
 
 	//使用数据库
 //	@Autowired
@@ -48,10 +50,22 @@ public class HelloWorldService {
 	@Value("${my.uuid:-1}")
 	private String uuid;
 
-	public String getHelloMessage() {
+	@Value("${jdbc-url}")
+    private String jdbcUrl;
+
+
+    @Autowired
+    public HelloWorldService(YmlConf ymlConf, MyTypSafeConfig typSafeConfig, DurationDataSizeConf durationConf) {
+        this.ymlConf = ymlConf;
+        this.typSafeConfig = typSafeConfig;
+        this.durationConf = durationConf;
+    }
+
+    public String getHelloMessage() {
         System.out.println("typeSafeConfig " + typSafeConfig);
         System.out.println("ymlConf" + ymlConf);
-        return "Hello " + this.name + " age:" + age + " uuid:"+uuid;
-	}
+        System.out.println("durationConf" + durationConf);
+        return "Hello " + this.name + " age:" + age + " uuid:" + uuid + " jbcUrl: " + jdbcUrl;
+    }
 
 }
