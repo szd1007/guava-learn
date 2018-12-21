@@ -143,4 +143,16 @@ public class FormatTest {
         }
     }
 
+    @Test
+    public void testPrintf() {
+        System.out.println("Here are some numeric values in different formats. \n");
+        System.out.printf("Various integer formats: ");
+        System.out.printf("%d %(d %+d %05d\n", 3, -3, 3, 3);
+        System.out.println();
+        System.out.printf("%+,.2f\n%+,.2f\n", 1234567.123, -1234567.123);
+        System.out.println();
+        System.out.printf("% ,.2f\n% ,.2f\n", 1234567.123, -1234567.123);
+
+    }
+
 }
