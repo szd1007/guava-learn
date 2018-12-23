@@ -20,6 +20,7 @@ public class PushbackInputStreamTest {
                             System.out.print(".eq.");
                         }else {
                             System.out.print("<-");
+                            System.console();
                             f.unread(c);
                         }
                         break;
