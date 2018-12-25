@@ -14,16 +14,17 @@ public class ExplicitChannelRead {
         int count;
         Path filepath = null;
 
-        //First, obtain a path to the file.
-        try {
-            filepath = Paths.get("out.txt");
-        } catch (InvalidPathException e) {
-            System.out.println("Path Error " + e);
-            return;
-        }
+//        //First, obtain a path to the file.
+//        try {
+//            filepath = Paths.get("out.txt");
+//        } catch (InvalidPathException e) {
+//            System.out.println("Path Error " + e);
+//            return;
+//        }
 
+        //Path 继承AutoCloseable
         //Next, obtain a channel to that file within a try-with-resources block.
-        try (SeekableByteChannel fChan = Files.newByteChannel(filepath)) {
+        try (SeekableByteChannel fChan = Files.newByteChannel(Paths.get("out.txt"))) {
             //Allocate a buffer.
             ByteBuffer mBuf = ByteBuffer.allocate(10);
             do {
@@ -43,6 +44,8 @@ public class ExplicitChannelRead {
                 }
             } while (count != -1);
             System.out.println();
+        } catch (InvalidPathException e) {
+            System.out.println("Path Error " + e);
         } catch (IOException e) {
             System.out.println("I/O Error " + e);
         }
