@@ -10,15 +10,15 @@ import java.nio.file.StandardOpenOption;
 public class ExplicitChannelWrite {
     public static void main(String[] args) {
         //Obtain a channel to a file within a try-with-resources block
-        try (FileChannel fileChannel = (FileChannel) Files.newByteChannel(Paths.get("test.txt"),
-                StandardOpenOption.WRITE,
-                StandardOpenOption.CREATE)) {
+        try (FileChannel fileChannel = (FileChannel) Files
+                .newByteChannel(Paths.get("test.txt"), StandardOpenOption.WRITE, StandardOpenOption.CREATE,
+                                StandardOpenOption.TRUNCATE_EXISTING)) {
             //Create a buffer
             ByteBuffer mBuf = ByteBuffer.allocate(26);
             for (int i = 0; i < 26; i++) {
                 mBuf.put((byte) ('A' + i));
             }
-//            mBuf.rewind();
+            //            mBuf.rewind();
             mBuf.flip();
 
             fileChannel.write(mBuf);
