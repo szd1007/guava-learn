@@ -19,7 +19,7 @@ public class TCPiPTest {
     @Test
     public void testWhoIs() {
         int c;
-
+        //todo 两种方式的差异?????，rpc框架使用本地socket连接远端
         //Create a socket connected to internic.net port 43.
         //直接连接到远程的socket，不是本地创建一个然后connect远端server
 //        try (Socket s = new Socket("whois.internic.net", 43)) {
@@ -69,6 +69,7 @@ public class TCPiPTest {
             out.write(buf);
 
             //Read an display response.
+            //假定每个byte可以代表一个字符。（中文是两个字节代表一个字符。使用这种方式会乱码)
             while ((c = in.read()) != -1) {
                 System.out.print((char) c);
             }
