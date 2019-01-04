@@ -43,6 +43,14 @@ public class ForkJoinChangingThresholdAndParallel {
         System.out.println("Sequential threshold: " + threshold);
         System.out.println("Elapsed time: " + (endT - beginT) + " ns");
         System.out.println();
+
+        /*
+          打印forkJoinPool状态
+         */
+//        fjp.execute(task);
+//        while (!task.isDone()) {
+//            System.out.println(fjp);
+//        }
     }
 }
 

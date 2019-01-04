@@ -6,6 +6,11 @@ import java.util.concurrent.RecursiveAction;
 /**
  * most common uses involve some type of array,collection, or grouping of data
  * 绝大多数的使用方式都会包含 数组、集合或者数据组这些类型
+ *
+ * 场景限制：
+ * 1 不能使用线程同步（synchronized， semaphore等）
+ * 2 避免由于io带来的线程阻塞（不适合io多的场景）。专注于计算，不依赖外部阻塞（io） 或者同步
+ *
  * @author shangzhidong@zhuanzhuan.com
  * @date 2019-01-02 17:10
  */
