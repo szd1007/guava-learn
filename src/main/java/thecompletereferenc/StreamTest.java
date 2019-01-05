@@ -81,5 +81,29 @@ public class StreamTest {
 
         int p = myList.stream().reduce(1, (a, b) -> a * b);
         System.out.println("res: " + p);
+
+        System.out.println("sum: " + myList.stream().reduce((a, b) -> a + b));
+
+        Optional<Integer> evenSum = myList.stream().reduce((a, b) -> {
+            if (b % 2 == 0) {
+                return a + b;
+            }
+            return a;
+        });
+        evenSum.ifPresent(x -> System.out.println("evenSum: " + evenSum.get()));
+    }
+
+    @Test
+    public void testStreamParallel() {
+        List<Double> list = Lists.newArrayList(7.0, 18.0, 10.0, 24.0, 17.0, 5.0);
+
+        //效果是每个元素开根号 然后相乘。 此处要定义并发执行的各个部分结果组合方式为相乘。（两者不一样)
+        double productOfSqrRoots = list.parallelStream().reduce(
+                1.0,
+                (a,b)->a*Math.sqrt(b),
+                (a,b)->a*b
+        );
+        System.out.println("Product of square roots: " + productOfSqrRoots);
+
     }
 }
