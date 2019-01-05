@@ -3,6 +3,7 @@ package thecompletereferenc;
 import com.google.common.collect.Lists;
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.OptionalInt;
@@ -27,7 +28,7 @@ public class StreamTest {
 
     @Test
     public void testBasic() {
-        List<Integer> myList = Lists.newArrayList(7, 18, 10, 24, 17, 5);
+        ArrayList<Integer> myList = Lists.newArrayList(7, 18, 10, 24, 17, 5);
         System.out.println("Original list: " + myList);
 
         //Obtain a Stream to the array list.
@@ -67,5 +68,18 @@ public class StreamTest {
         oddVals.forEach(x -> System.out.print(x + " "));
         System.out.println();
 
+    }
+
+    @Test
+    public void testReduce() {
+        ArrayList<Integer> myList = Lists.newArrayList(7, 18, 10, 24, 17, 5);
+
+        //Two ways to obtain the integer product of the elements
+        //in myList by use of reduce(). 函数中两个值第一个代表结果，第二个代表下一个元素
+        Optional<Integer> productObj = myList.stream().reduce((r, n) -> r * n);
+        productObj.ifPresent(x -> System.out.println("results: " + x));
+
+        int p = myList.stream().reduce(1, (a, b) -> a * b);
+        System.out.println("res: " + p);
     }
 }
