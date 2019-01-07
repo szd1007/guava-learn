@@ -106,4 +106,81 @@ public class StreamTest {
         System.out.println("Product of square roots: " + productOfSqrRoots);
 
     }
+
+    @Test
+    public void testMap() {
+        List<Double> list = Lists.newArrayList(7.0, 18.0, 10.0, 24.0, 17.0, 5.0);
+        //Map the square root of the elements in myList to a new stream.
+        Stream<Double> sqrtRootStrm = list.stream().map(Math::sqrt);
+
+        //Find the product of the square roots.
+        double r = sqrtRootStrm.reduce(1.0, (a, b) -> a * b);
+
+        System.out.println("r" + r);
+    }
+
+    @Test
+    public void testMapConvert() {
+        List<NamePhoneEmail> myList = new ArrayList<>();
+        myList.add(new NamePhoneEmail("Larry", "555-5555", "Larry@HerbSchildt.com"));
+        myList.add(new NamePhoneEmail("James", "555-4444", "James@HerbSchildt.com"));
+        myList.add(new NamePhoneEmail("Marry", "555-3333", "Marry@HerbSchildt.com"));
+
+        myList.stream().forEach((a)-> System.out.println(a.name + " " + a.phone + " " + a.email));
+
+        //Map just the names and phone numbers to a new stream.
+        Stream<NamePhone> namePhoneStream = myList.stream().map((a) -> new NamePhone(a.name, a.phone));
+        System.out.println("List of names and phone numbers: ");
+        namePhoneStream.forEach((a)->{
+            System.out.println(a.name+" " +a.phonenum);
+        });
+
+
+        System.out.println("filter Msg ++++");
+
+        //Filter msg
+        myList.stream().filter(x -> x.name.equals("James")).map(y -> new NamePhone(y.name, y.phone)).forEach((a)->{
+            System.out.println(a.name+" " +a.phonenum);
+        });
+    }
+
+    @Test
+    public void testMapToIntPrimitive() {
+        List<Double> list = Lists.newArrayList(1.1, 3.6, 9.2, 4.7, 12.1, 5.0);
+        System.out.println("Original values in myList: ");
+        list.forEach(x -> System.out.print(x + " "));
+        System.out.println();
+
+        //Map the ceiling of the elements im list to an IntStream.
+        IntStream cStrm = list.stream().mapToInt((a) -> (int) Math.ceil(a));
+
+        System.out.println("The ceilings of the values in list: ");
+        cStrm.forEach((a) -> System.out.print(a + " "));
+    }
 }
+
+
+
+
+class NamePhoneEmail{
+    String name;
+    String phone;
+    String email;
+
+    NamePhoneEmail(String name, String phone, String email) {
+        this.name = name;
+        this.phone = phone;
+        this.email = email;
+    }
+}
+
+class NamePhone {
+    String name;
+    String phonenum;
+
+    NamePhone(String name, String phonenum) {
+        this.name = name;
+        this.phonenum = phonenum;
+    }
+}
+
