@@ -3,10 +3,8 @@ package thecompletereferenc;
 import com.google.common.collect.Lists;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.OptionalInt;
+import java.util.*;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
@@ -142,6 +140,35 @@ public class StreamTest {
         myList.stream().filter(x -> x.name.equals("James")).map(y -> new NamePhone(y.name, y.phone)).forEach((a)->{
             System.out.println(a.name+" " +a.phonenum);
         });
+
+
+        //summaryInt
+        namePhoneStream = myList.stream().map((a) -> new NamePhone(a.name, a.phone));
+        IntSummaryStatistics statistics = namePhoneStream
+                .collect(Collectors.summarizingInt(x -> Integer.valueOf(x.phonenum.substring(x.phonenum.length() - 2))));
+        System.out.println("intStatics: " +statistics);
+    }
+
+    @Test
+    public void testCollect() {
+        List<NamePhoneEmail> myList = new ArrayList<>();
+        myList.add(new NamePhoneEmail("Larry", "555-5555", "Larry@HerbSchildt.com"));
+        myList.add(new NamePhoneEmail("James", "555-4444", "James@HerbSchildt.com"));
+        myList.add(new NamePhoneEmail("Marry", "555-3333", "Marry@HerbSchildt.com"));
+        //test collect
+        Stream<NamePhone> namePhoneStream = myList.stream().map((a) -> new NamePhone(a.name, a.phone));
+        Set<NamePhone> namePhoneSet = namePhoneStream.collect(Collectors.toSet());
+        System.out.println("sets: " + namePhoneSet);
+
+        namePhoneStream = myList.stream().map((a) -> new NamePhone(a.name, a.phone));
+        //自定义返回类型，聚合方法， 并行部分结果聚合方法
+//        LinkedList<NamePhone> npList = namePhoneStream.collect(LinkedList::new, LinkedList::add, LinkedList::addAll);
+        LinkedList<NamePhone> npList = namePhoneStream.collect(()->new LinkedList<>(),
+                                                               (list, element) -> list.add(element),
+                                                               (listA,listB) -> listA.addAll(listB));
+
+        System.out.println("npList: " + npList);
+
     }
 
     @Test
