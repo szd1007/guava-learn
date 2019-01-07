@@ -1,5 +1,6 @@
 package thecompletereferenc;
 
+import com.google.common.base.Strings;
 import com.google.common.collect.Lists;
 import org.junit.Test;
 
@@ -183,6 +184,46 @@ public class StreamTest {
 
         System.out.println("The ceilings of the values in list: ");
         cStrm.forEach((a) -> System.out.print(a + " "));
+    }
+
+    @Test
+    public void testSpliterator() {
+        List<String> list = Lists.newArrayList("111", "abc", "ddd", "FFF");
+        Stream<String> listStream = list.stream().map(String::toUpperCase);
+
+        Spliterator<String> spliterator = listStream.spliterator();
+
+        //遍历数据
+        while (spliterator.tryAdvance(System.out::println)) ;
+
+        //方式2
+        System.out.println("----------");
+        list.parallelStream().spliterator().forEachRemaining(System.out::println);
+
+
+        //try split
+
+        listStream = list.stream();
+
+        //Obtain a Spliterator.
+        Spliterator<String> spliterator1 = listStream.spliterator();
+
+        //Now, split the first spliterator.
+        Spliterator<String>spliterator2 = spliterator1.trySplit();
+
+        if (Objects.nonNull(spliterator2)) {
+            System.out.println("Output from splitItr2: ");
+            spliterator2.forEachRemaining(System.out::println);
+        }
+
+        //Now, use the splitItr.
+        System.out.println("\n Output from splitItr1: ");
+        spliterator1.forEachRemaining(System.out::println);
+
+//        listStream.allMatch(Strings::isNullOrEmpty);
+        listStream.anyMatch(Strings::isNullOrEmpty);
+        listStream.count();
+        listStream.distinct();
     }
 }
 
