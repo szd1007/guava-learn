@@ -116,5 +116,26 @@ public class RegularExpressionTest {
         str = matcher.replaceAll("Eric ");
         System.out.println("replace with eric");
         System.out.println(str);
+
+        //one time pattern, not efficient in repeated use pattern
+        System.out.println("one time matches ");
+        System.out.println(Pattern.matches(str, str));
+    }
+
+    @Test
+    public void tesPatternSplit() {
+        Pattern pattern = Pattern.compile("[ ,.!]");
+        String str = "one two,alpha9 12!done";
+        String sp[] = pattern.split(str);
+
+        for (int i = 0; i < sp.length; i++) {
+            System.out.println("Next token: " + sp[i]);
+        }
+
+        System.out.println(">>>>>>>>>>");
+        sp = str.split("[ ,.!]");
+        for (int i = 0; i < sp.length; i++) {
+            System.out.println("Next token: " + sp[i]);
+        }
     }
 }
