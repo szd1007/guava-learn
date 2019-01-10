@@ -173,10 +173,16 @@ public class DateTest {
         System.out.println(ZoneId.systemDefault());
         System.out.println(ZoneOffset.ofHours(8));
 
-        System.out.println(">>>>");
-        System.out.println(LocalDateTime.now().toInstant(ZoneOffset.ofHours(8)).toEpochMilli());
-//        System.out.println(LocalDateTime.now().toInstant(ZoneOffset.UTC).toEpochMilli());
+        System.out.println("###>>>>");
         System.out.println(System.currentTimeMillis());
+        System.out.println(LocalDateTime.now().toInstant(ZoneOffset.ofHours(8)).toEpochMilli());
+        //获取东一区现在的时间，然后转换时按照东8区去转换，所以会出错
+        System.out.println(LocalDateTime.now(ZoneOffset.ofHours(1)).toInstant(ZoneOffset.ofHours(1)).toEpochMilli());
+
+        System.out.println(LocalDateTime.now(ZoneOffset.ofHours(1)).toInstant(ZoneOffset.ofHours(8)).toEpochMilli());
+
+        //        System.out.println(LocalDateTime.now().toInstant(ZoneOffset.UTC).toEpochMilli());
+
         System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>\r\n");
         System.out.println(Instant.now(Clock.system(ZoneOffset.ofHours(2))).toEpochMilli());
         System.out.println(Instant.now(Clock.system(ZoneOffset.ofHours(2))).atZone(ZoneOffset.ofHours(2)));
@@ -184,9 +190,13 @@ public class DateTest {
         System.out.println(Instant.now(Clock.system(ZoneOffset.ofHours(8))).atZone(ZoneOffset.ofHours(8)));
         System.out.println(Instant.now(Clock.system(ZoneOffset.ofHours(2))).atZone(ZoneOffset.ofHours(8)));
         //todo ???
-
-
-
+        //获取东一区现在的时间，然后转换时按照东8区去转换，所以会出错
+        System.out.println("error trans");
+        LocalDateTime time = LocalDateTime.now(ZoneOffset.ofHours(1));
+        System.out.println("东1区时间：" + time);
+//        System.out.println("时间戳: "+time);
+        System.out.println(" 转成东1区: "+time.toInstant(ZoneOffset.ofHours(1)));
+        System.out.println("转换成东８区: " + time.toInstant(ZoneOffset.ofHours(8)));
     }
     @Test
     public void testDuration() {
