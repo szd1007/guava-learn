@@ -1,15 +1,15 @@
 package thecompletereferenc;
 
 import org.junit.Test;
+import util.TimeUtil;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.time.ZonedDateTime;
+import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
+import java.time.temporal.ChronoField;
+import java.time.temporal.ChronoUnit;
 import java.util.*;
 
 /**
@@ -142,5 +142,44 @@ public class DateTest {
         System.out.println(LocalTime.now());
         System.out.println(LocalTime.now().format(DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT)));
     }
+
+    @Test
+    public void testTimeParse() {
+//        DateTimeFormatter threadSafeFormatter = DateTimeFormatter.ofPattern("M d',' yyyy hh':'mm a");
+        DateTimeFormatter threadSafeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+
+        LocalDateTime curDateTime = LocalDateTime.parse("2017-12-01 18:22:00",threadSafeFormatter);
+        System.out.println(curDateTime);
+        //使用默认时区和TimeUtil转换的一样
+        System.out.println(curDateTime.atZone(ZoneId.systemDefault()).toInstant().toEpochMilli());
+        System.out.println(TimeUtil.getTime("2017-12-01 18:22:00"));
+        //revert
+        curDateTime = LocalDateTime.ofInstant(Instant.ofEpochMilli(1512123720000L), ZoneId.systemDefault());
+        System.out.println("default zone " + threadSafeFormatter.format(curDateTime));
+
+        System.out.println(">>>>>>>>>>>>\r\n");
+
+        System.out.println(curDateTime.atZone(ZoneOffset.UTC).toInstant().toEpochMilli());
+
+        //revert
+        curDateTime = LocalDateTime.ofInstant(Instant.ofEpochMilli(1512152520000L), ZoneOffset.UTC);
+        System.out.println("utc " + threadSafeFormatter.format(curDateTime));
+
+        System.out.println(">>>>>>current:");
+        //revert
+        curDateTime = LocalDateTime.ofInstant(Instant.ofEpochMilli(System.currentTimeMillis()), ZoneId.systemDefault());
+        System.out.println("default zone " + threadSafeFormatter.format(curDateTime));
+        curDateTime = LocalDateTime.ofInstant(Instant.ofEpochMilli(System.currentTimeMillis()), ZoneOffset.UTC);
+
+        System.out.println("utc " + threadSafeFormatter.format(curDateTime));
+    }
+
+    @Test
+    public void testDuration() {
+        Duration duration = Duration.parse("PT1.345S");
+        System.out.println(duration.toMillis());
+
+    }
+
 
 }
