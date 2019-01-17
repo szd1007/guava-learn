@@ -15,7 +15,7 @@ public class CustomerV2 extends Customer {
             double thisAmount = 0;
 
             //determine amounts for each line
-            thisAmount = getAmount(rental);
+            thisAmount = rental.getCharge();
 
             //add frequent renter points
             frequentRenterPoints++;
@@ -33,26 +33,4 @@ public class CustomerV2 extends Customer {
         return result;
     }
 
-    private double getAmount(Rental rental) {
-        double result = 0;
-        switch (rental.getMovie().getPriceCode()) {
-            case Movie.REGULAR:
-                result += 2;
-                if (rental.getDaysRented() > 2) {
-                    result += (rental.getDaysRented() - 2) * 1.5;
-                }
-                break;
-            case Movie.NEW_RELEASE:
-                result += rental.getDaysRented() * 3;
-                break;
-            case Movie.CHILDRENS:
-                result += 1.5;
-                if (rental.getDaysRented() > 3) {
-                    String a;
-                    result += (rental.getDaysRented() - 3) * 1.5;
-                }
-                break;
-        }
-        return result;
-    }
 }
