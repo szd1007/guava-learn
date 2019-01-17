@@ -12,10 +12,6 @@ public class CustomerV2 extends Customer {
         int frequentRenterPoints = 0;
         String result = "Rental Record for " + getName() + "\n";
         for (Rental rental : rentals) {
-            double thisAmount = 0;
-
-            //determine amounts for each line
-            thisAmount = rental.getCharge();
 
             //add frequent renter points
             frequentRenterPoints++;
@@ -24,8 +20,8 @@ public class CustomerV2 extends Customer {
                 frequentRenterPoints++;
             }
             //show figures for this rental
-            result += "\t" + rental.getMovie().getTitle() + "\t" + String.valueOf(thisAmount) + "\n";
-            totalAmount += thisAmount;
+            result += "\t" + rental.getMovie().getTitle() + "\t" + rental.getCharge() + "\n";
+            totalAmount += rental.getCharge();;
         }
         //add footer lines
         result += "Amount owed is " + String.valueOf(totalAmount) + "\n";
