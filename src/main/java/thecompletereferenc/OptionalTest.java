@@ -1,5 +1,6 @@
 package thecompletereferenc;
 
+import com.google.common.base.Strings;
 import org.junit.Test;
 
 import java.util.NoSuchElementException;
@@ -41,9 +42,14 @@ public class OptionalTest {
         }));
 
         //orElseThrow
-        System.out.println("orElseThrow" + empty.orElseThrow(NoSuchElementException::new));
+//        System.out.println("orElseThrow" + empty.orElseThrow(NoSuchElementException::new));
 
         //stream  add by jdk9
+
+//        String a = null;
+        String a = "";
+        Optional.ofNullable(a).filter(x -> x.length() > 1).ifPresent(y -> System.out.println("a " + a));
+        Optional.ofNullable(a).ifPresent(y -> System.out.println("a11 " + a));
 
     }
 
