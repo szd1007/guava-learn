@@ -67,6 +67,13 @@ public class RfReplaceDataValueWithObject {
             return customer.getName();
         }
 
+        /** @see RfRenameMethod
+         *  重命名getCustomer  ，指定返回的具体含义是他的名称而不是对象
+         */
+        public String getCustomerName() {
+            return customer.getName();
+        }
+
         public void setCustomer(String customer) {
             this.customer = new Customer(customer);
         }

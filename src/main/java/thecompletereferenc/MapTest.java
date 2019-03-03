@@ -8,6 +8,9 @@ import java.util.Map;
 import java.util.TreeMap;
 
 /**
+ *
+ * HashMap非线程安全，多线程使用会有死锁的情况发生
+ *
  * @author shangzhidong@zhuanzhuan.com
  * @date 2018-12-07 10:06
  */
