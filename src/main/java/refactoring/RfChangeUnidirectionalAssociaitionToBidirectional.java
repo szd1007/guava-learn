@@ -1,5 +1,8 @@
 package refactoring;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  *  你有两个类需要互相使用对方的一些特性，但是只有一个单向的链接。
  *  要添加反向链接，并且更改修饰符去更新两边集合
@@ -15,4 +18,49 @@ package refactoring;
  */
 public class RfChangeUnidirectionalAssociaitionToBidirectional {
 
+    class Order{
+        Customer customer;
+        Customer getCustomer() {
+            return customer;
+        }
+
+        public void setCustomer(Customer customer) {
+            this.customer = customer;
+        }
+    }
+    // customer 没有到order的引用
+    class Customer {
+
+    }
+
+    //////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////
+    class Customer2{
+        Set<Order2> orders = new HashSet<>();
+        Set friendOrders() {
+            /**
+             * should only be used by Order When modifying the association
+             */
+            return orders;
+        }
+    }
+
+    class Order2{
+        Customer2 customer;
+        Customer2 getCustomer() {
+            return customer;
+        }
+
+        public void setCustomer(Customer2 customer) {
+            if (customer != null) {
+                customer.friendOrders().remove(this);
+            }
+
+            this.customer = customer;
+            if (customer != null) {
+                customer.friendOrders().add(this);
+            }
+        }
+    }
 }
