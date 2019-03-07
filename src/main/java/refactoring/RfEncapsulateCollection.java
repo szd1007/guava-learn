@@ -3,6 +3,7 @@ package refactoring;
 
 import junit.framework.Assert;
 
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -112,6 +113,19 @@ public class RfEncapsulateCollection {
                 Assert.assertEquals(0, courses.size());
 //                arg.forEach(this::addCourse);
                 courses.addAll(arg);
+            }
+
+            void test() {
+                Person kent = new Person();
+                kent.addCourse(new Course("SmallTalk Programming", false));
+                kent.addCourse(new Course("Appreciating Single Malts", true));
+
+            }
+
+            //最后更改get方法返回unmodify list
+
+            public Set<Course> getCourses() {
+                return Collections.unmodifiableSet(courses);
             }
         }
     }
