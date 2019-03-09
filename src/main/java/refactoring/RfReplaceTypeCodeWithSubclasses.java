@@ -13,7 +13,8 @@ package refactoring;
  *
  *   Mechanics
  *   1. 自封装类型码
- *      如果类型码是传递到了构造函数中，那么你要把构造函数替换成一个工厂方法
+ *      如果类型码是传递到了构造函数中，那么你要把构造函数替换成一个工厂方法。
+ *      因为重构之后要返回新的生成类了
  *   2. 为每个typeCode的值创建一个子类。在子类重写get方法返回对应的值
  *      中间过度状态， 类似ENGINEER子类 返回int 0
  *   3. 从父类中移出类型码成员。声明访问方法为abtstract. 同时使用{@link RfpushDownMethod} {@link RfPushDownField}
