@@ -16,7 +16,7 @@ package refactoring;
  *      如果类型码是传递到了构造函数中，那么你要把构造函数替换成一个工厂方法
  *   2. 为每个typeCode的值创建一个子类。在子类重写get方法返回对应的值
  *      中间过度状态， 类似ENGINEER子类 返回int 0
- *   3. 从父类中
+ *   3. 从父类中移出类型码成员。声明访问方法为abtstract. 同时使用{@link RfpushDownMethod} {@link RfPushDownField}
  *  Employee 类
  *  ENGINEER :int
  *  SALESMAN :int
@@ -28,5 +28,104 @@ package refactoring;
  * @date 2019-03-08 11:21
  */
 public class RfReplaceTypeCodeWithSubclasses {
+
+    static class Before{
+        private class Employee {
+            private int type ;
+            static final int ENGINEER = 0;
+            static final int SALESMAN = 1;
+            static final int MANAGER  = 2;
+
+            Employee(int type) {
+                this.type = type;
+            }
+
+            int getType() {
+                return type;
+            }
+        }
+    }
+
+
+    static class After{
+        private class Employee {
+            private int type ;
+            static final int ENGINEER = 0;
+            static final int SALESMAN = 1;
+            static final int MANAGER  = 2;
+
+            private Employee(int type) {
+                this.type = type;
+            }
+            private Employee() {
+
+            }
+
+            Employee create(int type) {
+
+                switch (type) {
+                    case ENGINEER:
+                        return new Engineer();
+                    case SALESMAN:
+                        return new SalesMan();
+                    case  MANAGER:
+                        return new Manager();
+                    default:
+                        throw new IllegalArgumentException("Incorrect type code value");
+                }
+//                if (type == ENGINEER) {
+//                    return new Manager();
+//                }
+//                return new Employee(type);
+            }
+            int getType() {
+                return type;
+            }
+        }
+
+        class Engineer extends Employee {
+
+            private Engineer(int type) {
+                super(type);
+            }
+
+            public Engineer() {
+                super();
+            }
+
+            int getType() {
+                return Employee.ENGINEER;
+            }
+        }
+        class Manager extends Employee {
+
+            private Manager(int type) {
+                super(type);
+            }
+
+            public Manager() {
+                super();
+            }
+
+            int getType() {
+                return Employee.ENGINEER;
+            }
+        }
+        class SalesMan extends Employee {
+
+            private SalesMan(int type) {
+                super(type);
+            }
+
+            public SalesMan() {
+                super();
+            }
+
+            int getType() {
+                return Employee.ENGINEER;
+            }
+        }
+
+    }
 
 }
