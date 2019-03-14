@@ -8,7 +8,8 @@ package refactoring;
  * 如果不改变行为的话，用 {@link RfReplaceTypeCodeWithClass}
  *
  *  Motivation：
- *   通常这样的情况暗示代码中有switch或者if else语句块（烂代码），需要{@link RfReplaceConditionalWithPolymorphism}
+ *   通常这样的情况暗示代码中有switch或者if else语句块（烂代码），
+ *   需要{@link refactoring.Chp9SimplifyingConditionalExpression.ReplaceConditionalWithPolyMorphism}
  *
  *
  *   Mechanics

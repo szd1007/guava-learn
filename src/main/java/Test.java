@@ -8,9 +8,14 @@ public class Test {
         System.out.println(a);
     }
     public static void main(String[] args) {
+
+        Object a = null;
+
+        String b = (String) a;
+        System.out.println(b);
         //System.out.println(new Test().defaultVaule);
         System.out.println("ddd");
-        Integer a = null;
-        f1(a);
+//        Integer a = null;
+//        f1(a);
     }
 }
