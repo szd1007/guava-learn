@@ -9,13 +9,19 @@ public class Test {
     }
     public static void main(String[] args) {
 
-        Object a = null;
+//        Object a = null;
+//
+//        String b = (String) a;
+//        System.out.println(b);
+//        //System.out.println(new Test().defaultVaule);
+//        System.out.println("ddd");
+////        Integer a = null;
+////        f1(a);
 
-        String b = (String) a;
-        System.out.println(b);
-        //System.out.println(new Test().defaultVaule);
-        System.out.println("ddd");
-//        Integer a = null;
-//        f1(a);
+//        String a = null;
+        String a = "sss";
+        if (a instanceof String) {
+            System.out.println("sss");
+        }
     }
 }
