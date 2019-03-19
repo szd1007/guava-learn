@@ -130,7 +130,26 @@ public class RfIntroduceNullObject {
         }
     }
 
+    static class After2{
 
+        interface Null {
+
+        }
+
+        static class NullCustomer extends Customer implements Null {
+
+            //.....
+        }
+
+        public static void main(String[] args) {
+            Customer customer = new NullCustomer();
+            //使用接口继承的方式来确定 对象属性
+            if (customer instanceof Null) {
+
+            }
+        }
+
+    }
 
 
 
@@ -180,4 +199,6 @@ public class RfIntroduceNullObject {
             return 0;
         }
     }
+
+
 }
