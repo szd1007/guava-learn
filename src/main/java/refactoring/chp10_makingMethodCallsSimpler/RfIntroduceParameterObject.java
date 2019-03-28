@@ -12,6 +12,7 @@ import java.util.List;
  * {@link refactoring.RfMoveMethod}
  *
  */
+@SuppressWarnings("all")
 public class RfIntroduceParameterObject {
     class Entry{
          private final double value;
@@ -102,6 +103,11 @@ public class RfIntroduceParameterObject {
                 }
                 return result;
             }
+        }
+        void testAfter() {
+            Account account = new Account();
+            Date start = null, end = null;
+            account.getFlowBetween(new DateRange(start, end));
         }
 
     }
