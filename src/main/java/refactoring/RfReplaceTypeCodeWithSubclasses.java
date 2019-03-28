@@ -49,8 +49,8 @@ public class RfReplaceTypeCodeWithSubclasses {
     }
 
 
-    static class After{
-        private class Employee {
+    public static class After{
+        private static class Employee {
             private int type ;
             static final int ENGINEER = 0;
             static final int SALESMAN = 1;
@@ -63,6 +63,25 @@ public class RfReplaceTypeCodeWithSubclasses {
 
             }
 
+            /**
+             * 父类使用工厂方法来负责对象创建.
+             * 直接指定类名的好处，可以新加类的时候不用使用switch
+             * 可以在枚举类型添加对应子类名称。
+             *
+             *
+             * 当然如果只有几个固定的子类，并且不会后期添加
+             * 可以为每个子类创建一个create方法
+             *
+             */
+
+
+            static Employee createByName(String name) {
+                try {
+                    return (Employee) Class.forName(name).newInstance();
+                } catch (Exception e) {
+                    throw new IllegalArgumentException("unable to instantiate" + name);
+                }
+            }
             Employee create(int type) {
 
                 switch (type) {
@@ -85,7 +104,7 @@ public class RfReplaceTypeCodeWithSubclasses {
             }
         }
 
-        class Engineer extends Employee {
+        static class Engineer extends Employee {
 
             private Engineer(int type) {
                 super(type);
@@ -99,7 +118,7 @@ public class RfReplaceTypeCodeWithSubclasses {
                 return Employee.ENGINEER;
             }
         }
-        class Manager extends Employee {
+        static class Manager extends Employee {
 
             private Manager(int type) {
                 super(type);
@@ -113,7 +132,7 @@ public class RfReplaceTypeCodeWithSubclasses {
                 return Employee.ENGINEER;
             }
         }
-        class SalesMan extends Employee {
+        static class SalesMan extends Employee {
 
             private SalesMan(int type) {
                 super(type);
