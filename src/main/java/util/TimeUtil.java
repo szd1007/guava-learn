@@ -50,6 +50,8 @@ public class TimeUtil {
     }
 
     public static void main(String[] args) {
-        System.out.println(getTime("2019-03-19 00:00:00"));
+        System.out.println(getTime("2019-03-01 00:00:00"));
+        System.out.println(getTime("2019-04-01 00:00:00"));
+
     }
 }
