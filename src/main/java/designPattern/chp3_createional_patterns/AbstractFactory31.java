@@ -43,3 +43,21 @@ package designPattern.chp3_createional_patterns;
 public class AbstractFactory31 {
 
 }
+
+/**
+ * 抽象工厂
+ * ，默认实现的工厂，后续可以通过继承这个父类进行工厂扩展
+ */
+class MazeFacotry{
+    Maze makeMaze(){
+        return new Maze();
+    }
+    Wall makeWall(){
+        return new Wall();
+    }
+    Door makeDoor(Room r1, Room r2){
+        return new Door(r1, r2);
+    }
+
+
+}
