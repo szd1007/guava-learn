@@ -31,6 +31,13 @@ package designPattern.chp3_createional_patterns;
  *    难以支持新种类产品  abstractFactory封装了所有的产品接口，在添加新产品的同时要扩展所有的工厂子类。
  *
  *  9 实现
+ *  涉及的计数
+ *   a. 将工厂最好实现为单例模式 {@link Singleton35}
+ *   b. 创建产品，通常做法是为每个产品创建一个工厂方法{@link FactoryMethod33}(一个产品可能会有多个子类实现)
+ *   c. 定义可扩展的工厂   可以通过传递参数（类型、整数、字符串）来动态创建产品。这样不用在新增产品时手动扩展所有factory类，
+ *      带来的缺点就是返回的类型需要统一，客户没法区分返回具体类型。这是高度灵活和可扩展接口之间的折衷
+ *
+ *  10 code 实现
  *
  */
 public class AbstractFactory31 {
