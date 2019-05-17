@@ -58,6 +58,11 @@ public class MazeGame {
     //builder 和 abstractFactory原理类似。但是builder是在最后进行对象返回，
     //builder着重于一步步的构造一个复杂对象。
     //abstractFactory 着重于多个系列的产品对象（例如同一套ui但是不同配色方案的展示，突出一系列联合使用）
+
+    /**
+     * 针对这个迷宫游戏。感觉builder更合适。 maze是一个迷宫，但是也是通过具体的builder类（各个product已经进行了代码关联）
+     * 来对应创建迷宫实现。
+     */
     Maze createMaze(MazeBuilder builder) {
         Maze maze = builder.buildMaze();
         builder.buildRoom(1);
