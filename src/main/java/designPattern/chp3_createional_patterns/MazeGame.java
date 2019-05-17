@@ -27,6 +27,30 @@ public class MazeGame {
 
 
         return maze;
-        
+    }
+
+    ///////////////////////////////////////////////////////////////////////////
+    //////使用抽象工厂 创建
+    Maze createMaze(BaseMazeFactory factory) {
+        Maze maze = factory.makeMaze();
+        Room r1 = factory.makeRoom(1);
+        Room r2 = factory.makeRoom(2);
+
+        Door theDoor = factory.makeDoor(r1, r2);
+        maze.addRoom(r1);
+        maze.addRoom(r2);
+
+        r1.setSides(Direction.North, factory.makeWall());
+        r1.setSides(Direction.East, theDoor);
+        r1.setSides(Direction.South, factory.makeWall());
+        r1.setSides(Direction.West, factory.makeWall());
+
+        r2.setSides(Direction.North, factory.makeWall());
+        r2.setSides(Direction.East, factory.makeWall());
+        r2.setSides(Direction.South, factory.makeWall());
+        r2.setSides(Direction.West, theDoor);
+
+
+        return maze;
     }
 }

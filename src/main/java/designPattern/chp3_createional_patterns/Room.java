@@ -19,3 +19,16 @@ public class Room implements MapSite {
     @Override
     public  void enter() {}
 }
+
+class EnchantedMazeRoom extends Room{
+
+    public EnchantedMazeRoom(int roomNo) {
+        super(roomNo);
+    }
+}
+class RoomWithAnBomb extends Room{
+
+    public RoomWithAnBomb(int roomNo) {
+        super(roomNo);
+    }
+}

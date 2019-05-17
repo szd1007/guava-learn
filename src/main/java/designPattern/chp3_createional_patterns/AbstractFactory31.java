@@ -48,7 +48,7 @@ public class AbstractFactory31 {
  * 抽象工厂
  * ，默认实现的工厂，后续可以通过继承这个父类进行工厂扩展
  */
-class MazeFacotry{
+class BaseMazeFactory {
     Maze makeMaze(){
         return new Maze();
     }
@@ -59,5 +59,39 @@ class MazeFacotry{
         return new Door(r1, r2);
     }
 
+    Room makeRoom(int no) {
+        return new Room(no);
+    }
+}
 
+/**
+ * 创建一个施了魔法的迷宫
+ */
+class EnchantedMazeFactory extends BaseMazeFactory{
+
+    @Override
+    Door makeDoor(Room r1, Room r2) {
+        return new DooorNeedingSpell(r1, r2);
+    }
+
+    @Override
+    Room makeRoom(int no) {
+        return new EnchantedMazeRoom(no);
+    }
+}
+
+/**
+ * 创建一个包含炸弹的简单迷宫
+ */
+class BombedMazeFactory extends BaseMazeFactory{
+
+    @Override
+    Wall makeWall() {
+        return new BombedWall();
+    }
+
+    @Override
+    Room makeRoom(int no) {
+        return new RoomWithAnBomb(no);
+    }
 }

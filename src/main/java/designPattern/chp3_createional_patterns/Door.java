@@ -21,3 +21,10 @@ public class Door implements MapSite{
       return null;
     }
 }
+
+class DooorNeedingSpell extends Door{
+
+    public DooorNeedingSpell(Room ro1, Room ro2) {
+        super(ro1, ro2);
+    }
+}

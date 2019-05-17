@@ -9,3 +9,7 @@ public class Wall implements MapSite{
     @Override
     public void enter() {}
 }
+
+class BombedWall extends Wall{
+
+}
