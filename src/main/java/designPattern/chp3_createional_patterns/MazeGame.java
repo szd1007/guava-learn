@@ -53,4 +53,18 @@ public class MazeGame {
 
         return maze;
     }
+    ///////////////////////////////////////////////////////////////////////////
+    //////使用Builder 创建,同时封装了对象的内部实现
+    //builder 和 abstractFactory原理类似。但是builder是在最后进行对象返回，
+    //builder着重于一步步的构造一个复杂对象。
+    //abstractFactory 着重于多个系列的产品对象（例如同一套ui但是不同配色方案的展示，突出一系列联合使用）
+    Maze createMaze(MazeBuilder builder) {
+        Maze maze = builder.buildMaze();
+        builder.buildRoom(1);
+        builder.buildRoom(2);
+        builder.buildDoor(1, 2);
+
+        return builder.getMaze();
+    }
+
 }

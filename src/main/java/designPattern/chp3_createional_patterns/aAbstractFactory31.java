@@ -40,7 +40,7 @@ package designPattern.chp3_createional_patterns;
  *  10 code 实现
  *
  */
-public class AbstractFactory31 {
+public class aAbstractFactory31 {
 
 }
 
