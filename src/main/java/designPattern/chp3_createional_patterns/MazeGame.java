@@ -72,4 +72,29 @@ public class MazeGame {
         return builder.getMaze();
     }
 
+    /**
+     * factory Method， 具体子类可以抽工这些方法。
+     * ps，方法中只有创建对象的代码，这样才能方便子类ovride
+     */
+    Door makeDoor(Room r1, Room r2) {
+        return  new Door(r1, r2);
+    }
+
+    Room makeRoom(int roomNo) {
+        return new Room(roomNo);
+    }
+
 }
+
+class BombedGame extends MazeGame{
+    @Override
+    Door makeDoor(Room r1, Room r2) {
+        return new DooorNeedingSpell(r1, r2);
+    }
+
+    @Override
+    Room makeRoom(int roomNo) {
+        return super.makeRoom(roomNo);
+    }
+}
+
