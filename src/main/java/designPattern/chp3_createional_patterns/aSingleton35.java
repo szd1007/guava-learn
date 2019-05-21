@@ -23,20 +23,20 @@ package designPattern.chp3_createional_patterns;
  *  相关模式
  *  n 多模式都可以使用singleton模式来实现。参见abstractFactory  builder  prototype
  */
-public class Singleton35 {
+public class aSingleton35 {
 
     private static class InstanceHolder{
-        private static final  Singleton35 INSTANCE = new Singleton35();
+        private static final aSingleton35 INSTANCE = new aSingleton35();
     }
 
-    public static Singleton35 instance() {
+    public static aSingleton35 instance() {
         return InstanceHolder.INSTANCE;
     }
 
 
     //同时 instance可能有多个子类实现，我们可以将对象选择代码放到这个方法体中。
 
-    public static Singleton35 instance2(){
+    public static aSingleton35 instance2(){
 //        if is null
 //        String lookName = getEnv("SING");
 //        if(xx.equals "''")
