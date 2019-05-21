@@ -20,6 +20,8 @@ package designPattern.chp3_createional_patterns;
  *    4） 允许可变数目的实例
  *    5） 比类操作更灵活
  *
+ *  相关模式
+ *  n 多模式都可以使用singleton模式来实现。参见abstractFactory  builder  prototype
  */
 public class Singleton35 {
 
