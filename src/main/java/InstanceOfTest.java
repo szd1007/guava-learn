@@ -7,7 +7,16 @@ public class InstanceOfTest {
 
     }
 
+    interface  X{
+
+    }
+    static class XImpl implements X{
+
+    }
     public static void main(String[] args) {
+        XImpl x = new XImpl();
+
+        System.out.println(x instanceof X);
         Father father = new Father();
         Son son = new Son();
         Father sb = new Son();

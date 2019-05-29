@@ -31,6 +31,72 @@ package designPattern.chp4_structural_patterns;
  *    2） 当只要添加一个职责时省略抽象的decorator类。 直接继承实现装饰器
  *    3） 保持component类接口干净简洁。 这个接口是被装饰对象和装饰器共同继承的。
  *    4） 只有在component比较简洁的情况下适合该模式。相当于在对象上加了一个外壳。 如果component过于复杂，那么适合使用strategy模式
+
+
+ 相关模式
+    adapter（4.1） ，适配器将给对象一个全新的接口
+    Composite（4.3） 将装饰器视为一个退化的、仅有一个组件的组合。装饰仅给对象添加一些额外的职责-目的不在于对象聚集
+    strategy（5.9） 用一个装饰你可以改变对象的外表， strategy使你可以改变对象的内核。这是改变对象的两种途径。
+
+
  */
 public class aDecorator44 {
+
+
+    public static void main(String[] args) {
+        VisualComponent textViewss = new TextViewss();
+        //进行装饰
+        textViewss = new BorderDecorator(textViewss);
+    }
 }
+
+interface VisualComponent {
+    void draw();
+    void resize();
+}
+
+class TextViewss implements VisualComponent {
+
+    @Override
+    public void draw() {
+
+    }
+
+    @Override
+    public void resize() {
+
+    }
+}
+class Decorator implements VisualComponent {
+    private VisualComponent component;
+    public Decorator(VisualComponent component) {
+        this.component = component;
+    }
+    @Override
+    public void draw() {
+        component.draw();
+    }
+
+    @Override
+    public void resize() {
+        component.resize();
+    }
+}
+
+class BorderDecorator extends Decorator{
+
+    public BorderDecorator(VisualComponent component) {
+        super(component);
+    }
+
+    private void drawBorder(){}
+
+
+    @Override
+    public void draw() {
+        super.draw();
+        drawBorder();
+    }
+}
+
+
