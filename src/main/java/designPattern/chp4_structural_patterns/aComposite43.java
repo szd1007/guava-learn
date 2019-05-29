@@ -1,4 +1,4 @@
-package designPattern.chp3_createional_patterns;
+package designPattern.chp4_structural_patterns;
 
 
 import java.util.Iterator;
