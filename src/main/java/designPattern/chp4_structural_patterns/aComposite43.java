@@ -100,6 +100,7 @@ class Bus extends Equipment{
 
 /**
  * composite . 包含其他设备的类，
+ * composite负责组合对象的汇总展示
  */
 class CompositeEquiment extends Equipment{
     @Override
@@ -150,41 +151,14 @@ class CompositeEquiment extends Equipment{
  */
 class Chassis extends CompositeEquiment{
 
-    @Override
-    Watt Power() {
-        return super.Power();
-    }
 
-    @Override
-    Currency NetPrice() {
-        return super.NetPrice();
-    }
 
-    @Override
-    Currency DiscountPrice() {
-        return super.DiscountPrice();
-    }
 }
 class Cabinet extends CompositeEquiment{
-
-    public Cabinet(String cabinet) {
+    public Cabinet(String name) {
 
     }
 
-    @Override
-    Watt Power() {
-        return super.Power();
-    }
-
-    @Override
-    Currency NetPrice() {
-        return super.NetPrice();
-    }
-
-    @Override
-    Currency DiscountPrice() {
-        return super.DiscountPrice();
-    }
 }
 
 
