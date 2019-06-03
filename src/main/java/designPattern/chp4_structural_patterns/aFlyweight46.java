@@ -20,6 +20,10 @@ package designPattern.chp4_structural_patterns;
  *    1）删除外部状态
  *    2）管理共享对象【通常情况共享对象一般比较少，仅需创建维护对象就ok。无需删除】
  *
+ * 11 相关模式
+ *     flyweight通常和composite模式结合起来，用共享叶节点的有向无环图实现一个逻辑上的层次结构
+ *     通常，最好用flyweight实现state58和strategy59
+ *
  *
  * @author shangzhidong@zhuanzhuan.com
  * @date 2019-05-30 11:19
@@ -42,5 +46,25 @@ abstract class Glyph {
 
 }
 class WindowGlyph{}
-class GlyphContext{}
+abstract class GlyphContext{
+    abstract void next(int step);
+    abstract void insert(int quantity);
+    abstract Font getFont();
+    abstract void setFont(Font font, int span);
+}
 class Font{}
+class Row{}
+class Column{}
+abstract class Character extends Glyph{
+    @Override
+    void draw(WindowGlyph windowGlyph, GlyphContext context) {
+
+    }
+}
+
+abstract class GlyphFactory{
+    abstract Character createCharacter(char a);
+    abstract Row createRow();
+    abstract Column creaetColumn();
+
+}
