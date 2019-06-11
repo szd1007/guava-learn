@@ -1,0 +1,4 @@
+composite43 和 decorator44结构图类似，可以认为decorator是一个退化的composite。
+
+decorator 使你不需生成子类即可给对象添加职责。避免静态生成组合导致子类急剧增加。
+composite 目的是使多个相关对象能够以统一方式处理
