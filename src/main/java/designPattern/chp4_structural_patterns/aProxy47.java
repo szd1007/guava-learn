@@ -1,18 +1,25 @@
 package designPattern.chp4_structural_patterns;
 
+import java.awt.*;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.util.Objects;
+
 /**
  * 代理
  * 2 别名  surrogate
  *
  * 4 适用性
  *  在需要用比较通用和复杂度对象指针替代简单指针的时候，使用proxy模式。
+ *  控制对象的访问
+ *
  *    1）远程代理（remote proxy）为一个对象在不同的地址空间提供局部代表。
  *    2） 虚代理（Virtual proxy）根据需要创建开销很大的对象。比如使用imageproxy 代替真正的image。实现使用时的初始化
  *    3）保护代理 （Protection Proxy）控制原始对象访问，保护代理使用于对象应该有不同的访问权限的时候
  *    4）智能指引（smart reference）取代了简单的指针，在访问对象时添加一些附加操作。
  *        - 对指向的对象计数，无引用时自动释放
  *        - 第一次引用时，装入内存
- *        - 访问一个实际对象钱，检查是否已经锁定了它。确保其他对象不能改变它
+ *        - 访问一个实际对象前，检查是否已经锁定了它。确保其他对象不能改变它
  * 6 参与者
  * 。Proxy（Image Proxy）
  *   Subject(Graphic) 定义realsub和proxy的共用接口，
@@ -28,4 +35,84 @@ package designPattern.chp4_structural_patterns;
  *
  */
 public class aProxy47 {
+}
+
+interface Graphic{
+    void draw();
+
+    void handleMouse(Event event);
+
+    Point getExtent();
+
+    void load(InputStream inputStream);
+
+    void save(OutputStream outputStream);
+}
+
+class ImageProxy implements Graphic{
+
+    Image image;
+    String imageFile;
+    public ImageProxy(String imageFile) {
+        this.imageFile = imageFile;
+    }
+
+    Image getImage() {
+        if (Objects.isNull(image)) {
+            image = new Image();
+        }
+        return image;
+    }
+    @Override
+    public void draw() {
+        getImage().draw();
+    }
+
+    @Override
+    public void handleMouse(Event event) {
+        getImage().handleMouse(event);
+    }
+
+    @Override
+    public Point getExtent() {
+        return getImage().getExtent();
+    }
+
+    @Override
+    public void load(InputStream inputStream) {
+        getImage().load(inputStream);
+    }
+
+    @Override
+    public void save(OutputStream outputStream) {
+        getImage().save(outputStream);
+    }
+
+}
+class Image implements Graphic{
+
+    @Override
+    public void draw() {
+
+    }
+
+    @Override
+    public void handleMouse(Event event) {
+
+    }
+
+    @Override
+    public Point getExtent() {
+        return null;
+    }
+
+    @Override
+    public void load(InputStream inputStream) {
+
+    }
+
+    @Override
+    public void save(OutputStream outputStream) {
+
+    }
 }
