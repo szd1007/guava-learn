@@ -26,5 +26,5 @@ package designPattern.chp5_behavior_patterns;
  *    常与composite一起使用，此时一个构建的父构件可作为它的后继
  *
  */
-public class aChainOfResponsibility {
+public class aChainOfResponsibility51 {
 }
