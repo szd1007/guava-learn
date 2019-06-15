@@ -9,6 +9,14 @@ package designPattern.chp5_behavior_patterns;
  *    支持以不同的方式遍历一个聚合。一个树的遍历中序和后序可用不同的迭代器实现
  *    迭代器简化了聚合的接口
  *    同一个聚合可以有多个遍历
+ *
+ *
+ *    相关模式：
+ *    composite43 迭代器常被应用到复合这样的递归上
+ *    factoryMethod33 多态迭代器靠factoryMethod来实例化适当的迭代器子类（本节示例实现）
+ *    memento56 共同使用， 使用一个memento来捕获一个迭代状态。
+ *
+ *
  */
 public class aIterator54 {
 
