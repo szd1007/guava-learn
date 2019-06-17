@@ -12,6 +12,10 @@ package designPattern.chp5_behavior_patterns;
  *   必须保存一个对象在某一个时刻的（部分）状态，可以以后方便的恢复
  *   如果一个用接口来让其他对象直接得到对象状态，将暴露对象实现细节并破坏对象封装性。
  *
+ * 12 相关模式
+ *   command52 命令可使用备忘录来为可撤销的操作维护状态
+ *   iterator54 如前所述备忘录可用于迭代
+ *
  * @author shangzhidong@zhuanzhuan.com
  * @date 2019-06-15 17:22
  */
