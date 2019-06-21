@@ -4,6 +4,8 @@ import java.util.EnumSet;
 import java.util.Objects;
 import java.util.Set;
 
+import static effectiveJava.NyPizza.Size.SMALL;
+
 /**
  * 2. 构造器参数较多时考虑使用构建器[builder]
  * <p>
@@ -17,6 +19,10 @@ public class Eff_2 {
     public static void main(String[] args) {
         NutritionFacts.Builder builder = new NutritionFacts.Builder(1, 3);
         builder.sodium(33).calories(134).build();
+
+
+        NyPizza pizza = new NyPizza.SubBuilder(SMALL).addTopping(Pizza.Topping.SAUSAGE).addTopping(Pizza.Topping.ONION)
+                .build();
     }
 }
 
@@ -116,6 +122,7 @@ abstract class Pizza {
 
     public NyPizza(SubBuilder builder) {
         super(builder);
+        //@EfLanguagePoints("子类的builder新增的属性")
         this.size = builder.size;
     }
 
