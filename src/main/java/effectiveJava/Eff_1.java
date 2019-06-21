@@ -32,7 +32,7 @@ import static thecompletereferenc.EnumDemo.C;
  *  -不包含构造器会使其不能子类化【正好鼓励使用组合不用继承😒】
  *  -程序员很难发现这些方法
  */
-@LanguagePoints(values = {ServiceLoader.class})
+@EfLanguagePoints(values = {ServiceLoader.class})
 @SuppressWarnings("all")
 public class Eff_1 {
 
@@ -46,27 +46,27 @@ public class Eff_1 {
     /**
      * 静态工厂方法一些常用的命名规则
      */
-    @LanguagePoints(" from 类型转换方法   单个参数")
+    @EfLanguagePoints(" from 类型转换方法   单个参数")
     Date d = Date.from(Instant.now());
 
-    @LanguagePoints("of 聚合方法， 多个参数。返回一个类实例，并把他们结合起来")
+    @EfLanguagePoints("of 聚合方法， 多个参数。返回一个类实例，并把他们结合起来")
     Set<EnumDemo> sets = EnumSet.of(A, B, C);
 
-    @LanguagePoints("valueOf 比from和of更反锁的一种替代方法")
+    @EfLanguagePoints("valueOf 比from和of更反锁的一种替代方法")
     BigInteger prime = BigInteger.valueOf(Integer.MAX_VALUE);
 
-    @LanguagePoints("instance 或getInstance  可以方法带参数实现")
+    @EfLanguagePoints("instance 或getInstance  可以方法带参数实现")
     aSingleton35 aSingleton = aSingleton35.instance();
 
-    @LanguagePoints("create 或 newInstance 确保每次都生成新对象")
+    @EfLanguagePoints("create 或 newInstance 确保每次都生成新对象")
     Object array = Array.newInstance(BigInteger.class, 20);
 
-    @LanguagePoints("getXXX ")
+    @EfLanguagePoints("getXXX ")
     FileStore fs = Files.getFileStore(Paths.get("/"));
 
-    @LanguagePoints("newXXX")
+    @EfLanguagePoints("newXXX")
     BufferedReader br = Files.newBufferedReader(Paths.get("/"));
 
-    @LanguagePoints("type -  getXXX newType 的简版")
+    @EfLanguagePoints("type -  getXXX newType 的简版")
     List<Integer> list = Collections.list(null);
 }

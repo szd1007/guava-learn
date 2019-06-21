@@ -14,7 +14,7 @@ import static java.lang.annotation.ElementType.LOCAL_VARIABLE;
  */
 @Target({TYPE, FIELD, METHOD, PARAMETER, CONSTRUCTOR, LOCAL_VARIABLE})
 @Retention(RetentionPolicy.SOURCE)
-public @interface LanguagePoints {
+public @interface EfLanguagePoints {
     String[] value() default "";
     Class[] values() default Object.class;
 }
