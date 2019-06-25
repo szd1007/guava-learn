@@ -1,5 +1,7 @@
 package thecompletereferenc;
 
+import effectiveJava.EfLanguagePoints;
+
 import java.io.*;
 
 class MySeClass implements Serializable{
@@ -77,5 +79,21 @@ public class SerializableTest {
         } catch (Exception e) {
             System.out.println("Exception during deserialization: " + e);
         }
+    }
+}
+@EfLanguagePoints
+class ElvisSingleton{
+    @EfLanguagePoints("另外一点，静态成员变量不会被序列化。 在反序列化中当前的jvm会从类对象中" +
+            "获取这个值。序列化只会对堆内存区域进行")
+    private static final ElvisSingleton SINGLETON = new ElvisSingleton();
+
+    public static ElvisSingleton getSingleton(){
+        return SINGLETON;
+    }
+
+    @EfLanguagePoints("readResolve 方法  防止单例序列化反序列化产生新的对象" +
+            "主要是防止懒加载过程中使用的非静态变量引用")
+    private Object readResolve(){
+        return SINGLETON;
     }
 }
