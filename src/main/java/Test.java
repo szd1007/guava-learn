@@ -28,9 +28,11 @@ public class Test {
 //    }
 
     public static void main(String[] args) {
-        long one = 1000;
-        long fee = new BigDecimal(one).multiply(new BigDecimal(5)).divide(new BigDecimal(100), 0, BigDecimal.ROUND_HALF_UP)
-                                                 .longValue();
-        System.out.println(fee);
+        Object o =null;
+        System.out.println(o instanceof  String);
+//        long one = 1000;
+//        long fee = new BigDecimal(one).multiply(new BigDecimal(5)).divide(new BigDecimal(100), 0, BigDecimal.ROUND_HALF_UP)
+//                                                 .longValue();
+//        System.out.println(fee);
     }
 }

@@ -8,3 +8,6 @@
 7. 消除过期的对象引用[特别是对象自己管理内存的时候]
 8. 避免使用终结方法(finalizer)和清除方法
 9. try-with-resources 优先于try-finally[AutoClosable 接口]
+
+#chp3 对于所有对象都通用的方法
+10. 覆盖equals时要遵守通用约定[对称性 传递性 一致性]

@@ -2,6 +2,8 @@ package thecompletereferenc.datatype;
 
 public class intUtil {
     public static void main(String[] args) {
+        Double.compare(2, 3);
+        Float.compare(1f,3f);
         //int 掩码形式
         int binary = 0b1010;
         int x = 15;
