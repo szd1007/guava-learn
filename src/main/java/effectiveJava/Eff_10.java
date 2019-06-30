@@ -6,8 +6,8 @@ package effectiveJava;
  * google autoValue框架
  */
 public class Eff_10 {
-    public static final class PhoneNumber {
-        private final short areaCode, prefix, lineNum;
+    public static  class PhoneNumber {
+        protected final short areaCode, prefix, lineNum;
 
         public PhoneNumber(int areaCode, int prefix, int lineNum){
             this.areaCode = rangeCheck(areaCode, 999, "area code");
