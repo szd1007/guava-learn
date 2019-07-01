@@ -12,3 +12,6 @@
 #chp3 对于所有对象都通用的方法
 10. 覆盖equals时要遵守通用约定[对称性 传递性 一致性]
 11. 覆盖equals时总要覆盖hashCode方法
+12. 始终要覆盖toString 方法
+13. 谨慎的覆盖clone[CloneTest]
+14. 考虑实现comparable接口[treeSet HashSet]

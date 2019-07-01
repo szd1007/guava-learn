@@ -1,5 +1,7 @@
 package thecompletereferenc;
 
+import effectiveJava.EfLanguagePoints;
+
 /**
  * when clone is made, constructor for the obj being cloned is not called.
  * As implemented by obj,
@@ -11,21 +13,27 @@ package thecompletereferenc;
  * it is easy to think that a class is safe for cloning when it actually is not
  * 很容易能想像一个类是clone安全的，如果这个类就不支持clone
  */
+@EfLanguagePoints("复制功能最好由构造器或者工厂提供，唯一例外时数组【存储基本数据类型】")
 public class CloneTest implements Cloneable {
     int a;
     double b;
     Long ccc;
+    @EfLanguagePoints("clone 是浅拷贝， 引用要递归调用clone方法")
+    int[] ref;
 
     /**
      * clone 方式1  ，protect方法 类或内部类使用
      */
+    @EfLanguagePoints("共有方法要省略异常抛出，或者变成运行时异常")
     CloneTest cTest() {
         try {
             //call clone in object.
-            return (CloneTest) super.clone();
+            CloneTest cloneTest = (CloneTest) super.clone();
+            cloneTest.ref = ref.clone();
+            return cloneTest;
         } catch (CloneNotSupportedException e) {
             System.out.println("Cloning not allowed.");
-            return this;
+            throw new RuntimeException("clone error");
         }
     }
 
@@ -36,7 +44,7 @@ public class CloneTest implements Cloneable {
      * @return
      */
     @Override
-    protected Object clone()  {
+    public Object clone()  {
         try {
             return super.clone();
         } catch (CloneNotSupportedException e) {
@@ -53,6 +61,7 @@ public class CloneTest implements Cloneable {
 
 class CloneChild extends CloneTest {
     int c;
+
 
 }
 class CloneDemo {

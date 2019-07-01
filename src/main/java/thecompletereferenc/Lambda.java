@@ -1,5 +1,7 @@
 package thecompletereferenc;
 
+import effectiveJava.EfLanguagePoints;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -384,8 +386,9 @@ class MyIntClass {
 class CompareMethodRed {
 
     //定义一个兼容comparator<T> 接口的方法
+    @EfLanguagePoints("所有的基本类型都已经有了对应的compare方法，直接使用")
     static int compareMC(MyIntClass a, MyIntClass b) {
-        return a.getVal() - b.getVal();
+        return Integer.compare(a.getVal(),b.getVal());
     }
 
     public static void main(String[] args) {
