@@ -15,3 +15,8 @@
 12. 始终要覆盖toString 方法
 13. 谨慎的覆盖clone[CloneTest]
 14. 考虑实现comparable接口[treeSet HashSet]
+
+#chp4 类和接口
+15. 使类和成员的可访问性最小化[对象封装 | 迪米特原则]
+16. 公共类不要暴露可变的公共域[]
+17. 使可变性最小化[final化域 | final类防止继承 | 移出set方法 | private域  ]
