@@ -22,4 +22,4 @@
 17. 使可变性最小化[final化域 | final类防止继承 | 移出set方法 | private域  ]
 18. 复合优先于继承[包装类 ForwardingSet GUAVA]
 19. 设计继承要有详细的文档，否则就要禁止继承
-20. 接口优于抽象类[接口提供抽象方法，skeletal impl 抽象骨架]
+20. 接口优于抽象类[接口提供抽象方法，skeletal impl 抽象骨架| template method]
