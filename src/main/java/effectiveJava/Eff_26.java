@@ -30,8 +30,15 @@ public class Eff_26<T extends Eff_26.Parent> {
        // e1.test2(new Parent());
 
         Set<Integer> set1 = new HashSet<>();
-        Set<Integer> set2 = new HashSet<>();
+        Set<Person> set2 = new HashSet<>();
         elementsInCommon(set1,set2);
+
+        Child child = new Child();
+        Parent parent = new Parent();
+
+        //test3(parent); error
+        test3(child);
+
     }
     @EfLanguagePoints("参数使用了原生类型，导致类型判断失效，程序编译仅仅是抛出unchecekd 异常，")
     private static void unsafeAdd(List objects, Long lo) {
@@ -62,6 +69,9 @@ public class Eff_26<T extends Eff_26.Parent> {
         list.add(obj);
     }
 
+    public static <T extends Child> void test3(T tt){
+
+    }
     static class Parent{}
     static class Child extends Parent{}
 }

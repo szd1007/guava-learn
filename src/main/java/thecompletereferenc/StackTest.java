@@ -3,12 +3,12 @@ package thecompletereferenc;
 //Improved Stack class that uses the length array member.
 public class StackTest {
     static class Stack {
-        private int stock[];
+        private Integer stock[];
         private int tos;
 
         //allocate and initialize stack
         public Stack(int size){
-            stock = new int[size];
+            stock = new Integer[size];
             tos = -1;
         }
 
@@ -24,7 +24,9 @@ public class StackTest {
                 System.out.println("stack underflow.");
                 return 0 ;
             }else {
-                return stock[tos--];
+                int element = stock[tos--];
+                stock[tos+1]=null;//帮助gc
+                return element;
             }
         }
     }
