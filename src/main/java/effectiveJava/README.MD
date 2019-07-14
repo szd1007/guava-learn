@@ -41,10 +41,16 @@
 
 #chp6 枚举和注解
 34. 用enum代替int常量
-35. 用实力域代替序数[永远不要使用ordinal 方法
+35. 用实力域代替序数[永远不要使用ordinal 方法]
 36. 用EnumSet代替位域[EnumSet]
 37. 用EnumMap代替序数索引[性能做了优化，与使用ordinal方式一样的性能]
 38. 用接口模拟可扩展的枚举[]
 39. 注解优先于命名模式[一般情况下，使用java平台提供的官方注解足矣]
 40. 坚持使用Override注解
 41. 用标记接口定义类型[marker interface 不包含方法声明的接口]
+
+#chp7 Lambda 和 Stream
+42. Lambda优先于匿名类[一行最理想，三行最大极限]
+43. 方法引用优先于Lambda[方法引用更简洁时就用方法引用]
+44. 坚持使用标准的函数接口[自己编写时注意FunctionalInterface 注解使用]
+45. 谨慎使用Stream
