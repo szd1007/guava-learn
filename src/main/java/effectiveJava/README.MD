@@ -57,3 +57,6 @@
 46. 优先选择Stream中没有副作用的函数[stream 中 foreach 应该只用来打印结果，而不是引入计算(用collect 代替)]
 47. Stream 要优先使用Collection作为Stream返回类型[]
 48. 谨慎使用stream并行
+
+#chp8 方法
+49. 检查参数的有效性[Objects类 特别是构造函数]
