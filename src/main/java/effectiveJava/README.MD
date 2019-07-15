@@ -53,4 +53,7 @@
 42. Lambda优先于匿名类[一行最理想，三行最大极限]
 43. 方法引用优先于Lambda[方法引用更简洁时就用方法引用]
 44. 坚持使用标准的函数接口[自己编写时注意FunctionalInterface 注解使用]
-45. 谨慎使用Stream
+45. 谨慎使用Stream[滥用stream会使代码更难以维护]
+46. 优先选择Stream中没有副作用的函数[stream 中 foreach 应该只用来打印结果，而不是引入计算(用collect 代替)]
+47. Stream 要优先使用Collection作为Stream返回类型[]
+48. 谨慎使用stream并行
