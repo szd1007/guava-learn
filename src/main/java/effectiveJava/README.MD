@@ -98,3 +98,5 @@
 80. executor task stream 优于线程
 81. 并发工具优于wait和notify
 82. 线程安全性的文档化
+83. 慎用延迟初始化[lazy initialization]
+84. 不要依赖于线程调度器
