@@ -1,5 +1,7 @@
 package designPattern.chp3_createional_patterns;
 
+import org.omg.CORBA.PUBLIC_MEMBER;
+
 /**
  * 单例模式
  *  1 意图 保证一个类仅有一个实例，并提供一个访问它的全局访问点。
@@ -46,6 +48,15 @@ public class aSingleton35 {
         return null;
     }
 
+}
+
+/**
+ * 枚举单例
+ */
+enum AenumSingleton{
+    INSTANCE;
+
+    public void doSomeThing(){}
 }
 
 
