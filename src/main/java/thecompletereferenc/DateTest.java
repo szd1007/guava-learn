@@ -3,11 +3,14 @@ package thecompletereferenc;
 import org.junit.Test;
 import util.TimeUtil;
 
+import javax.annotation.processing.SupportedAnnotationTypes;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
+import java.time.temporal.TemporalAdjuster;
+import java.time.temporal.TemporalAdjusters;
 import java.util.*;
 
 /**
@@ -201,6 +204,19 @@ public class DateTest {
         System.out.println(duration.toMillis());
 
     }
+
+    @Test
+    public void normalUse(){
+        LocalDateTime localDateTime  = LocalDateTime.now();
+        //本月最后一天
+        LocalDateTime lastDay = localDateTime.with(TemporalAdjusters.lastDayOfMonth());
+        System.out.println(lastDay);
+
+        System.out.println(localDateTime.with(TemporalAdjusters.firstDayOfMonth()));
+        System.out.println("本月第2天");
+        System.out.println(localDateTime.withDayOfMonth(2));
+    }
+
 
 
 }
