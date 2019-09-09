@@ -1,7 +1,7 @@
 package org.adamx.quartz.quartzTest.entity;
 
 /**
- * @author shangzhidong@zhuanzhuan.com
+ * @author szd1007@github.com
  * @date 2018-12-20 21:52
  */
 public class User {

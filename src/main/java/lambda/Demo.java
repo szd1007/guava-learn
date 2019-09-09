@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * @author shangzhidong@zhuanzhuan.com
+ * @author szd1007@github.com
  * @date 2018-07-03 14:30
  */
 public class Demo {

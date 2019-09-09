@@ -11,7 +11,7 @@ package refactoring.chp10_makingMethodCallsSimpler;
  *------------------------------------------------------------------------------------
  * getContract(Date date)
  *
- * @author shangzhidong@zhuanzhuan.com
+ * @author szd1007@github.com
  * @date 2019-03-25 20:22
  */
 public class RfAddParameter {

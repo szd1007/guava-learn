@@ -16,7 +16,7 @@ package designPattern.chp5_behavior_patterns;
  *   command52 命令可使用备忘录来为可撤销的操作维护状态
  *   iterator54 如前所述备忘录可用于迭代
  *
- * @author shangzhidong@zhuanzhuan.com
+ * @author szd1007@github.com
  * @date 2019-06-15 17:22
  */
 public class aMemento56 {

@@ -4,7 +4,7 @@ import org.quartz.*;
 import org.quartz.impl.StdSchedulerFactory;
 
 /**
- * @author shangzhidong@zhuanzhuan.com
+ * @author szd1007@github.com
  * @date 2018-08-08 21:19
  */
 public class Scheduler {

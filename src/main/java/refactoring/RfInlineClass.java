@@ -13,7 +13,7 @@ package refactoring;
  *  3 使用 {@link RfMoveMethod} 和{@link RfMoveField} 把source的所有特性都移到 目标类来
  *  4
  *
- * @author shangzhidong@zhuanzhuan.com
+ * @author szd1007@github.com
  * @date 2019-02-27 09:28
  */
 public class RfInlineClass {

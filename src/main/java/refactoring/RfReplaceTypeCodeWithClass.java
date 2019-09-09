@@ -10,7 +10,7 @@ package refactoring;
  * 1. 为类型码创建一个类（枚举）
  * 2. 使用新的枚举替换原来的
  * 3.
- * @author shangzhidong@zhuanzhuan.com
+ * @author szd1007@github.com
  * @date 2019-03-08 09:37
  */
 public class RfReplaceTypeCodeWithClass {

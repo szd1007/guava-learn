@@ -4,7 +4,7 @@ import junit.framework.Assert;
 import org.junit.Test;
 
 /**
- * @author shangzhidong@zhuanzhuan.com
+ * @author szd1007@github.com
  * @date 2019-01-17 10:03
  */
 public class Chp1RefactorTest {

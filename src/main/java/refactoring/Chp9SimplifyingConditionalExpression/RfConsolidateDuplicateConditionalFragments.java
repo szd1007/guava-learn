@@ -5,7 +5,7 @@ package refactoring.Chp9SimplifyingConditionalExpression;
  *    要把分支代码抽离出去
  *
  *
- * @author shangzhidong@zhuanzhuan.com
+ * @author szd1007@github.com
  * @date 2019-03-13 09:32
  */
 public class RfConsolidateDuplicateConditionalFragments {

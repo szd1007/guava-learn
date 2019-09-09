@@ -1,7 +1,7 @@
 package designPattern.chp3_createional_patterns;
 
 /**生成器模式
- * @author shangzhidong@zhuanzhuan.com
+ * @author szd1007@github.com
  * @date 2019-05-17 13:24
  *
  * 1 意图： 将一个复杂对象的构建与它的表示分离，使得同样的构建过程可以创建不同的表示。

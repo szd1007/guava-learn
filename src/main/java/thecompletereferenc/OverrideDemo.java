@@ -14,7 +14,7 @@ import effectiveJava.EfLanguagePoints;
 
  （5）注意一种特殊情况：如果超类的方法版本中声明了检查异常，但重写的子类方法中没有声明，这时如果使用多态的方式进行调用，那么编译器认为你调用的是声明了异常的方法。
 
- * @author shangzhidong@zhuanzhuan.com
+ * @author szd1007@github.com
  * @date 2019-06-21 14:21
  */
 public class OverrideDemo {

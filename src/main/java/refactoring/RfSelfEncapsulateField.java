@@ -15,7 +15,7 @@ package refactoring;
  *
  *
  *
- * @author shangzhidong@zhuanzhuan.com
+ * @author szd1007@github.com
  * @date 2019-03-01 09:45
  */
 public class RfSelfEncapsulateField {

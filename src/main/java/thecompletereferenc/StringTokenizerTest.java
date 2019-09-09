@@ -3,7 +3,7 @@ package thecompletereferenc;
 import java.util.StringTokenizer;
 
 /**
- * @author shangzhidong@zhuanzhuan.com
+ * @author szd1007@github.com
  * @date 2018-12-12 13:25
  */
 public class StringTokenizerTest {

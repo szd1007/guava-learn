@@ -30,7 +30,7 @@ package refactoring;
  *
  *
  *
- * @author shangzhidong@zhuanzhuan.com
+ * @author szd1007@github.com
  * @date 2019-02-22 18:12
  */
 public class RfRemoveAssignmentsToParameters {

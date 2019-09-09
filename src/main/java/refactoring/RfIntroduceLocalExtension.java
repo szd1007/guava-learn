@@ -14,7 +14,7 @@ import java.util.Date;
  *  4 将原来写的ForeignMethod 移植到extension中来  {@link RfIntroduceForeignMethod}
  *
  *
- * @author shangzhidong@zhuanzhuan.com
+ * @author szd1007@github.com
  * @date 2019-02-28 09:38
  */
 public class RfIntroduceLocalExtension {

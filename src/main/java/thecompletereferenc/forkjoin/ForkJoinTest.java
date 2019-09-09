@@ -11,7 +11,7 @@ import java.util.concurrent.RecursiveAction;
  * 1 不能使用线程同步（synchronized， semaphore等）
  * 2 避免由于io带来的线程阻塞（不适合io多的场景）。专注于计算，不依赖外部阻塞（io） 或者同步
  *
- * @author shangzhidong@zhuanzhuan.com
+ * @author szd1007@github.com
  * @date 2019-01-02 17:10
  */
 public class ForkJoinTest {

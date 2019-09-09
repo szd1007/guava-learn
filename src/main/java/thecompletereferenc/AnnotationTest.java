@@ -4,7 +4,7 @@ import java.lang.annotation.*;
 import java.lang.reflect.Method;
 
 /**
- * @author shangzhidong@zhuanzhuan.com
+ * @author szd1007@github.com
  * @date 2018-11-01 13:14
  */
 public class AnnotationTest {

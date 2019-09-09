@@ -26,7 +26,7 @@ package refactoring;
  *  \\\\\\\\\\
  *  ENGINEER 和 SALESMAN 各自抽出类来封装各自的行为。
  *
- * @author shangzhidong@zhuanzhuan.com
+ * @author szd1007@github.com
  * @date 2019-03-08 11:21
  */
 public class RfReplaceTypeCodeWithSubclasses {

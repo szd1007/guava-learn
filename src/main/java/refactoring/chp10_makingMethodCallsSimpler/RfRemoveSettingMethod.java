@@ -6,7 +6,7 @@ package refactoring.chp10_makingMethodCallsSimpler;
  * 【fastjson 依赖 get set方法设置值，这个没法去掉】
  *
  * 如果set方法里有额外的逻辑。那就重命名这个set方法，表明其只用一次的含义（initId）
- * @author shangzhidong@zhuanzhuan.com
+ * @author szd1007@github.com
  * @date 2019-03-28 09:48
  */
 public class RfRemoveSettingMethod {

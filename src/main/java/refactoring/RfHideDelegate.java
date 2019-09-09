@@ -9,7 +9,7 @@ package refactoring;
  *  2 修改原来直接掉用代理的代码到server上
  *  3 如果没有client需要访问代理， 移除这个server上的代理
  *
- * @author shangzhidong@zhuanzhuan.com
+ * @author szd1007@github.com
  * @date 2019-02-27 09:40
  *
  */

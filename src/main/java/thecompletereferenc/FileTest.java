@@ -5,7 +5,7 @@ import org.junit.Test;
 import java.io.File;
 
 /**
- * @author shangzhidong@zhuanzhuan.com
+ * @author szd1007@github.com
  * @date 2018-12-18 09:55
  */
 public class FileTest {

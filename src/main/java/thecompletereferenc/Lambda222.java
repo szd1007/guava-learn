@@ -3,7 +3,7 @@ package thecompletereferenc;
 import java.util.function.Function;
 
 /**
- * @author shangzhidong@zhuanzhuan.com
+ * @author szd1007@github.com
  * @date 2018-11-14 13:36
  */
 public class Lambda222 {

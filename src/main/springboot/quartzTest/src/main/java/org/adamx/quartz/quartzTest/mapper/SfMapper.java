@@ -7,7 +7,7 @@ import org.adamx.quartz.quartzTest.entity.SfExpressInfo;
 //import org.apache.ibatis.annotations.Select;
 
 /**
- * @author shangzhidong@zhuanzhuan.com
+ * @author szd1007@github.com
  * @date 2018-12-10 15:24
  */
 //@Mapper

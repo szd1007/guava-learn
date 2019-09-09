@@ -14,7 +14,7 @@ import java.util.List;
  * A good rule to follow is to say that any method that returns a value should not
  * have observable side effects.
  *
- * @author shangzhidong@zhuanzhuan.com
+ * @author szd1007@github.com
  * @date 2019-03-25 20:46
  */
 @SuppressWarnings("all")

@@ -7,7 +7,7 @@ import java.util.concurrent.RecursiveAction;
  * A simple program that lets you experiment with the effects of
  * changing the threshold and parallelism of a ForkJoinTask.
  *
- * @author shangzhidong@zhuanzhuan.com
+ * @author szd1007@github.com
  * @date 2019-01-03 13:21
  */
 public class ForkJoinChangingThresholdAndParallel {

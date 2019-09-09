@@ -1,7 +1,7 @@
 /**
  * 通过接口来进行类的分类，同时使用instanceOf进行分类处理
  * 指明这个对象是否是这个特定类或者是它的子类的一个实例
- * @author shangzhidong@zhuanzhuan.com
+ * @author szd1007@github.com
  * @date 2018-05-17 13:28
  */
 public class InstanceOf {

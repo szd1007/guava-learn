@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * 23.7 Accessing Application Arguments
  * 读取run时提交的配置 args
- * @author shangzhidong@zhuanzhuan.com
+ * @author szd1007@github.com
  * @date 2018-11-14 20:43
  */
 @Component

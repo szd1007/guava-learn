@@ -8,7 +8,7 @@ import java.util.Optional;
 import java.util.OptionalInt;
 
 /**
- * @author shangzhidong@zhuanzhuan.com
+ * @author szd1007@github.com
  * @date 2018-12-13 09:23
  */
 public class OptionalTest {

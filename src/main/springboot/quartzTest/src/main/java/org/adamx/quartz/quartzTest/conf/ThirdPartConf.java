@@ -5,7 +5,7 @@ import java.net.InetAddress;
 
 /**
  * 当想要初始化第三方类的时候，可以使用@Bean
- * @author shangzhidong@zhuanzhuan.com
+ * @author szd1007@github.com
  * @date 2018-12-11 21:10
  */
 public class ThirdPartConf {

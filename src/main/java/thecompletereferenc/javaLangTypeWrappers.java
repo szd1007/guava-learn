@@ -4,7 +4,7 @@ import org.junit.Test;
 
 /**
  * 类型包装器
- * @author shangzhidong@zhuanzhuan.com
+ * @author szd1007@github.com
  * @date 2018-11-21 13:32
  */
 public class javaLangTypeWrappers {

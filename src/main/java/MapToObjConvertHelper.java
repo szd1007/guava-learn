@@ -12,7 +12,7 @@ import java.lang.reflect.Type;
 
 /**
  * 将Map对象转换成具体对象
- * @author shangzhidong@zhuanzhuan.com
+ * @author szd1007@github.com
  */
 public class MapToObjConvertHelper {
 

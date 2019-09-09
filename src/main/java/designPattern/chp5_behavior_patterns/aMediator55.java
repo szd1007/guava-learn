@@ -18,7 +18,7 @@ package designPattern.chp5_behavior_patterns;
  *
  *
  *
- * @author shangzhidong@zhuanzhuan.com
+ * @author szd1007@github.com
  * @date 2019-06-15 16:54
  */
 public class aMediator55 {

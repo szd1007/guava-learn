@@ -10,7 +10,7 @@ import java.util.List;
  * //todo 暂时未生效
  * #自定义文件加载 https://blog.csdn.net/luckyrocks/article/details/79248016
 
- * @author shangzhidong@zhuanzhuan.com
+ * @author szd1007@github.com
  * @date 2018-12-10 12:19
  */
 @ConfigurationProperties("xx")

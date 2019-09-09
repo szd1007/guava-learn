@@ -1,7 +1,7 @@
 package thecompletereferenc;
 
 /**
- * @author shangzhidong@zhuanzhuan.com
+ * @author szd1007@github.com
  * @date 2018-11-01 10:00
  */
 public class AutoBox {

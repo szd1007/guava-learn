@@ -18,7 +18,7 @@ package refactoring;
  * }
  * static final double GRAVITATIONAL_CONSTANT = 9.81;
  *
- * @author shangzhidong@zhuanzhuan.com
+ * @author szd1007@github.com
  * @date 2019-03-06 09:55
  */
 public class RfPeplaceMagicNumberWithSymbolicConstant {

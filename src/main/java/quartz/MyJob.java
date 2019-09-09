@@ -6,7 +6,7 @@ import org.quartz.JobExecutionException;
 import util.TimeUtil;
 
 /**
- * @author shangzhidong@zhuanzhuan.com
+ * @author szd1007@github.com
  * @date 2018-08-08 21:17
  */
 public class MyJob implements Job{

@@ -25,7 +25,7 @@ package designPattern.chp4_structural_patterns;
  *     通常，最好用flyweight实现state58和strategy59
  *
  *
- * @author shangzhidong@zhuanzhuan.com
+ * @author szd1007@github.com
  * @date 2019-05-30 11:19
  */
 public class aFlyweight46 {

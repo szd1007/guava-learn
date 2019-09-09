@@ -34,7 +34,7 @@ import static refactoring.RfReplaceTempWithQuery.quantity;
  *      //do something
  *  }
  *
- * @author shangzhidong@zhuanzhuan.com
+ * @author szd1007@github.com
  * @date 2019-02-22 11:49
  */
 @SuppressWarnings("all")

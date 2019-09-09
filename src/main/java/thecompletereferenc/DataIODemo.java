@@ -4,7 +4,7 @@ import java.io.*;
 
 /**
  * 节约存储， 减少IO
- * @author shangzhidong@zhuanzhuan.com
+ * @author szd1007@github.com
  * @date 2018-12-21 20:27
  */
 public class DataIODemo {

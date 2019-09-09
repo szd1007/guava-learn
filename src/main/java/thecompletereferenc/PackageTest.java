@@ -4,7 +4,7 @@ import org.junit.Test;
 
 /**
  * 包访问权限
- * @author shangzhidong@zhuanzhuan.com
+ * @author szd1007@github.com
  * @date 2018-10-22 19:06
  */
 public class PackageTest {

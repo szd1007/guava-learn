@@ -14,7 +14,7 @@ import java.util.List;
  *  singleton35 changeManager 可以使用该模式保证全局唯一
  *
  *
- * @author shangzhidong@zhuanzhuan.com
+ * @author szd1007@github.com
  * @date 2019-06-18 10:43
  */
 public class aObersver57 {

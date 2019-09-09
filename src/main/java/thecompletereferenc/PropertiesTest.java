@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.Properties;
 
 /**
- * @author shangzhidong@zhuanzhuan.com
+ * @author szd1007@github.com
  * @date 2018-12-12 11:47
  */
 public class PropertiesTest {

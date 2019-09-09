@@ -5,7 +5,7 @@ import com.google.common.collect.Lists;
 import java.io.ObjectStreamConstants;
 
 /**
- * @author shangzhidong@zhuanzhuan.com
+ * @author szd1007@github.com
  * @date 2018-11-08 13:29
  */
 public class GenericTest implements Runnable{

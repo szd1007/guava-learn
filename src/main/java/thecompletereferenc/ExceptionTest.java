@@ -1,7 +1,7 @@
 package thecompletereferenc;
 
 /**
- * @author shangzhidong@zhuanzhuan.com
+ * @author szd1007@github.com
  * @date 2018-10-24 13:35
  *
  *    Throwable

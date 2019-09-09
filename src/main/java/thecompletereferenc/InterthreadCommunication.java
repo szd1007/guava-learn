@@ -1,7 +1,7 @@
 package thecompletereferenc;
 
 /**
- * @author shangzhidong@zhuanzhuan.com
+ * @author szd1007@github.com
  * @date 2018-10-30 09:23
  */
 public class InterthreadCommunication {

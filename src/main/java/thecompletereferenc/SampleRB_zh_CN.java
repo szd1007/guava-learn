@@ -4,7 +4,7 @@ import java.util.ListResourceBundle;
 
 /**
  * resourceBundle 测试
- * @author shangzhidong@zhuanzhuan.com
+ * @author szd1007@github.com
  * @date 2018-12-17 21:04
  */
 public class SampleRB_zh_CN extends ListResourceBundle {

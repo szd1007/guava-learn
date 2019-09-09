@@ -8,7 +8,7 @@ import java.util.concurrent.locks.LockSupport;
  * 底层hotspot实现在linux下是mutex互斥量
  *
  * Reentranlock 响应中断实现的底层机制是因为  {@link LockSupport#park()}
- * @author shangzhidong@zhuanzhuan.com
+ * @author szd1007@github.com
  * @date 2018-06-14 12:05
  */
 public class LockSupportTest {

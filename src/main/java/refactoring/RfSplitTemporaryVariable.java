@@ -21,7 +21,7 @@ package refactoring;
  * sout(area)
  * ************************************
  *
- * @author shangzhidong@zhuanzhuan.com
+ * @author szd1007@github.com
  * @date 2019-02-22 15:01
  */
 @SuppressWarnings("all")

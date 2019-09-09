@@ -10,7 +10,7 @@ import java.util.Collection;
  *
  *
  *{@link RfChangeValueToReference}
- * @author shangzhidong@zhuanzhuan.com
+ * @author szd1007@github.com
  * @date 2019-03-01 13:12
  */
 public class RfReplaceDataValueWithObject {

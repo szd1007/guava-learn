@@ -21,7 +21,7 @@ package refactoring;
  *
  *  6. 修改observer的 update方法，使其将domain field的data拷贝到GUI control中
  *
- * @author shangzhidong@zhuanzhuan.com
+ * @author szd1007@github.com
  * @date 2019-03-04 09:47
  */
 public class RfDuplicateObservedData {

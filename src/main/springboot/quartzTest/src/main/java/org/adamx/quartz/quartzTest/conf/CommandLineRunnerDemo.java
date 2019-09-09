@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
  * implement the org.springframework.core.Ordered interface or
  * use the org.springframework.core.annotation.Order annotation.
  *
- * @author shangzhidong@zhuanzhuan.com
+ * @author szd1007@github.com
  * @date 2018-11-19 20:22
  */
 @Component

@@ -8,7 +8,7 @@ import java.util.*;
 import java.util.function.Consumer;
 
 /**
- * @author shangzhidong@zhuanzhuan.com
+ * @author szd1007@github.com
  * @date 2018-12-04 09:39
  */
 public class CollectionTest {

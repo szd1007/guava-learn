@@ -8,7 +8,7 @@ package refactoring.Chp9SimplifyingConditionalExpression;
  * 2. 使用逻辑运算符将这些判断条件整合到一起
  * 3. extract method
  *
- * @author shangzhidong@zhuanzhuan.com
+ * @author szd1007@github.com
  * @date 2019-03-12 17:46
  */
 public class RfConsolidateConditionalExpression {

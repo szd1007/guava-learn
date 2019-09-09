@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.nio.file.*;
 
 /**
- * @author shangzhidong@zhuanzhuan.com
+ * @author szd1007@github.com
  * @date 2018-12-26 09:51
  */
 public class NIOCopyFile {

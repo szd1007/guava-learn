@@ -13,7 +13,7 @@ import java.util.Map;
 
 /**
  * 模板生成类，类似 StringTemplate
- * @author shangzhidong@zhuanzhuan.com
+ * @author szd1007@github.com
  * @date 2018-08-29 15:04
  */
 public class Freemaker {

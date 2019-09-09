@@ -22,7 +22,7 @@ import java.util.Objects;
  * ------------------------------------------------------------
  * NullCustomer.getPlan();
  *
- * @author shangzhidong@zhuanzhuan.com
+ * @author szd1007@github.com
  * @date 2019-03-15 09:16
  */
 @SuppressWarnings("all")

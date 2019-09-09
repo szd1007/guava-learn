@@ -3,7 +3,7 @@ package thecompletereferenc;
 /**
  * an example of deadlock
  *
- * @author shangzhidong@zhuanzhuan.com
+ * @author szd1007@github.com
  * @date 2018-10-30 09:49
  */
 public class DeadLock implements Runnable{

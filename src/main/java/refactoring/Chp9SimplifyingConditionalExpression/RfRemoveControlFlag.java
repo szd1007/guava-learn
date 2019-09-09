@@ -3,7 +3,7 @@ package refactoring.Chp9SimplifyingConditionalExpression;
 /**
  * 将controlFlag 用break continue 或者  return 替代
  *
- * @author shangzhidong@zhuanzhuan.com
+ * @author szd1007@github.com
  * @date 2019-03-13 13:14
  */
 public class RfRemoveControlFlag {

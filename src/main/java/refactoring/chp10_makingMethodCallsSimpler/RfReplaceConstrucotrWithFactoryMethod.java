@@ -15,7 +15,7 @@ package refactoring.chp10_makingMethodCallsSimpler;
  *     return new Employee(type);
  * }
  *
- * @author shangzhidong@zhuanzhuan.com
+ * @author szd1007@github.com
  * @date 2019-03-28 13:32
  *
  * 参考代码

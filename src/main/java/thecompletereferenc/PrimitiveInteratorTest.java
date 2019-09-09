@@ -5,7 +5,7 @@ import java.util.PrimitiveIterator;
 import java.util.stream.IntStream;
 
 /**
- * @author shangzhidong@zhuanzhuan.com
+ * @author szd1007@github.com
  * @date 2018-12-03 13:22
  */
 public class PrimitiveInteratorTest {

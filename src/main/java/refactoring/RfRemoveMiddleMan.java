@@ -9,7 +9,7 @@ package refactoring;
  * 2 移除中间代理方法
  * Refactoring means you never have to see you're sorry-you just fix it.
  *
- * @author shangzhidong@zhuanzhuan.com
+ * @author szd1007@github.com
  * @date 2019-02-27 13:19
  */
 public class RfRemoveMiddleMan {

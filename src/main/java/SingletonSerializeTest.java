@@ -1,4 +1,5 @@
 import effectiveJava.EfLanguagePoints;
+import thecompletereferenc.DateTest;
 
 import java.io.*;
 import java.rmi.server.ExportException;
@@ -6,8 +7,8 @@ import java.rmi.server.ExportException;
 /**
  * 单例模式序列化问题
  */
-@EfLanguagePoints("序列化机制中，类内部成员变量如果是静态变量不会初始化")
-@EfLanguagePoints("反序列化过程中，类内部静态基本类型会读jvm缓存， 如果是类对象，则重新生成[通过反射机制]")
+//@EfLanguagePoints("序列化机制中，类内部成员变量如果是静态变量不会初始化")
+//@EfLanguagePoints("反序列化过程中，类内部静态基本类型会读jvm缓存， 如果是类对象，则重新生成[通过反射机制]")
 @EfLanguagePoints("readResolve 解决单例序列化生成新对象的问题，同一个jvm内")
 public class SingletonSerializeTest {
     public static void main(String[] args) throws Exception {

@@ -4,7 +4,7 @@ package refactoring.chp10_makingMethodCallsSimpler;
  *一个对象调用一个方法，然后将结果作为参数传递给方法。 这个方法同样可以直接调用这个方法
  *
  * 如果一个方法能避免直接传递参数来获取值。那就应该尝试。 我们要避免长参数列表
- * @author shangzhidong@zhuanzhuan.com
+ * @author szd1007@github.com
  * @date 2019-03-27 13:31
  */
 public class ReplaceParameterWithMethod {

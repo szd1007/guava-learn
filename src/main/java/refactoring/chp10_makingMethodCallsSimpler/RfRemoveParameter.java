@@ -8,7 +8,7 @@ package refactoring.chp10_makingMethodCallsSimpler;
  * getContract()
  *
  *
- * @author shangzhidong@zhuanzhuan.com
+ * @author szd1007@github.com
  * @date 2019-03-25 20:34
  */
 public class RfRemoveParameter {

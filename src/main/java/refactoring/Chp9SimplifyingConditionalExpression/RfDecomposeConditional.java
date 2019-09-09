@@ -27,7 +27,7 @@ package refactoring.Chp9SimplifyingConditionalExpression;
  *     return quantity * summerRate;
  *}
  *
- * @author shangzhidong@zhuanzhuan.com
+ * @author szd1007@github.com
  * @date 2019-03-11 17:11
  */
 public class RfDecomposeConditional {

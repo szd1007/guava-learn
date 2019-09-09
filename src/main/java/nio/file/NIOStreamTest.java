@@ -10,7 +10,7 @@ import java.nio.file.Paths;
  * 使用path操作文件
  * 以Stream的方式使用nio.2
  *
- * @author shangzhidong@zhuanzhuan.com
+ * @author szd1007@github.com
  * @date 2018-12-26 10:09
  */
 public class NIOStreamTest {

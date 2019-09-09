@@ -3,7 +3,7 @@ package concurrency;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
- * @author shangzhidong@zhuanzhuan.com
+ * @author szd1007@github.com
  * @date 2019-05-31 15:49
  */
 public class LockDemo {

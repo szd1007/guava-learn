@@ -6,7 +6,7 @@ package refactoring.chp11_dealingwithgeneralization;
  *
  *
  *
- * @author shangzhidong@zhuanzhuan.com
+ * @author szd1007@github.com
  * @date 2019-04-02 13:11
  */
 public class PullUpField {

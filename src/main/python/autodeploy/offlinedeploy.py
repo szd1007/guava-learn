@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# author shangzhidong@zhuanzhuan.com
+# author szd1007@github.com
 # date 2018-7-31 11:49:09
 # version 0.1
 

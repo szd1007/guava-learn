@@ -3,7 +3,7 @@ package thecompletereferenc;
 import java.time.Duration;
 
 /**
- * @author shangzhidong@zhuanzhuan.com
+ * @author szd1007@github.com
  * @date 2019-01-16 16:55
  */
 public class DurationTest {
