@@ -13,7 +13,7 @@ import java.util.*;
 
 /**
  * scf rpc 方法调用redis缓存层
- * @author shanzhidong@zhuanzhuan.com 2018-3-27 17:07:37
+ * @author szd1007@github.com 2018-3-27 17:07:37
  *
  */
 public class RedisCache<T> implements InvocationHandler{
