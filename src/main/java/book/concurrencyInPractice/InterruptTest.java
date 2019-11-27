@@ -24,23 +24,37 @@ public class InterruptTest {
                     //queue阻塞任务相应中断，1 抛出异常 2 将中断标志位清空
                 }
             }
+            System.out.println("thread exit");
         }
 
 
     }
 
+    static class RunT2 extends Thread{
+        @Override
+        public void run() {
+            System.err.println("runT2 start");
+            while (true);
+//            System.err.println("runT2 exit");
+        }
+    }
+
     public static void main(String[] args) throws InterruptedException {
         RunnableTest test = new RunnableTest();
-
+        RunT2 runT2  = new RunT2();
+        runT2.start();
         test.start();
         Thread.sleep(2000);
         System.out.println("status before  "+test.isInterrupted());
-
+        System.err.println("t2 before " + runT2.isInterrupted());
         test.interrupt();
+        runT2.interrupt();
         System.out.println("status before11  "+test.isInterrupted());
-
+        System.err.println("t2 before11 " + runT2.isInterrupted());
         Thread.sleep(2000);
         System.out.println("status after  "+test.isInterrupted());
+        System.err.println("t2 after " + runT2.isInterrupted());
+
     }
 
 }
