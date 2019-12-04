@@ -1,6 +1,7 @@
 #!/usr/bin/python
 # -*- coding: UTF-8 -*-
 
+import clipboard
 import sys
 import pyperclip
 from util import *
@@ -12,5 +13,6 @@ if len >1:
 else:
     ts = pyperclip.paste()
 print 'using param ', ts
-   
+
 print_time(ts)
+    
