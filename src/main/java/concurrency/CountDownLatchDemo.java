@@ -19,7 +19,7 @@ public class CountDownLatchDemo {
             }
             System.out.println("Sub Thread stop ");
         }).start();
-        System.out.println("Main Thread waiting end ");
+        System.out.println("Main Thread waiting  ");
         cdl.await();
         System.out.println("Main Thread stop");
 

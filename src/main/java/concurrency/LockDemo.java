@@ -1,5 +1,7 @@
 package concurrency;
 
+import java.util.concurrent.locks.AbstractQueuedSynchronizer;
+import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
@@ -9,21 +11,20 @@ import java.util.concurrent.locks.ReentrantLock;
 public class LockDemo {
 
     private static ReentrantLock lock = new ReentrantLock();
+    static Condition condition = lock.newCondition();
     public static void main(String[] args) throws InterruptedException {
-        for (int i = 0; i < 5; i++) {
-            Thread.sleep(10);
-            Thread t = new Thread(() -> {
-                lock.lock();
-                try {
-                    Thread.sleep(1000000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                } finally {
-                    lock.unlock();
-                }
-
-            });
-            t.start();
+        lock.lock();
+        try {
+            condition.await();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        try {
+            Thread.sleep(1000000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } finally {
+            lock.unlock();
         }
         System.out.println("init done");
     }
