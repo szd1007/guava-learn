@@ -1,4 +1,9 @@
+import book.concurrencyInPractice.A;
+import freemarker.core.JSONOutputFormat;
+
+import javax.crypto.spec.PSource;
 import java.math.BigDecimal;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * Created by zm on 2017/11/25.
@@ -9,6 +14,7 @@ public class Test {
     static void f1(int a) {
         System.out.println(a);
     }
+
 //    public static void main(String[] args) {
 //
 ////        Object a = null;
@@ -28,6 +34,12 @@ public class Test {
 //    }
 
     public static void main(String[] args) {
+
+        AtomicInteger ai = new AtomicInteger(0);
+        System.out.println(ai.getAndIncrement());
+        System.out.println(ai);
+
+
         Object o =null;
         System.out.println(o instanceof  String);
 //        long one = 1000;

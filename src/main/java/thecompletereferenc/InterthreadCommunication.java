@@ -6,6 +6,14 @@ package thecompletereferenc;
  */
 public class InterthreadCommunication {
 
+    private String a ;
+    void test() throws InterruptedException {
+//        synchronized (a){
+//            wait();
+//        }
+        wait();
+        notify();
+    }
 }
 
 //参考ReentrantLock
