@@ -79,7 +79,7 @@ public class _27_MinimumDepthOfBinaryTree {
 
      */
 
-    @ICodePoints("二叉树层序遍历")
+//    @ICodePoints("二叉树层序遍历")
     @ICodePoints("https://leetcode-cn.com/problems/binary-tree-level-order-traversal/")
     public List<List<Integer>> levelOrder(TreeNode root) {
         LinkedList<TreeNode>queue = new LinkedList<>();
