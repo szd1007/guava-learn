@@ -80,6 +80,7 @@ public class _23_MergeKSortedList {
         }
         return lists[0];
     }
+    @ICodePoints("尾插法")
     public static ListNode mergeTwoList(ListNode a, ListNode b){
         ListNode dummy = new ListNode(-1);
         ListNode p = dummy;
