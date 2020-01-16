@@ -7,7 +7,8 @@ import java.util.HashMap;
  * 给定一个数组，查找两个数等于一个具体sum
    假定每个输出只有一个结果
 ===================================
- 方案1 二分查找
+ 方案1
+ 二分查找
  时间 nlogn  空间o1
  ===================================
  方案2   向内部靠拢方法
@@ -38,18 +39,18 @@ public class _2_twoSum_arraySorted {
     //二分查找
     private static int biSearch(int[] numbers, int target) {
 
-        int i =0,j=numbers.length-1,mid=-1;
-        while (i < j) {
-            mid = (i+j)/2;
+        int low =0,high=numbers.length-1,mid=-1;
+        while (low < high) {
+            mid = (low+high)/2;
             if (numbers[mid] > target) {
-                i = mid +1;
+                high = mid -1;
             }else if(numbers[mid]<target){
-                j = mid-1;
+                low = mid-1;
             }else {
                 return mid;
             }
         }
-        return (i==j && numbers[i]==target)? i:-1;
+        return (low==high && numbers[low]==target)? low:-1;
     }
 
 
