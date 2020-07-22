@@ -1,8 +1,13 @@
 import book.concurrencyInPractice.A;
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import freemarker.core.JSONOutputFormat;
 
 import javax.crypto.spec.PSource;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
@@ -35,16 +40,24 @@ public class Test {
 
     public static void main(String[] args) {
 
-        AtomicInteger ai = new AtomicInteger(0);
-        System.out.println(ai.getAndIncrement());
-        System.out.println(ai);
-
-
-        Object o =null;
-        System.out.println(o instanceof  String);
+        List<Integer> integers = new ArrayList<>();
+        Iterator iterator =integers.iterator();
+        while (iterator.hasNext()) {
+            iterator.remove();
+        }
+        System.out.println(integers);
+//
+//        AtomicInteger ai = new AtomicInteger(0);
+//        System.out.println(ai.getAndIncrement());
+//        System.out.println(ai);
+//
+//
+//        Object o =null;
+//        System.out.println(o instanceof  String);
 //        long one = 1000;
 //        long fee = new BigDecimal(one).multiply(new BigDecimal(5)).divide(new BigDecimal(100), 0, BigDecimal.ROUND_HALF_UP)
 //                                                 .longValue();
 //        System.out.println(fee);
+        System.out.println(String.valueOf(true));
     }
 }
