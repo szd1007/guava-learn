@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string></string>
+	<key>connections</key>
+	<dict>
+		<key>FDEF870C-BA82-42D8-BE3B-BB4A33CDE23C</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>FC194EBB-561B-4024-96FB-BC2CA80F4705</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string></string>
+	<key>description</key>
+	<string>Alfred's script filter object is extremely powerful, and gives you control over the results displayed in Alfred</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>timeFormat</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<false/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<false/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>escaping</key>
+				<integer>126</integer>
+				<key>keyword</key>
+				<string>j</string>
+				<key>queuedelaycustom</key>
+				<integer>1</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<false/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string>waiting....</string>
+				<key>script</key>
+				<string>import json, StringIO, gzip, alfred, urllib, urllib2,time
+def timestamp_to_date(time_stamp, format_string="%Y-%m-%d %H:%M:%S"):
+    time_array = time.localtime(time_stamp)
+    str_date = time.strftime(format_string, time_array)
+    return str_date
+
+
+def timestamp_to_timestamp10(time_stamp):
+    time_stamp = int(time_stamp * (10 ** (10 - len(str(time_stamp)))))
+    return time_stamp
+
+def print_time(timeStamp):
+    time_stamp = str(timeStamp).strip()
+    if time_stamp.isdigit() and len(time_stamp.strip()) == 13 and time_stamp.startswith("1"):
+        lon_t = long(time_stamp)
+        tt = timestamp_to_timestamp10(lon_t)
+        return timestamp_to_date(tt)
+    if time_stamp.isdigit() and len(time_stamp.strip()) == 10 and time_stamp.startswith("1"):
+        lon_t = long(time_stamp)
+        return timestamp_to_date(lon_t)
+    return 'unknown...'
+
+theQuery = u'{query}'
+ti = print_time(theQuery.strip('\t'))
+results = []
+item = alfred.Item({'uid': 1, 'arg': 222 },  ti, '%Y-%m-%d %H:%M:%S', ('flickr.png', {'type': 'png'}))
+results.append(item)
+xml = alfred.xml(results)
+alfred.write(xml)</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string>test.sh</string>
+				<key>subtext</key>
+				<string></string>
+				<key>title</key>
+				<string>😄😄😄😄😄😄😄😄😄</string>
+				<key>type</key>
+				<integer>3</integer>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>50B0CD10-4D52-4898-9C05-DD3A34A829C3</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>subtext</key>
+				<string></string>
+				<key>text</key>
+				<string></string>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>A5F86BD2-7D80-4E61-BD70-D32C547055E0</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>action</key>
+				<integer>0</integer>
+				<key>argument</key>
+				<integer>2</integer>
+				<key>argumenttext</key>
+				<string>j</string>
+				<key>focusedappvariable</key>
+				<false/>
+				<key>focusedappvariablename</key>
+				<string></string>
+				<key>hotkey</key>
+				<integer>98</integer>
+				<key>hotmod</key>
+				<integer>8388608</integer>
+				<key>hotstring</key>
+				<string>F7</string>
+				<key>leftcursor</key>
+				<false/>
+				<key>modsmode</key>
+				<integer>0</integer>
+				<key>relatedAppsMode</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.hotkey</string>
+			<key>uid</key>
+			<string>FDEF870C-BA82-42D8-BE3B-BB4A33CDE23C</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>68</integer>
+				<key>script</key>
+				<string>import json, StringIO, gzip, alfred, urllib, urllib2,time
+def timestamp_to_date(time_stamp, format_string="%Y-%m-%d %H:%M:%S"):
+    time_array = time.localtime(time_stamp)
+    str_date = time.strftime(format_string, time_array)
+    return str_date
+
+
+def timestamp_to_timestamp10(time_stamp):
+    time_stamp = int(time_stamp * (10 ** (10 - len(str(time_stamp)))))
+    return time_stamp
+
+def print_time(timeStamp):
+    time_stamp = str(timeStamp).strip()
+    if time_stamp.isdigit() and len(time_stamp.strip()) == 13 and time_stamp.startswith("1"):
+        lon_t = long(time_stamp)
+        tt = timestamp_to_timestamp10(lon_t)
+        return timestamp_to_date(tt)
+    if time_stamp.isdigit() and len(time_stamp.strip()) == 10 and time_stamp.startswith("1"):
+        lon_t = long(time_stamp)
+        return timestamp_to_date(lon_t)
+    return 'unknown...'
+
+theQuery = u'{query}'
+ti = print_time(theQuery.strip('\t'))
+results = []
+item = alfred.Item({'uid': 1, 'arg': 222 },  ti, '%Y-%m-%d %H:%M:%S', ('flickr.png', {'type': 'png'}))
+results.append(item)
+xml = alfred.xml(results)
+alfred.write(xml)</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>3</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>FC194EBB-561B-4024-96FB-BC2CA80F4705</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string>Alfred's Script Filter object is extremely powerful, and gives you control over the results displayed in Alfred.
+
+Alfred 3 now supports JSON, which is the recommended format. XML is also supported for legacy Alfred 2 workflows, and has been updated to include the new features.
+
+A new option now exists for Script Filters, "Alfred filters results". This allows you to return a whole list of results, let Alfred do the subsequent filtering with extreme performance. When this option is selected, your script will be called once with no argument.</string>
+	<key>uidata</key>
+	<dict>
+		<key>50B0CD10-4D52-4898-9C05-DD3A34A829C3</key>
+		<dict>
+			<key>note</key>
+			<string>Alfred 3 now supports JSON as the Script Filter output. This is the recommended output.</string>
+			<key>xpos</key>
+			<integer>10</integer>
+			<key>ypos</key>
+			<integer>50</integer>
+		</dict>
+		<key>A5F86BD2-7D80-4E61-BD70-D32C547055E0</key>
+		<dict>
+			<key>xpos</key>
+			<integer>125</integer>
+			<key>ypos</key>
+			<integer>235</integer>
+		</dict>
+		<key>FC194EBB-561B-4024-96FB-BC2CA80F4705</key>
+		<dict>
+			<key>xpos</key>
+			<integer>260</integer>
+			<key>ypos</key>
+			<integer>400</integer>
+		</dict>
+		<key>FDEF870C-BA82-42D8-BE3B-BB4A33CDE23C</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>3</integer>
+			<key>note</key>
+			<string>Set a hotkey such as ⌘⇧V to start this workflow with the current clipboard contents</string>
+			<key>xpos</key>
+			<integer>10</integer>
+			<key>ypos</key>
+			<integer>350</integer>
+		</dict>
+	</dict>
+	<key>variablesdontexport</key>
+	<array/>
+	<key>version</key>
+	<string>1.0</string>
+	<key>webaddress</key>
+	<string></string>
+</dict>
+</plist>
