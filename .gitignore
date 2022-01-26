@@ -2,3 +2,4 @@
 target/
 *.iml
 src/main/python/dataFix/
+*.DS_Store
