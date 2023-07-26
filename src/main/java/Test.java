@@ -40,6 +40,9 @@ public class Test {
 
     public static void main(String[] args) {
 
+
+        StringBuilder sb = new StringBuilder();
+        sb.substring(0, sb.length()-1);
         List<Integer> integers = new ArrayList<>();
         Iterator iterator =integers.iterator();
         while (iterator.hasNext()) {
