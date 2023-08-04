@@ -22,3 +22,12 @@ negative_score = get_score(negative_example)
 
 print("好评例子的评分 ： %f" % positive_score)
 print("差评例子的评分 ： %f" % negative_score)
+
+good_restraurant = get_embedding("这家餐馆太好吃了，一点都不糟糕")
+bad_restraurant = get_embedding("这家餐馆太糟糕了， 一点都不好吃")
+
+#print("向量：%s" % (good_restraurant))
+good_score = get_score(good_restraurant)
+bad_score = get_score(bad_restraurant)
+print("好评餐馆的评分：%f" % (good_score))
+print("差评餐馆的评分：%f" % (bad_score))
