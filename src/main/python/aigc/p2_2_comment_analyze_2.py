@@ -5,22 +5,29 @@ import os
 from openai.embeddings_utils import  cosine_similarity, get_embedding
 from sklearn.metrics import classification_report
 from sklearn.metrics import PrecisionRecallDisplay
-datafile_path = "/Users/zm/aigcData/AllProductReviews.csv"
+import matplotlib.pyplot as plt
+datafile_path = "/Users/zm/aigcData/withEmbedding.csv"
 
-#todo 全量数据太费钱，先限制100条跑一下
 df = pd.read_csv(datafile_path)
-df = df[df.ReviewStar != 3]
-df["sentiment"] = df.ReviewStar.replace({1: "negative", 2:"negative", 4: "positive", 5: "positive"})
-count = 1
-df["embedding"] =""
-#
-for index, row in df.iterrows():
-    df.loc[index, "embedding"] = str(get_embedding(row["ReviewBody"]))
-    count += 1
-    print("请求次数 %s:" % count)
-    if count > 10:
-        break
+df["embedding"] = df.embedding.apply(eval).apply(np.array)
 
-outPd = df[df.embedding != ""]
+def evaluate_embeddings_approach(
+        labels = ['negative', 'positive'],
+        model = 'text-similarity-davinci-001',
+):
+    label_embeddings = [get_embedding(label, engine=model) for label in labels]
 
-outPd.to_csv("/Users/zm/aigcData/withEmbedding.csv")
+    def label_score(review_embedding, label_embeddings):
+        return cosine_similarity(review_embedding, label_embeddings[1]) - cosine_similarity(review_embedding, label_embeddings[0])
+
+    probas = df["embedding"].apply(lambda x: label_score(x, label_embeddings))
+    preds = probas.apply(lambda x: 'positive' if x>0 else 'negative')
+
+    report = classification_report(df.sentiment, preds)
+    print(report)
+
+    display = PrecisionRecallDisplay.from_predictions(df.sentiment, probas, pos_label='positive')
+    _ = display.ax_.set_title("2-class Precision-Recall curve")
+    display.plot()
+    plt.show()
+evaluate_embeddings_approach(labels=['An Amazon review with a negative sentiment.','An Amazon review with a positive sentiment.'])

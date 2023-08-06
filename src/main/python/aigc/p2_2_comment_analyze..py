@@ -5,6 +5,7 @@ import os
 from openai.embeddings_utils import  cosine_similarity, get_embedding
 from sklearn.metrics import classification_report
 from sklearn.metrics import PrecisionRecallDisplay
+
 datafile_path = "/Users/zm/aigcData/AllProductReviews.csv"
 
 #todo 全量数据太费钱，先限制100条跑一下
@@ -18,7 +19,7 @@ for index, row in df.iterrows():
     df.loc[index, "embedding"] = str(get_embedding(row["ReviewBody"]))
     count += 1
     print("请求次数 %s:" % count)
-    if count > 10:
+    if count > 100:
         break
 
 outPd = df[df.embedding != ""]
