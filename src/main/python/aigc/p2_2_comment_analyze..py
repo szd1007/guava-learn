@@ -9,6 +9,7 @@ from sklearn.metrics import PrecisionRecallDisplay
 datafile_path = "/Users/zm/aigcData/AllProductReviews.csv"
 
 #todo 全量数据太费钱，先限制100条跑一下
+#todo 模型不同，成本不同，这个到时候改为  text-embedding-ada-002   （最小的ada模型）
 df = pd.read_csv(datafile_path)
 df = df[df.ReviewStar != 3]
 df["sentiment"] = df.ReviewStar.replace({1: "negative", 2:"negative", 4: "positive", 5: "positive"})
