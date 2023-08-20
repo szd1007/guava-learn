@@ -5,3 +5,4 @@ src/main/python/dataFix/
 .DS_Store
 */.DS_Store
 srm/main/.DS_Store
+src/main/python/aigc/__pycache__/
