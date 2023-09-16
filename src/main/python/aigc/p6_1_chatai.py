@@ -15,7 +15,8 @@ class Conversation:
         try:
             self.messages.append({"role": "user", "content": question})
             response = openai.ChatCompletion.create(
-                model="gpt-3.5-turbo",
+                #model="gpt-3.5-turbo",
+                model="gpt-4",  # 9月出账单就可以用最新模型了，搭个网站自己用 https://platform.openai.com/docs/models/gpt-4
                 messages=self.messages,
                 temperature=0.5,
                 max_tokens=2048,
