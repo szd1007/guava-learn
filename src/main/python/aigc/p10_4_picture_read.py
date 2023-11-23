@@ -4,7 +4,7 @@ from llama_index.response.notebook_utils import  display_response, display_image
 from llama_index.indices.query.query_transform.base import ImageOutputQueryTransform
 import openai
 
-openai.api_key = "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"
+openai.api_key = "x"
 
 image_parser = ImageReader(keep_image=True, parse_text=True)
 out_image = image_parser.load_data('/content/drive/MyDrive/colab/aigcData/receipts/111.jpeg')
