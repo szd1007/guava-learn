@@ -1,0 +1,18 @@
+import os, requests, json
+
+API_TOKEN = os.environ.get("HUGGINGFACE_API_KEY")
+
+API_URL = f"https://mrjntjov4936rjoq.us-east-1.aws.endpoints.huggingface.cloud"
+headers = {"Authorization": f"Bearer {API_TOKEN}", "Content-Type": "application/json"}
+
+
+def query(payload, api_url=API_URL, headers=headers):
+    data = json.dumps(payload)
+    response = requests.request("POST", api_url, headers=headers, data=data)
+    return json.loads(response.content.decode("utf-8"))
+
+
+question = "My name is Lewis and I like to"
+data = query({"inputs": question, "wait_for_model": True})
+
+print(data)
